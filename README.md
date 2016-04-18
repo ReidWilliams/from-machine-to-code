@@ -1,6 +1,8 @@
 # from-machine-to-code
 Explore and program a tiny microprocessor starting from a single gate. An explorable explanation that shows how a CPU is built from AND, OR, NOT, and XOR gates. In the style of http://explorableexplanations.com.
 
+![AND gates](https://raw.githubusercontent.com/ReidWilliams/from-machine-to-code/master/assets/gates.jpg)
+
 # Outline
 
 #### Meet the gates

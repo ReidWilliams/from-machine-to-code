@@ -50,6 +50,8 @@ Explore and program a tiny microprocessor starting from a single gate. An explor
 - start seeding intuition about need for a clock
 
 ## ... more lessons ...
+- build up to super simple CPU that you can program with a simple assembly and see some kind of program output on a tiny low pixel count screen
+- is there some out output (lights, moving a character around) that's simpler than a screen but complex enough that it makes sense to program a simple CPU with assembly?
 
 ## Eventual tiny cpu built
 - 16 bit data path?

@@ -27,6 +27,11 @@ Explore and program a tiny microprocessor starting from a single gate. An explor
 
 #### Meet a new gate, the XOR gate
 
+#### How to add 1-bit: adding and carrying
+- adding and carrying on a table
+- Add with XOR
+- Carry with AND
+
 #### Gates can make a circuit that adds numbers
 - 4 bit adder
 

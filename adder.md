@@ -14,6 +14,7 @@ Interaction would be clicking circles to turn on / off inputs to gates. Each of 
 - Is a 3 bit adder too many gates to easily understand, should it be 2 bits instead?
 - Will we be able to lay out this many gates in a neat way?
 - Doesn't seem like it'll be very easy to automate laying out the gates and wires, more likely we'll lay them out by hand so they look neat and easy to understand.
+- Group gates to show the repeating "full adder" unit that exists for each bit.
 
 ### Next
 - draw adder in sketch to see how neatly we can lay it out

@@ -1,7 +1,13 @@
+'use strict'
+
+var path = require('path');
+
 module.exports = {
   entry: './scripts/index.js',
   output: {
-    filename: './src/bundle.js'
+    path: path.join(__dirname, '/dist/'),
+    publicPath: '/dist/',
+    filename: 'bundle.js'
   },
   devtool: 'source-map',
   module: {

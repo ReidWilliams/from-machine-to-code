@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import Node from './components/nodeComponent'
+import AppComponent from './components/AppComponent'
 
 
-ReactDOM.render(<Node />, document.getElementById('app'))
+ReactDOM.render(<AppComponent />, document.getElementById('app'))

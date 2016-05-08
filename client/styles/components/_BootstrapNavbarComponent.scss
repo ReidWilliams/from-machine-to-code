@@ -1,0 +1,60 @@
+/*Navigation Bar */
+
+@mixin fonts {
+  @include font-circular;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+@mixin bgcolor {
+  background-color: #1F9CD7;
+}
+
+/* text spacing for items */
+@mixin margins {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+/* activly selected item */
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active >   
+ a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    color: white; /*BACKGROUND color for active*/
+    @include bgcolor;
+    @include fonts;
+    @include margins;
+}
+
+/* inactive items */
+.navbar-default .navbar-nav > .inactive > a, .navbar-default .navbar-nav > .inactive >   
+ a:hover, .navbar-default .navbar-nav > .inactive > a:focus {
+    color: #CECDCE; /*BACKGROUND color for inactive*/
+    @include bgcolor;
+    @include fonts;
+    @include margins;
+}
+
+.navbar {
+    @include bgcolor;
+    margin: auto;
+    border: 0;
+    border-radius: 0;
+}
+
+.navbar-collapse.collapse {
+        text-align: center; /* Set this */
+        display: block !important;
+        height: auto !important;
+        padding-bottom: 0;
+        margin-top: 7px;
+        margin-bottom: 5px;
+        border: 0;
+        padding: 0;
+        border: 0;
+}
+
+.navbar-nav {
+    display: inline-block;
+    float: none;
+    margin: 0;
+}

@@ -1,0 +1,139 @@
+
+
+/************************************************************************ 
+
+CSS Styling for index.html
+
+*************************************************************************/
+body {
+	background-color: white;
+    margin-right: 0px;
+    margin-left: auto;
+}
+
+
+/*For the top header*/
+.header h1 {
+    font-family: 'Circular';
+    font-size: 12px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 0px;
+    padding-bottom: 5px;
+    text-align: left;
+    color: #B4E0E1;
+}
+
+.container-fluid {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.col-md-6 {
+    padding: 0px;
+}
+
+.col-md-3 {
+    margin-left: 30px;
+}
+
+/* For Container1 */
+.container1{
+    background-color: white;
+}
+
+.container1 > .row > .col-md-6 > h1{
+    font-family: 'Circular';
+    font-weight: bold;
+    font-size: 64px;
+    color: #1F9CD7;
+    padding-left: 50px;
+    padding-right: 200px;
+}
+
+.container1 > .row > .col-md-6 > h2{
+    font-family: 'Sentinel';
+    font-weight: italic;
+    font-size: 36px;
+    color: #1F9CD7;
+    padding-left: 50px;
+    padding-right: 200px;
+}
+
+/* For Container2 */
+.container2 {
+    background-color: #1F9CD7;
+}
+
+.container2 h1{
+    color: white;
+    font-family: 'Circular';
+    font-weight: bold;
+    text-align: center;
+}
+
+.container2 > .row > .col-md-6{
+    margin-top: auto;
+    margin-bottom: auto;
+    float:none;
+    display:inline-block;
+    vertical-align:middle;
+    margin-right:-4px;
+}
+
+.container2 > .row > .col-md-6 > h2{
+    font-family: 'Sentinel';
+    font-weight: italic;
+    font-size: 24px;
+    color: white;
+    padding-left: 100px;
+    padding-right: 100px;
+
+}
+
+/* For Container3 */
+.container3 {
+    background-color: #50E3C2;
+}
+
+.container3 h1{
+    color: white;
+    font-family: 'Circular';
+    font-weight: bold;
+    text-align: center;
+}
+
+.container3 > .row > .col-md-4 {
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.container3 > .row > .col-md-4 > h1{
+    font-family: 'Sentinel';
+    font-weight: italic;
+    font-size: 32px;
+    color: white;
+    text-align: center;
+}
+
+.container3 > .row > .col-md-4 > h2{
+    font-family: 'Sentinel';
+    font-weight: italic;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+}
+
+/*For Footer*/
+.container4 {
+    background-color: #1F9CD7;
+}
+
+.container4 h1{
+    font-family: 'Circular';
+    font-weight: bold;
+    text-align: center;
+    font-size: 16px;
+    color: white;
+}
+

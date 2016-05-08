@@ -1,0 +1,63 @@
+/* Search for keybase users */
+
+.certify-form-receiver {
+  background-color: #eeeeee;
+  color: #333344;
+  height: 500px;
+  padding: 0px;
+
+  .objects {
+    width: 300px;
+    float: right;
+    @include font-circular
+
+    .label-input {
+      width: 300px;
+      margin: 0 auto;
+      padding-top: 20px;
+      
+      h1 {
+        font-size: 18px;
+      }
+
+      input {
+        padding: 5px 15px 5px 15px;
+        border: none;
+
+        background-color: #dddddd;
+        font-size: 20px;
+
+        transition: background-color 0.2s ease;
+        &:focus {
+          outline: none;
+          background-color: #cccccc;
+        }
+      }
+
+      .input-selected {
+        color: #1F9CD7
+      }
+    }
+
+    .results {
+      width: 300px;
+      margin: 0 auto;
+      margin-top: 50px;
+      margin-bottom: 20px;
+    }
+
+    .selected-receiver {
+      width: 300px;
+      margin: 0 auto;
+      margin-top: 20px;
+
+        img {
+          border-radius: 10px; 
+          display: block;
+          width: 150px;
+          height: 150px;
+        }
+
+    }
+  }
+}

@@ -14,12 +14,7 @@
     "webpack": "^1.13.0"
   },
   "scripts": {
-    "client_test": "karma start client/karma.conf.js",
-    "server_test": "NODE_ENV=test jasmine JASMINE_CONFIG_PATH=spec/support/jasmine.json",
-    "test": "npm run server_test",
-    "client_dev": "NODE_ENV=development babel-node server/server.js",
-    "server_dev": "NODE_ENV=development nodemon --exec babel-node server/server.js",
-    "start": "NODE_ENV=production babel-node server/server.js"
+    "dev": "webpack-dev-server --content-base client/"
   },
   "author": {
     "name": "Gavin McDermott",

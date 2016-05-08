@@ -14,7 +14,7 @@
     "webpack": "^1.13.0"
   },
   "scripts": {
-    "dev": "webpack-dev-server --content-base client/"
+    "dev": "webpack-dev-server --content-base client/ --inline"
   },
   "author": {
     "name": "Gavin McDermott",

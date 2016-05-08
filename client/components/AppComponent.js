@@ -6,9 +6,11 @@ import AndGateComponent from './AndGateComponent'
 class App extends Component {
   render() {
     return (
-      <SvgComponent>
-	      <AndGateComponent/>
-	    </SvgComponent>
+    	<div className="test-svg-container centered">
+	      <SvgComponent className="centered">
+		      <AndGateComponent/>
+		    </SvgComponent>
+		   </div>
     )
   }
 }

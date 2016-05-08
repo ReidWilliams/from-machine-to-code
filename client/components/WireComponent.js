@@ -8,13 +8,13 @@ import { BOOL_OFF, BOOL_ON, BOOL_TRANSITION_OFF, BOOL_TRANSITION_ON } from '../c
 // off and on. right now we don't animate transitions
 let colors = ["#8CCEDA", "#FFAA00"]
 
-class SwitchComponent extends Component {
+class WireComponent extends Component {
   render() {
-  	let fill = "#ff0000"
+  	let stroke = "#ff0000"
   	if (this.props.boolState == BOOL_OFF || this.props.boolState == BOOL_TRANSITION_OFF) {
-  		fill = colors[0]
+  		stroke = colors[0]
   	} else if (this.props.boolState == BOOL_ON || this.props.boolState == BOOL_TRANSITION_ON) {
-  		fill = colors[1]
+  		stroke = colors[1]
   	} else {
   		throw "prop boolState is invalid: " + this.props.boolState
   	}
@@ -23,17 +23,17 @@ class SwitchComponent extends Component {
   	let transform = "translate(" + this.props.left + " " + this.props.top + ")" 
 
     return(
-      <g transform={transform} stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-        <circle id="switch" stroke="#B1AEAE" fill={fill} cx="10.5" cy="10.5" r="9.5"></circle>
+      <g transform={transform} stroke={stroke} strokeWidth="3" fill="none">
+        <path d="M139,0 L140,96 C139.835218,100.958061 136.251564,104.544045 131.830853,104.544045 L-0.164782431,104.544045"></path>
     	</g>
     )
   }
 }
 
-SwitchComponent.propTypes = {
+WireComponent.propTypes = {
     boolState: React.PropTypes.string.isRequired,
     left: React.PropTypes.number.isRequired,
     top: React.PropTypes.number.isRequired
   }
 
-export default SwitchComponent
+export default WireComponent

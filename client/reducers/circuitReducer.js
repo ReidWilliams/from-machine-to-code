@@ -41,7 +41,6 @@ let initialState = {
 }
 
 export let circuitReducer = function(state=initialState, action) {
-  debugger
   let newState = Object.assign({}, state)
   let circuitId = action.circuitId
   let nodeId = action.nodeId

@@ -3,14 +3,14 @@ import q from 'q'
 
 import { SWITCH } from '../constants/nodeTypes'
 import { BOOL_OFF, BOOL_ON, BOOL_TRANSITION_OFF, BOOL_TRANSITION_ON } from '../constants/boolStates'
-import { boolInvert } from '../lib/bool'
+import { boolInvert }  from '../lib/bool'
 
 const SWITCH_TOGGLE_ACTION = 'SWITCH_TOGGLE_ACTION'
 
 // redux action
 let switchToggledAction = function(circuitId, nodeId) {
   return {
-    type: SWITCH_TOGGLE,
+    type: SWITCH_TOGGLE_ACTION,
     circuitId,
     nodeId
   }

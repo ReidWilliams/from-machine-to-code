@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import SvgComponent from '../components/SvgComponent'
+import SwitchComponent from '../components/SwitchComponent'
 import { switchToggled } from '../reducers/circuitReducer'
 
 function mapStateToProps(state) {
   return {
-    allNodes: state.circuits[0].allNodes
+    allNodes: state.circuits.allCircuits[0].allNodes
   }
 }
 
@@ -20,12 +22,18 @@ function mapDispatchToProps(dispatch) {
 
 class CircuitContainer extends Component {
   render() {
-    <div className="test-svg-container centered">
-      <SvgComponent>
-        <SwitchComponent boolState={this.props.allNodes[0].state} clickHandler={this.props.switchToggled} left={0} top={200} />
-      </SvgComponent>
-    </div>
+    return (
+      <div className="test-svg-container centered">
+        <SvgComponent>
+          <SwitchComponent boolState={this.props.allNodes[0].state} clickHandler={() => this.props.switchToggled(0)} left={0} top={200} />
+        </SvgComponent>
+      </div>
+    )
+  }
+
+  _handleClick() {
+    console.log('click')
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateCertificationPageContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(CircuitContainer)

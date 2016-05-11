@@ -2,7 +2,7 @@ import _ from 'underscore'
 import q from 'q'
 
 import { SWITCH } from '../constants/nodeTypes'
-import { BOOL_OFF BOOL_ON BOOL_TRANSITION_OFF BOOL_TRANSITION_ON } from '../constants/boolStates'
+import { BOOL_OFF, BOOL_ON, BOOL_TRANSITION_OFF, BOOL_TRANSITION_ON } from '../constants/boolStates'
 import { boolInvert } from '../lib/bool'
 
 const SWITCH_TOGGLE_ACTION = 'SWITCH_TOGGLE_ACTION'
@@ -41,13 +41,14 @@ let initialState = {
 }
 
 export let circuitReducer = function(state=initialState, action) {
+  debugger
   let newState = Object.assign({}, state)
   let circuitId = action.circuitId
   let nodeId = action.nodeId
   
   switch (action.type) {
 
-    case SWITCH_TOGGLE:
+    case SWITCH_TOGGLE_ACTION:
       let toggled = boolInvert(newState.allCircuits[circuitId].allNodes[nodeId].state)
       newState.allCircuits[circuitId].allNodes[nodeId].state = toggled 
       return newState

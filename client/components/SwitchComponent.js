@@ -23,7 +23,7 @@ class SwitchComponent extends Component {
   	let transform = "translate(" + this.props.left + " " + this.props.top + ")" 
 
     return(
-      <g transform={transform} stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+      <g onClick={this.props.clickHandler} transform={transform} stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <circle id="switch" stroke="#B1AEAE" fill={fill} cx="10.5" cy="10.5" r="9.5"></circle>
     	</g>
     )

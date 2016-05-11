@@ -1,4 +1,4 @@
-import { BOOL_OFF BOOL_ON BOOL_TRANSITION_OFF BOOL_TRANSITION_ON } from '../constants/boolStates'
+import { BOOL_OFF, BOOL_ON, BOOL_TRANSITION_OFF, BOOL_TRANSITION_ON } from '../constants/boolStates'
 
 // Don't use native boolean because we have transition states that represent
 // a node in transition from one state to another

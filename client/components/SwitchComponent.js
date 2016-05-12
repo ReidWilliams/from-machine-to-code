@@ -10,7 +10,6 @@ let colors = ["#8CCEDA", "#FFAA00"]
 
 class SwitchComponent extends Component {
   render() {
-    debugger
   	let fill = "#ff0000"
   	if (this.props.boolState == BOOL_OFF || this.props.boolState == BOOL_TRANSITION_OFF) {
   		fill = colors[0]

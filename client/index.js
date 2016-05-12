@@ -11,7 +11,7 @@ import { circuitReducer } from './reducers/circuitReducer'
 import './styles/main.scss'
 
 const appReducer = combineReducers({
-  circuits: circuitReducer
+  circuitNodes: circuitReducer
 })
 
 const createStoreWithMiddleware = applyMiddleware(thunkMiddleware)(createStore)

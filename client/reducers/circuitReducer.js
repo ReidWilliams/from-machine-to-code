@@ -23,34 +23,26 @@ export let switchToggled = function(circuitId, nodeId) {
   }
 }
 
-let initialState = {
-  allCircuits: [
-    {
-      allNodes: [
-        {
-          id: 0,
-          type: SWITCH,
-          state: BOOL_OFF,
-          inputs: [],
-          outputs: []
-        }
-      ]
-      // all nodes in the circuit as a list
-    }
-  ]
-}
+let initialState = [
+  {
+    id: 0,
+    type: SWITCH,
+    state: BOOL_OFF,
+    inputs: [],
+    outputs: []
+  }
+]   
 
-export let circuitReducer = function(state=initialState, action) {
-  let newState = Object.assign({}, state)
-  let circuitId = action.circuitId
-  let nodeId = action.nodeId
-  
+export let circuitReducer = function(state=initialState, action) {  
   switch (action.type) {
-
     case SWITCH_TOGGLE_ACTION:
-      let toggled = boolInvert(newState.allCircuits[circuitId].allNodes[nodeId].state)
-      newState.allCircuits[circuitId].allNodes[nodeId].state = toggled 
+      let nodeId = action.nodeId
+      let newState = Object.assign({}, state)
+      let toggled = boolInvert(newState[nodeId].state)
+      newState[nodeId].state = toggled
       return newState
+      
+
 
     default:
       return state

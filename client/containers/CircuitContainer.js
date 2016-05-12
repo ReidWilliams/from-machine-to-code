@@ -7,7 +7,7 @@ import { switchToggled } from '../reducers/circuitReducer'
 
 function mapStateToProps(state) {
   return {
-    allNodes: state.circuits.allCircuits[0].allNodes
+    circuitNodes: state.circuitNodes
   }
 }
 
@@ -25,14 +25,10 @@ class CircuitContainer extends Component {
     return (
       <div className="test-svg-container centered">
         <SvgComponent>
-          <SwitchComponent boolState={this.props.allNodes[0].state} clickHandler={() => this.props.switchToggled(0)} left={0} top={200} />
+          <SwitchComponent boolState={this.props.circuitNodes[0].state} clickHandler={() => this.props.switchToggled(0)} left={0} top={200} />
         </SvgComponent>
       </div>
     )
-  }
-
-  _handleClick() {
-    console.log('click')
   }
 }
 

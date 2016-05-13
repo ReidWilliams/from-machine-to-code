@@ -48,3 +48,33 @@ let addNodeToChangedNodes = function(state, node) {
   newState.changedNodes = newChangedNodes
   return newState
 }
+
+// propogates state of node to downstream nodes, changes downstream state, and
+// adds downstream node to changed node list. Does not mutate state. Returns
+// new state.
+let propogateChangedNode = function(state, node) {
+  let outputs = node.outputs
+  if (outputs.length === 0) return
+
+  let newState
+
+  // most nodes have 1 output, wires can have multiple outputs
+  _.each(outputs, function(outputObj) {
+    // id of the node that this output connects to
+    let outputNodeId = outputObj.nodeId
+    // gates have more than one input, index of the downstream node's input
+    let outputNodeInputIndex = outputObj.nodeInput
+
+    // update the downstream node's state
+    newState = updateNodeStateFromInputs(state, outputNodeId, outputNodeInputIndex, node.state)
+  })
+
+  return newState
+}
+
+// updates state of node given new input value. If node state has changed, adds it to
+// changedNodes list. Does not mutate state, returns new state.
+let updateNodeStateFromInputs = function(state, nodeId, inputIndex, inputState) {
+  // here is where we have different logic based on gate type.
+  HERE
+}

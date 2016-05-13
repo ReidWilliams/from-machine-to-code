@@ -1,9 +1,9 @@
 import _ from 'underscore'
 import q from 'q'
 
-import { SWITCH } from '../constants/nodeTypes'
 import { BOOL_OFF, BOOL_ON, BOOL_TRANSITION_OFF, BOOL_TRANSITION_ON } from '../constants/boolStates'
 import { boolInvert }  from '../lib/bool'
+import initialState from '../constants/initialState'
 
 const SWITCH_TOGGLE_ACTION = 'SWITCH_TOGGLE_ACTION'
 
@@ -22,32 +22,17 @@ export let switchToggled = function(circuitId, nodeId) {
     dispatch(switchToggledAction(circuitId, nodeId))
   }
 }
-
-let initialState = [
-  {
-    id: 0,
-    type: SWITCH,
-    state: BOOL_OFF,
-    inputs: [],
-    outputs: []
-  },
-  {
-    id: 1,
-    type: SWITCH,
-    state: BOOL_ON,
-    inputs: [],
-    outputs: []
-  }
-]   
-
-export let circuitReducer = function(state=initialState, action) {  
+ 
+export let circuitReducer = function(state=initialState, action) {
   switch (action.type) {
     case SWITCH_TOGGLE_ACTION:
       let nodeId = action.nodeId
       let newState = Object.assign({}, state)
-      newState[nodeId] = Object.assign({}, state[nodeId])
-      let toggled = boolInvert(newState[nodeId].state)
-      newState[nodeId].state = toggled
+      newState.allNodes = Object.assign({}, state.allNodes)
+      newState.allNodes[nodeId] = Object.assign({}, state.allNodes[nodeId])
+
+      let toggled = boolInvert(newState.allNodes[nodeId].state)
+      newState.allNodes[nodeId].state = toggled
       return newState      
     default:
       return state

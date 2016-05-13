@@ -10,7 +10,7 @@ import { BOOL_OFF, BOOL_ON, BOOL_TRANSITION_OFF, BOOL_TRANSITION_ON } from '../c
 
 function mapStateToProps(state) {
   return {
-    circuitNodes: state.circuitNodes
+    circuitNodes: state.circuitNodes.allNodes
   }
 }
 
@@ -28,11 +28,11 @@ class CircuitContainer extends Component {
     return (
       <div className="test-svg-container centered">
         <SvgComponent>
-          <AndGateComponent boolState={BOOL_OFF} left={0} top={0}/>
-          <AndGateComponent boolState={BOOL_ON} left={100} top={0}/>
-          <SwitchComponent boolState={this.props.circuitNodes[1].state} clickHandler={() => this.props.switchToggled(1)} left={100} top={200} />
+          <SwitchComponent boolState={this.props.circuitNodes[1].state} clickHandler={() => this.props.switchToggled(1)} left={140} top={215} />
+          <SwitchComponent boolState={this.props.circuitNodes[0].state} clickHandler={() => this.props.switchToggled(0)} left={140} top={265} />
           <WireComponent boolState={BOOL_OFF} left={0} top={300} />
-          <SwitchComponent boolState={this.props.circuitNodes[0].state} clickHandler={() => this.props.switchToggled(0)} left={0} top={200} />
+          <WireComponent boolState={BOOL_OFF} left={0} top={300} />
+          <AndGateComponent boolState={BOOL_ON} left={200} top={200}/>
         </SvgComponent>
       </div>
     )

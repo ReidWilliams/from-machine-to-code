@@ -30,8 +30,7 @@ class CircuitContainer extends Component {
         <SvgComponent>
           <AndGateComponent boolState={BOOL_OFF} left={0} top={0}/>
           <AndGateComponent boolState={BOOL_ON} left={100} top={0}/>
-          <SwitchComponent boolState={BOOL_OFF} left={0} top={200} />
-          <SwitchComponent boolState={BOOL_ON} left={100} top={200} />
+          <SwitchComponent boolState={this.props.circuitNodes[1].state} clickHandler={() => this.props.switchToggled(1)} left={100} top={200} />
           <WireComponent boolState={BOOL_OFF} left={0} top={300} />
           <SwitchComponent boolState={this.props.circuitNodes[0].state} clickHandler={() => this.props.switchToggled(0)} left={0} top={200} />
         </SvgComponent>

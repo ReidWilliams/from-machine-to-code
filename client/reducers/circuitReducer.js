@@ -30,6 +30,13 @@ let initialState = [
     state: BOOL_OFF,
     inputs: [],
     outputs: []
+  },
+  {
+    id: 1,
+    type: SWITCH,
+    state: BOOL_ON,
+    inputs: [],
+    outputs: []
   }
 ]   
 

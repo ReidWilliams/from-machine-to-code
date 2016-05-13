@@ -23,18 +23,28 @@ export let switchToggled = function(circuitId, nodeId) {
   }
 }
  
+// handle user changes to switch and circuit propogation
 export let circuitReducer = function(state=initialState, action) {
   switch (action.type) {
     case SWITCH_TOGGLE_ACTION:
       let nodeId = action.nodeId
       let newState = Object.assign({}, state)
-      newState.allNodes = Object.assign({}, state.allNodes)
+      newState.allNodes = state.allNodes.slice(0) // shallow copy array
       newState.allNodes[nodeId] = Object.assign({}, state.allNodes[nodeId])
 
       let toggled = boolInvert(newState.allNodes[nodeId].state)
       newState.allNodes[nodeId].state = toggled
-      return newState      
+      return addNodeToChangedNodes(newState, newState.allNodes[nodeId])      
     default:
       return state
   }
+}
+
+// does not mutate state, returns new state with node pushed 
+let addNodeToChangedNodes = function(state, node) {
+  let newChangedNodes = state.changedNodes.slice(0)
+  newChangedNodes.push(node)
+  let newState = Object.assign({}, state)
+  newState.changedNodes = newChangedNodes
+  return newState
 }

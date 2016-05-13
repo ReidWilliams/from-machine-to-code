@@ -38,12 +38,10 @@ export let circuitReducer = function(state=initialState, action) {
     case SWITCH_TOGGLE_ACTION:
       let nodeId = action.nodeId
       let newState = Object.assign({}, state)
+      newState[nodeId] = Object.assign({}, state[nodeId])
       let toggled = boolInvert(newState[nodeId].state)
       newState[nodeId].state = toggled
-      return newState
-      
-
-
+      return newState      
     default:
       return state
   }

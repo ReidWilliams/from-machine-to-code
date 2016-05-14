@@ -7,11 +7,11 @@ let initialState = {
 	    nodeId: 0,
 	    type: SWITCH,
 	    state: BOOL_OFF,
-	    inputStates: [],
+	    inputs: [],
 	    outputs: [
 	    	{
 	    		// output connects to node with id 1
-	    		nodeId: 1,
+	    		nodeId: 4,
 	    		// output connects to node's input 0
 	    		nodeInput: 0
 	    	}
@@ -21,8 +21,8 @@ let initialState = {
 	    nodeId: 1,
 	    type: WIRE,
 	    state: BOOL_OFF,
-	    inputStates: [ BOOL_OFF ],
-	    output: [
+	    inputs: [ BOOL_OFF ],
+	    outputs: [
 	    	{
 	    		nodeId: 4,
 	    		nodeInput: 0
@@ -33,11 +33,11 @@ let initialState = {
 	    nodeId: 2,
 	    type: SWITCH,
 	    state: BOOL_OFF,
-	    inputStates: [],
-	    output: [
+	    inputs: [],
+	    outputs: [
 	    	{
-	    		nodeId: 3,
-	    		nodeInput: 0
+	    		nodeId: 4,
+	    		nodeInput: 1
 	    	}
 	    ]
 	  },
@@ -45,8 +45,8 @@ let initialState = {
 	    nodeId: 3,
 	    type: WIRE,
 	    state: BOOL_OFF,
-	    inputStates: [ BOOL_OFF ],
-	    output: [
+	    inputs: [ BOOL_OFF ],
+	    outputs: [
 	    	{
 	    		nodeId: 4,
 	    		nodeInput: 1
@@ -57,8 +57,8 @@ let initialState = {
 	    nodeId: 4,
 	    type: AND_GATE,
 	    state: BOOL_OFF,
-	    inputStates: [ BOOL_OFF, BOOL_OFF],
-	    output: []
+	    inputs: [ BOOL_OFF, BOOL_OFF],
+	    outputs: []
 	  }
 	],
 

@@ -9,7 +9,6 @@ import { switchToggled } from '../reducers/circuitReducer'
 import { BOOL_OFF, BOOL_ON, BOOL_TRANSITION_OFF, BOOL_TRANSITION_ON } from '../constants/boolStates'
 
 function mapStateToProps(state) {
-  debugger
   return {
     circuitNodes: state.circuitNodes.allNodes
   }
@@ -33,7 +32,7 @@ class CircuitContainer extends Component {
           <SwitchComponent boolState={this.props.circuitNodes[2].state} clickHandler={() => this.props.switchToggled(2)} left={140} top={265} />
           <WireComponent boolState={BOOL_OFF} left={0} top={300} />
           <WireComponent boolState={BOOL_OFF} left={0} top={300} />
-          <AndGateComponent boolState={BOOL_ON} left={200} top={200}/>
+          <AndGateComponent boolState={this.props.circuitNodes[4].state} left={200} top={200}/>
         </SvgComponent>
       </div>
     )

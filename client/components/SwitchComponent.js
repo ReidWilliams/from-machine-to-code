@@ -24,7 +24,7 @@ class SwitchComponent extends Component {
 
     return(
       <g onClick={this.props.clickHandler} transform={transform} stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-        <circle id="switch" stroke="none" fill={fill} cx="10.5" cy="10.5" r="9.5"></circle>
+        <circle className="component--switch" id="switch" stroke="none" fill={fill} cx="10.5" cy="10.5" r="9.5"></circle>
     	</g>
     )
   }

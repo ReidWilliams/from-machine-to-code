@@ -19,12 +19,9 @@ class WireComponent extends Component {
   		throw "prop boolState is invalid: " + this.props.boolState
   	}
 
-  	// draw this gate offset using a translation
-  	let transform = "translate(" + this.props.left + " " + this.props.top + ")" 
-
     return(
-      <g transform={transform} stroke={stroke} strokeWidth="3" fill="none">
-        <path d="M139,0 L140,96 C139.835218,100.958061 136.251564,104.544045 131.830853,104.544045 L-0.164782431,104.544045"></path>
+      <g stroke={stroke} strokeWidth="3" fill="none">
+        <path d={this.props.path}></path>
     	</g>
     )
   }
@@ -32,8 +29,7 @@ class WireComponent extends Component {
 
 WireComponent.propTypes = {
     boolState: React.PropTypes.string.isRequired,
-    left: React.PropTypes.number.isRequired,
-    top: React.PropTypes.number.isRequired
+    path: React.PropTypes.string.isRequired
   }
 
 export default WireComponent

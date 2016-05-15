@@ -11,10 +11,13 @@
     ]
   },
   "devDependencies": {
-    "webpack": "^1.13.0"
+    "svgutils": "^0.13.5",
+    "webpack": "^1.13.0",
+    "xml2js": "^0.4.16"
   },
   "scripts": {
-    "dev": "webpack-dev-server --content-base client/ --inline"
+    "dev": "webpack-dev-server --content-base client/ --inline",
+    "sketch": "babel-node scripts/sketch-to-react.js"
   },
   "author": {
     "name": "Gavin McDermott",

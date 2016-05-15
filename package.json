@@ -11,7 +11,7 @@
     ]
   },
   "devDependencies": {
-    "svgutils": "^0.13.5",
+    "babel-node-debug": "^2.0.0",
     "webpack": "^1.13.0",
     "xml2js": "^0.4.16"
   },
@@ -76,7 +76,7 @@
     "parse": "^1.7.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "q": "1.4.1",
+    "q": "^1.4.1",
     "react": "0.14.6",
     "react-addons-test-utils": "0.14.6",
     "react-addons-update": "^15.0.2",

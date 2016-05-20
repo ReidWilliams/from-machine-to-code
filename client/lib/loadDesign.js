@@ -117,24 +117,40 @@ let mapType = function(label) {
 // last point is (rightmost) end
 // throws exception if first point has x coord greater or equal to last
 let getEndpoints = function(wire) {
-	FIXME
-	// need to handle case where wire is a polyline
+	let points = []
 
+	// wire's svg is a <path/>
+	// points separated by spaces with letter prefix
+	// coords in a point separated by comma
+	if (wire.raw.d) {
+		let path = wire.raw.d
+		points = path.split(' ')
 
-	let path = wire.raw.d
-	let points = path.split(' ')
+		points = _.map(points, function(p) {
+			// remove beggin letter codes from svg path points
+			p = p.replace(/([a-z]|[A-Z])/g, '')
 
-	points = _.map(points, function(p) {
-		// remove beggin letter codes from svg path points
-		p = p.replace(/([a-z]|[A-Z])/g, '')
+			// split into x and y coords
+			let coords = p.split(',')
+			return {
+				x: parseFloat(coords[0]),
+				y: parseFloat(coords[1])
+			}
+		})
 
-		// split into x and y coords
-		let coords = p.split(',')
-		return {
-			x: parseFloat(coords[0]),
-			y: parseFloat(coords[1])
+		// wire's svg is a <polyline/>
+		// coords separated by spaces like x0 y0 x1 y1...
+	} else {
+		let coords = wire.raw.points.split(' ')
+		let pointIdx = 0
+		for (let i = 0; i < coords.length; i += 2) {
+			points[pointIdx] = {
+				x: parseFloat(coords[i]),
+				y: parseFloat(coords[i+1])
+			}
+			pointIdx++
 		}
-	})
+	}
 
 	if (_.first(points).x >= _.last(points).x) {
 		throw ("start point is to the right of end point for wire " + wire.raw.d)
@@ -148,6 +164,8 @@ let getEndpoints = function(wire) {
 
 let createConnections = function(wire, gates) {
 	let endpoints = getEndpoints(wire)
+	here
+	// here
 }
 
 

@@ -8,7 +8,9 @@
 	- connectvitity between switchs, gates, wires is inferred based on svg geometry
 	- signals flow left to right, so leftmost point of a wire is it's input, rightmost is output
 	- gates and switches always connect by wires (no gate to gate direct connection)
-	- junctions show connected wires, implemented as another sibling output to wire
+	- wires are always lines, there's no branching of wires to more than one output
+	- a gate that has more than one output is implemented as more than one wire
+	- junctions (little circles) show connected wires, implemented as another sibling output to wire
 */
 
 import xml2js from 'xml2js'
@@ -52,8 +54,23 @@ let buildAppState = function(svg) {
 		nodes.push(createNode(p, id++))
 	})
 
+	let wires = _.filter(nodes, function(n) {
+		return n.type === WIRE
+	})
+
+	// gates includes AND, OR, XOR, etc, and switches
+	let gates = _.filter(nodes, function(n) {
+		return (n.type !== WIRE && n.type !== JUNCTION)
+	})
+
+	_.each(wires, function(wire) {
+		// mutates wire and gate objects in place
+		// which is reflected in nodes
+		createConnections(wire, gates)
+	})
+
 	// code works up to here
-	debugger
+	// debugger
 
 	// filter nodes for list of gates + switchs
 	// for each, find wires that terminate inside 
@@ -95,6 +112,45 @@ let mapType = function(label) {
 			throw ("unknown type " + label)
 	}
 }
+
+// assumes that first point is (leftmost) start and 
+// last point is (rightmost) end
+// throws exception if first point has x coord greater or equal to last
+let getEndpoints = function(wire) {
+	FIXME
+	// need to handle case where wire is a polyline
+
+
+	let path = wire.raw.d
+	let points = path.split(' ')
+
+	points = _.map(points, function(p) {
+		// remove beggin letter codes from svg path points
+		p = p.replace(/([a-z]|[A-Z])/g, '')
+
+		// split into x and y coords
+		let coords = p.split(',')
+		return {
+			x: parseFloat(coords[0]),
+			y: parseFloat(coords[1])
+		}
+	})
+
+	if (_.first(points).x >= _.last(points).x) {
+		throw ("start point is to the right of end point for wire " + wire.raw.d)
+	}
+
+	return {
+		start: _.first(points),
+		end: _.last(points)
+	}
+}
+
+let createConnections = function(wire, gates) {
+	let endpoints = getEndpoints(wire)
+}
+
+
 
 // export default parseFile
 

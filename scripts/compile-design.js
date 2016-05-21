@@ -1,4 +1,5 @@
-// loads svg exported by sketch and builds initial app state
+// loads svg exported by sketch and writes json app initial state
+// usage node compile-design in.svg out.json
 
 /*
 	Assumptions for svg exported from sketch
@@ -19,8 +20,8 @@ import util from 'util'
 import Q from 'q'
 import _ from 'underscore'
 
-import { SWITCH, WIRE, JUNCTION, NOT_GATE, AND_GATE, OR_GATE } from '../constants/nodeTypes'
-import { BOOL_OFF } from '../constants/boolStates'
+import { SWITCH, WIRE, JUNCTION, NOT_GATE, AND_GATE, OR_GATE } from '../client/constants/nodeTypes'
+import { BOOL_OFF } from '../client/constants/boolStates'
 
 let parseString = xml2js.parseString
 
@@ -33,8 +34,10 @@ let parseFile = function(path) {
 		if (err) deferred.reject(err)
 		deferred.resolve(buildAppState(result))
 	})
+	return deferred.promise
 }
 
+// returns new appstate object
 let buildAppState = function(svg) {
 	let nodesObj = svg.svg.g[0].g[0]
 
@@ -69,16 +72,16 @@ let buildAppState = function(svg) {
 		createConnections(wire, gates)
 	})
 
-	// code works up to here
-	// debugger
+	// deal with junctions
 
-	// filter nodes for list of gates + switchs
-	// for each, find wires that terminate inside 
-	// determine whether  wire is input or output (point with min x is assumed start of wire)
-	// for each junction, determine wire it covers and add to wire's parent output
-	// 		(so make sibling of wire)
+	let changedNodes = _.filter(nodes, function(n) {
+		return n.type === SWITCH
+	})
 
-	// add all switches to node changed list
+	return {
+		allNodes: nodes,
+		changedNodes
+	}
 }
 
 // figures out node type and creates node object
@@ -87,6 +90,8 @@ let createNode = function(n, id) {
 		nodeId: id,
 		type: mapType(n.$.id),
 		state: BOOL_OFF,
+		inputs: [],
+		outputs: [],
 		raw: n.$
 	}
 }
@@ -139,17 +144,39 @@ let getEndpoints = function(wire) {
 	}
 }
 
+// mutates wire and gate objects
 let createConnections = function(wire, gates) {
 	let endpoints = getEndpoints(wire)
 
-	let inputToWire = getNearestGate(endpoints.start, gates)
-	let outputOfWire = getNearestGate(endpoints.end, gates)
+	let upstreamOfWire = getNearestGate(endpoints.start, gates)
+	let downstreamOfWire = getNearestGate(endpoints.end, gates)
 
-	debugger
-	
-	// here
+	// which of the downstream gates inputs is this wire
+	// connected to
+	let downstreamOfWireInputIndex = downstreamOfWire.inputs.length 
+
+	// push boolean off state, we'll update states later
+	downstreamOfWire.inputs.push(BOOL_OFF)
+
+	// set output of wire to be downstream gate
+	wire.outputs.push({
+		nodeId: downstreamOfWire.nodeId,
+		nodeInput: downstreamOfWireInputIndex
+	})
+
+	// set wire input as off
+	wire.inputs.push(BOOL_OFF)
+
+	// set upstream gate's output as the wire
+	// wires only have 1 input so don't need to figure out
+	// which wire input upstream is connected to
+	upstreamOfWire.outputs.push({
+		nodeId: wire.nodeId,
+		nodeInput: 0
+	})
 }
 
+// returns nearest gate to the point
 let getNearestGate = function(point, gates) {
 	// sorted by distance to point
 	let sortedGates = _.sortBy(gates, function(gate) {
@@ -159,6 +186,8 @@ let getNearestGate = function(point, gates) {
 	return sortedGates[0]
 }
 
+// distance between point and gate. uses a simple heuristic to 
+// determine a point for the gate (which is really a filled shape)
 let getDistance = function(point, gate) {
 	let gatePoint = getGatePoint(gate)
 	// euclidian distance
@@ -170,7 +199,7 @@ let getDistance = function(point, gate) {
 	return distance
 }
 
-// gets an average point or center point of the gate svg 
+// heuristic that computes average point or center point of the gate svg 
 let getGatePoint = function(gate) {
 	let point
 
@@ -253,7 +282,28 @@ let getPolylinePoints = function(polylineString) {
 	return points
 }
 
-// export default parseFile
+let main = function() {
+	if (process.argv.length < 4) {
+		console.log("usage: babel-node compile-design infile.svg outfile.json")
+		process.exit(1)
+	}
 
-parseFile('./design/test1.svg')
+	let infile = process.argv[2]
+	let outfile = process.argv[3]
+
+	parseFile(infile).then(function(obj) {
+		debugger
+		fs.writeFile(outfile, JSON.stringify(obj, null, 2), function(err) {
+	    if (err) {
+	      console.log(err);
+	      process.exit(1)
+	    }
+		})
+		// process.exit(0)
+	})
+}
+
+main()
+
+
 

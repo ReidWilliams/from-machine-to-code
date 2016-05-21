@@ -17,7 +17,7 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --content-base client/ --inline",
-    "sketch": "babel-node scripts/sketch-to-react.js"
+    "compile-design": "babel-node scripts/compile-design.js ./design/test1.svg ./design/test1.json"
   },
   "author": {
     "name": "Gavin McDermott",

@@ -164,9 +164,9 @@ let getDistance = function(point, gate) {
 	// euclidian distance
 	let distance = Math.pow((point.x - gatePoint.x), 2) + Math.pow((point.y - gatePoint.y), 2)
 	distance = Math.sqrt(distance)
-	debugger
+
 	// gate point doesn't work for or gate id 5
-	HERE
+
 	return distance
 }
 
@@ -214,7 +214,8 @@ let getGatePoint = function(gate) {
 let getPathPoints = function(pathString) {
 	let points = pathString.split(' ')
 
-	return _.map(points, function(p) {
+	// remove letter prefixes
+	let lettersRemoved = _.map(points, function(p) {
 		// remove beggining letter codes from svg path points
 		p = p.replace(/([a-z]|[A-Z])/g, '')
 
@@ -224,6 +225,15 @@ let getPathPoints = function(pathString) {
 			x: parseFloat(coords[0]),
 			y: parseFloat(coords[1])
 		}
+	})
+
+	// sometimes there are letters without coordinates which become
+	// NaN, filter them
+	return _.filter(lettersRemoved, function(p) {
+		if (Number.isNaN(p.x) || Number.isNaN(p.y)) {
+			return false
+		}
+		return true
 	})
 }
 

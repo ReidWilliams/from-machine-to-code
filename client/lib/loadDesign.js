@@ -120,36 +120,13 @@ let getEndpoints = function(wire) {
 	let points = []
 
 	// wire's svg is a <path/>
-	// points separated by spaces with letter prefix
-	// coords in a point separated by comma
 	if (wire.raw.d) {
-		let path = wire.raw.d
-		points = path.split(' ')
-
-		points = _.map(points, function(p) {
-			// remove beggin letter codes from svg path points
-			p = p.replace(/([a-z]|[A-Z])/g, '')
-
-			// split into x and y coords
-			let coords = p.split(',')
-			return {
-				x: parseFloat(coords[0]),
-				y: parseFloat(coords[1])
-			}
-		})
-
+		points = getPathPoints(wire.raw.d)
 		// wire's svg is a <polyline/>
-		// coords separated by spaces like x0 y0 x1 y1...
+	} else if (wire.raw.points) {
+		points = getPolylinePoints(wire.raw.points)
 	} else {
-		let coords = wire.raw.points.split(' ')
-		let pointIdx = 0
-		for (let i = 0; i < coords.length; i += 2) {
-			points[pointIdx] = {
-				x: parseFloat(coords[i]),
-				y: parseFloat(coords[i+1])
-			}
-			pointIdx++
-		}
+		throw ("unrecognized svg for wire: " + String(wire))
 	}
 
 	if (_.first(points).x >= _.last(points).x) {
@@ -164,11 +141,107 @@ let getEndpoints = function(wire) {
 
 let createConnections = function(wire, gates) {
 	let endpoints = getEndpoints(wire)
-	here
+
+	let inputToWire = getNearestGate(endpoints.start, gates)
+	let outputOfWire = getNearestGate(endpoints.end, gates)
+
+	debugger
+	
 	// here
 }
 
+let getNearestGate = function(point, gates) {
+	// sorted by distance to point
+	let sortedGates = _.sortBy(gates, function(gate) {
+		let distance = getDistance(point, gate)
+		return distance
+	})
+	return sortedGates[0]
+}
 
+let getDistance = function(point, gate) {
+	let gatePoint = getGatePoint(gate)
+	// euclidian distance
+	let distance = Math.pow((point.x - gatePoint.x), 2) + Math.pow((point.y - gatePoint.y), 2)
+	distance = Math.sqrt(distance)
+	debugger
+	// gate point doesn't work for or gate id 5
+	HERE
+	return distance
+}
+
+// gets an average point or center point of the gate svg 
+let getGatePoint = function(gate) {
+	let point
+
+	// path or polyline
+	if (gate.raw.d || gate.raw.points) {
+		let points = []
+		if (gate.raw.d) {
+			points = getPathPoints(gate.raw.d) 
+		} else {
+			points = getPolylinePoints(gate.raw.points)
+		}
+
+		let sum = _.reduce(points, function(sum, point) {
+			return {
+				x: sum.x + point.x,
+				y: sum.y + point.y,
+				number: sum.number + 1
+			}
+		}, {x: 0, y:0, number: 0})
+
+		point = {
+			x: sum.x / sum.number,
+			y: sum.y / sum.number
+		}
+	// circle	
+	} else if (gate.raw.cx)	{
+		point = {
+			x: parseFloat(gate.raw.cx),
+			y: parseFloat(gate.raw.cy)
+		}
+	} else {
+		throw ("unrecognized svg share for gate: " + String(gate))
+	}
+
+	return point
+}
+
+// returns list of points from svgpath d= string
+// points separated by spaces with letter prefix
+// coords in a point separated by comma
+let getPathPoints = function(pathString) {
+	let points = pathString.split(' ')
+
+	return _.map(points, function(p) {
+		// remove beggining letter codes from svg path points
+		p = p.replace(/([a-z]|[A-Z])/g, '')
+
+		// split into x and y coords
+		let coords = p.split(',')
+		return {
+			x: parseFloat(coords[0]),
+			y: parseFloat(coords[1])
+		}
+	})
+}
+
+// returns list of points from svg polyline points string
+// coords separated by spaces like x0 y0 x1 y1...
+let getPolylinePoints = function(polylineString) {
+	let points = []
+	let coords = polylineString.split(' ')
+	let pointIdx = 0
+	for (let i = 0; i < coords.length; i += 2) {
+		points[pointIdx] = {
+			x: parseFloat(coords[i]),
+			y: parseFloat(coords[i+1])
+		}
+		pointIdx++
+	}
+	return points
+}
 
 // export default parseFile
 

@@ -29,6 +29,9 @@ class CircuitContainer extends Component {
       <div className="test-svg-container centered">
         <SvgComponent>
           { this.props.allNodes.map(function(node) {
+            HERE
+            // go back to chcking type and returning component for type
+            // need to know type because wires should be filled but gates should be
             switch (node.type) {
               case SWITCH:
                 return (<CircuitNodeComponent node={node} clickHandler={() => this.props.switchToggled(node.nodeId)} svg={node.svg} />)

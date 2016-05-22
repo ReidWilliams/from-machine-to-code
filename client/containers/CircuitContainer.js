@@ -27,13 +27,14 @@ function mapDispatchToProps(dispatch) {
 
 class CircuitContainer extends Component {
   render() {
+    let _this = this
     return (
       <div className="test-svg-container centered">
         <SvgComponent>
           { this.props.allNodes.map(function(node) {
             switch (node.type) {
               case SWITCH:
-                return (<SwitchComponent node={node} clickHandler={() => this.props.switchToggled(node.nodeId)} />)
+                return (<SwitchComponent node={node} clickHandler={() => _this.props.switchToggled(node.nodeId)} />)
               case WIRE:
                 return (<WireComponent node={node} />)
               default:

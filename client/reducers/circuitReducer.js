@@ -142,6 +142,12 @@ let computeState = function(nodeType, inputs) {
       } else {
         return BOOL_OFF
       }
+    case NOT_GATE:
+      if (inputs[0] === BOOL_ON ) {
+        return BOOL_OFF
+      } else {
+        return BOOL_ON
+      }
       // case XOR_GATE:
       //   if (inputs[0] === BOOL_ON && inputs[1] === BOOL_OFF) {
       //     return BOOL_ON

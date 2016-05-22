@@ -22,11 +22,16 @@ class SwitchComponent extends Component {
     // svg always has 1 key which is type of svg element
     let svgType = Object.keys(this.props.node.svg)[0]
 
-    // return svg element overriding fill
-    return React.createElement(
-      svgType, 
-      Object.assign({}, this.props.node.svg[svgType], { fill: fill })
-    )
+    return (
+      <g onClick={this.props.clickHandler}>
+        { // return svg element overriding fill
+          React.createElement(
+            svgType, 
+            Object.assign({}, this.props.node.svg[svgType], { fill: fill })
+          ) 
+        }
+      </g>
+      )
   }
 }
 

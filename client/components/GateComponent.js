@@ -4,11 +4,12 @@
 import React, { Component } from 'react'
 
 import { BOOL_OFF, BOOL_ON, BOOL_TRANSITION_OFF, BOOL_TRANSITION_ON } from '../constants/boolStates'
+import { AND_GATE, OR_GATE, NOT_GATE, JUNCTION } from '../constants/nodeTypes'
 
 // off and on. right now we don't animate transitions
 let colors = ["#8CCEDA", "#FFAA00"]
 
-class SwitchComponent extends Component {
+class GateComponent extends Component {
   render() {
     let fill = "#ff0000"
     if (this.props.node.state == BOOL_OFF || this.props.node.state == BOOL_TRANSITION_OFF) {
@@ -30,4 +31,4 @@ class SwitchComponent extends Component {
   }
 }
 
-export default SwitchComponent
+export default GateComponent

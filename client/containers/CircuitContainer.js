@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import SvgComponent from '../components/SvgComponent'
-import CircuitNodeComponent from '../components/CircuitNodeComponent'
+import SwitchComponent from '../components/SwitchComponent'
+import WireComponent from '../components/WireComponent'
+import GateComponent from '../components/GateComponent'
 import { switchToggled } from '../reducers/circuitReducer'
 import { BOOL_OFF, BOOL_ON, BOOL_TRANSITION_OFF, BOOL_TRANSITION_ON } from '../constants/boolStates'
 import { SWITCH, WIRE, AND_GATE, OR_GATE, NOT_GATE, JUNCTION } from '../constants/nodeTypes'
@@ -29,14 +31,15 @@ class CircuitContainer extends Component {
       <div className="test-svg-container centered">
         <SvgComponent>
           { this.props.allNodes.map(function(node) {
-            HERE
-            // go back to chcking type and returning component for type
-            // need to know type because wires should be filled but gates should be
             switch (node.type) {
               case SWITCH:
-                return (<CircuitNodeComponent node={node} clickHandler={() => this.props.switchToggled(node.nodeId)} svg={node.svg} />)
+                return (<SwitchComponent node={node} clickHandler={() => this.props.switchToggled(node.nodeId)} />)
+              case WIRE:
+                return (<WireComponent node={node} />)
               default:
-                return (<CircuitNodeComponent node={node} clickHandler={() => {}} svg={node.svg} />)
+                // GateComponent renders AND, OR, NOT, XOR, and JUNCTION
+                // basically anything tat's a non-interactive filled shape
+                return (<GateComponent node={node} />)
             }
           })}
         </SvgComponent>

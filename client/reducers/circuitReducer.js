@@ -3,8 +3,8 @@ import q from 'q'
 
 import { BOOL_OFF, BOOL_ON, BOOL_TRANSITION_OFF, BOOL_TRANSITION_ON } from '../constants/boolStates'
 import { boolInvert }  from '../lib/bool'
-import initialState from '../constants/initialState'
-import { SWITCH, WIRE, AND_GATE, OR_GATE } from '../constants/nodeTypes'
+import initialState from '../../design/test1.json'
+import { SWITCH, WIRE, AND_GATE, OR_GATE, NOT_GATE, JUNCTION } from '../constants/nodeTypes'
 
 const SWITCH_TOGGLE_ACTION = 'SWITCH_TOGGLE_ACTION'
 const PROPOGATE_CIRCUIT = 'PROPOGATE_CIRCUIT'

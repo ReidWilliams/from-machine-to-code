@@ -48,13 +48,13 @@ let buildAppState = function(svg) {
 	let id = 0
 
 	_.each(nodesObj.circle, function(c) {
-		nodes.push(createNode(c, id++))
+		nodes.push(createNode(c, id++, 'circle'))
 	})
 	_.each(nodesObj.path, function(p) {
-		nodes.push(createNode(p, id++))
+		nodes.push(createNode(p, id++, 'path'))
 	})
 	_.each(nodesObj.polyline, function(p) {
-		nodes.push(createNode(p, id++))
+		nodes.push(createNode(p, id++, 'polyline'))
 	})
 
 	let wires = _.filter(nodes, function(n) {
@@ -85,15 +85,20 @@ let buildAppState = function(svg) {
 }
 
 // figures out node type and creates node object
-let createNode = function(n, id) {
-	return {
+let createNode = function(n, id, element) {
+	let node = {
 		nodeId: id,
 		type: mapType(n.$.id),
 		state: BOOL_OFF,
 		inputs: [],
 		outputs: [],
-		raw: n.$
+		svg: {}
 	}
+
+	// set svg property to object keyed to element type (circle, path, polyline)
+	// with value being parsed properties
+	node.svg[element] = n.$
+	return node
 }
 
 // maps sketch node names (wire, and, or, switch, junction)
@@ -125,17 +130,17 @@ let getEndpoints = function(wire) {
 	let points = []
 
 	// wire's svg is a <path/>
-	if (wire.raw.d) {
-		points = getPathPoints(wire.raw.d)
+	if (wire.svg.path) {
+		points = getPathPoints(wire.svg.path.d)
 		// wire's svg is a <polyline/>
-	} else if (wire.raw.points) {
-		points = getPolylinePoints(wire.raw.points)
+	} else if (wire.svg.polyline) {
+		points = getPolylinePoints(wire.svg.polyline.points)
 	} else {
 		throw ("unrecognized svg for wire: " + String(wire))
 	}
 
 	if (_.first(points).x >= _.last(points).x) {
-		throw ("start point is to the right of end point for wire " + wire.raw.d)
+		throw ("start point is to the right of end point for wire " + wire.svg.polyline.d)
 	}
 
 	return {
@@ -204,12 +209,12 @@ let getGatePoint = function(gate) {
 	let point
 
 	// path or polyline
-	if (gate.raw.d || gate.raw.points) {
+	if (gate.svg.path || gate.svg.polyline) {
 		let points = []
-		if (gate.raw.d) {
-			points = getPathPoints(gate.raw.d) 
+		if (gate.svg.path.d) {
+			points = getPathPoints(gate.svg.path.d) 
 		} else {
-			points = getPolylinePoints(gate.raw.points)
+			points = getPolylinePoints(gate.svg.polyline.points)
 		}
 
 		let sum = _.reduce(points, function(sum, point) {
@@ -225,10 +230,10 @@ let getGatePoint = function(gate) {
 			y: sum.y / sum.number
 		}
 	// circle	
-	} else if (gate.raw.cx)	{
+	} else if (gate.svg.circle)	{
 		point = {
-			x: parseFloat(gate.raw.cx),
-			y: parseFloat(gate.raw.cy)
+			x: parseFloat(gate.svg.circle.cx),
+			y: parseFloat(gate.svg.circle.cy)
 		}
 	} else {
 		throw ("unrecognized svg share for gate: " + String(gate))
@@ -292,7 +297,6 @@ let main = function() {
 	let outfile = process.argv[3]
 
 	parseFile(infile).then(function(obj) {
-		debugger
 		fs.writeFile(outfile, JSON.stringify(obj, null, 2), function(err) {
 	    if (err) {
 	      console.log(err);

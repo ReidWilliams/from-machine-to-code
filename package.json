@@ -11,10 +11,13 @@
     ]
   },
   "devDependencies": {
-    "webpack": "^1.13.0"
+    "babel-node-debug": "^2.0.0",
+    "webpack": "^1.13.0",
+    "xml2js": "^0.4.16"
   },
   "scripts": {
-    "dev": "webpack-dev-server --content-base client/ --inline"
+    "dev": "webpack-dev-server --content-base client/ --inline",
+    "compile-design": "babel-node scripts/compile-design.js ./design/test1.svg ./design/test1.json"
   },
   "author": {
     "name": "Gavin McDermott",
@@ -52,7 +55,7 @@
     "isomorphic-fetch": "2.2.0",
     "jasmine": "2.4.1",
     "jasmine-node": "1.14.5",
-    "json-loader": "^0.5.3",
+    "json-loader": "^0.5.4",
     "jsonwebtoken": "5.5.0",
     "jws": "3.1.0",
     "karma": "0.13.19",
@@ -73,7 +76,7 @@
     "parse": "^1.7.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "q": "1.4.1",
+    "q": "^1.4.1",
     "react": "0.14.6",
     "react-addons-test-utils": "0.14.6",
     "react-addons-update": "^15.0.2",

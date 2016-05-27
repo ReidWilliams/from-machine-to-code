@@ -3,8 +3,8 @@ import q from 'q'
 
 import { BOOL_OFF, BOOL_ON, BOOL_TRANSITION_OFF, BOOL_TRANSITION_ON } from '../constants/boolStates'
 import { boolInvert }  from '../lib/bool'
-import initialState from '../constants/initialState'
-import { SWITCH, WIRE, AND_GATE, OR_GATE } from '../constants/nodeTypes'
+import initialState from '../../design/test1.json'
+import { SWITCH, WIRE, AND_GATE, OR_GATE, NOT_GATE, JUNCTION } from '../constants/nodeTypes'
 
 const SWITCH_TOGGLE_ACTION = 'SWITCH_TOGGLE_ACTION'
 const PROPOGATE_CIRCUIT = 'PROPOGATE_CIRCUIT'
@@ -40,25 +40,29 @@ export let circuitReducer = function(appState=initialState, action) {
   }
 }
 
-// does not mutate app state, returns new app state with node pushed 
+// adds node to nodeChangedNodes list
 let addNodeToChangedNodes = function(appState, node) {
-  let newChangedNodes = appState.changedNodes.slice(0)
-  newChangedNodes.push(node)
-  let newAppState = Object.assign({}, appState)
-  newAppState.changedNodes = newChangedNodes
-  return newAppState
+  return Object.assign({}, appState, {
+    changedNodes: [...appState.changedNodes, node]
+  })
 }
 
-// propogates changes in a circuit until none are left
 let propogateCircuit = function(appState) {
+  // nodes who's state has not been propogated to downstream node
   let changedNodes = appState.changedNodes
-  let newAppState = Object.assign({}, appState)
-  newAppState.changedNodes = []
+
+  // empty changed nodes list in appState
+  let newAppState = Object.assign({}, appState, {
+    changedNodes: []
+  })
+
+  // propogate node state for each node
   _.each(changedNodes, function(changedNode) {
     newAppState = propogateChangedNode(newAppState, changedNode)
   })
 
   if (newAppState.changedNodes.length > 0) {
+    // recurse if there are new nodes in changedNodes
     return propogateCircuit(newAppState)
   } else {
     return newAppState
@@ -92,14 +96,25 @@ let propogateChangedNode = function(appState, node) {
 // changedNodes list. Does not mutate app state, returns new app state.
 let updateNodeStateFromInputs = function(appState, nodeId, inputIndex, nodeInputState) {
   // here is where we have different logic based on gate type.
+
+  // duplicate node, because we may change it
   let newNode = Object.assign({}, appState.allNodes[nodeId])
   if (inputIndex >= newNode.inputs.length ) throw ("inputIndex higher than node input expected")
+
+  // change node's input state   
   newNode.inputs[inputIndex] = nodeInputState
+
+  // update node's state from inputs. Where not, and, or, etc logic happens
   newNode.state = computeState(newNode.type, newNode.inputs)
-  let newAppState = Object.assign({}, appState)
-  let newAllNodes = newAppState.allNodes.slice(0)
+
+  // copy allNodes and add new node
+  let newAllNodes = appState.allNodes.slice(0)
   newAllNodes[nodeId] = newNode
-  newAppState.allNodes = newAllNodes
+
+  // copy appstate
+  let newAppState = Object.assign({}, appState, {
+    allNodes: newAllNodes
+  })
 
   // if node's state changed, add it to list of changed nodes
   if (newNode.state !== appState.allNodes[nodeId]) {
@@ -126,6 +141,12 @@ let computeState = function(nodeType, inputs) {
         return BOOL_ON
       } else {
         return BOOL_OFF
+      }
+    case NOT_GATE:
+      if (inputs[0] === BOOL_ON ) {
+        return BOOL_OFF
+      } else {
+        return BOOL_ON
       }
       // case XOR_GATE:
       //   if (inputs[0] === BOOL_ON && inputs[1] === BOOL_OFF) {

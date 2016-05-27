@@ -4,11 +4,12 @@
 import React, { Component } from 'react'
 
 import { BOOL_OFF, BOOL_ON, BOOL_TRANSITION_OFF, BOOL_TRANSITION_ON } from '../constants/boolStates'
+import { AND_GATE, OR_GATE, NOT_GATE, JUNCTION } from '../constants/nodeTypes'
 
 // off and on. right now we don't animate transitions
 let colors = ["#8CCEDA", "#FFAA00"]
 
-class SwitchComponent extends Component {
+class GateComponent extends Component {
   render() {
     let fill = "#ff0000"
     if (this.props.node.state == BOOL_OFF || this.props.node.state == BOOL_TRANSITION_OFF) {
@@ -22,17 +23,12 @@ class SwitchComponent extends Component {
     // svg always has 1 key which is type of svg element
     let svgType = Object.keys(this.props.node.svg)[0]
 
-    return (
-      <g onClick={this.props.clickHandler}>
-        { // return svg element overriding fill
-          React.createElement(
-            svgType, 
-            Object.assign({}, this.props.node.svg[svgType], { fill: fill })
-          ) 
-        }
-      </g>
-      )
+    // return svg element overriding fill
+    return React.createElement(
+      svgType, 
+      Object.assign({}, this.props.node.svg[svgType], { fill: fill })
+    )
   }
 }
 
-export default SwitchComponent
+export default GateComponent

@@ -10,26 +10,31 @@ let colors = ["#8CCEDA", "#FFAA00"]
 
 class WireComponent extends Component {
   render() {
-  	let stroke = "#ff0000"
-  	if (this.props.boolState == BOOL_OFF || this.props.boolState == BOOL_TRANSITION_OFF) {
-  		stroke = colors[0]
-  	} else if (this.props.boolState == BOOL_ON || this.props.boolState == BOOL_TRANSITION_ON) {
-  		stroke = colors[1]
-  	} else {
-  		throw "prop boolState is invalid: " + this.props.boolState
-  	}
+    let stroke = "#ff0000"
+    if (this.props.node.state == BOOL_OFF || this.props.node.state == BOOL_TRANSITION_OFF) {
+      stroke = colors[0]
+    } else if (this.props.node.state == BOOL_ON || this.props.node.state == BOOL_TRANSITION_ON) {
+      stroke = colors[1]
+    } else {
+      throw "prop boolState is invalid: " + this.props.node.state
+    }
 
-    return(
-      <g stroke={stroke} strokeWidth="3" fill="none">
-        <path d={this.props.path}></path>
-    	</g>
-    )
+    if (this.props.node.svg.path) {
+      return(
+        <g stroke="none" fill="none" fillRule="evenodd">
+          <path stroke={stroke} fill="none" d={this.props.node.svg.path.d}></path>
+        </g>
+      )
+    } else if (this.props.node.svg.polyline) {
+      return(
+        <g stroke="none" fill="none" fillRule="evenodd">
+          <polyline stroke={stroke} fill="none" points={this.props.node.svg.polyline.points}></polyline>
+        </g>
+      )
+    } else {
+      throw ("wire component had bad svg: " + this.props.node.svg)
+    }
   }
 }
-
-WireComponent.propTypes = {
-    boolState: React.PropTypes.string.isRequired,
-    path: React.PropTypes.string.isRequired
-  }
 
 export default WireComponent

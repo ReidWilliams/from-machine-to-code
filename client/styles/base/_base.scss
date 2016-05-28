@@ -13,13 +13,32 @@ body {
 	height: 600px;
 }
 
-
 .centered {
 	margin: auto;
 }
 
 .component--switch {
 	cursor: pointer;
+}
+
+.fill--on {
+	transition: fill 0.5s;
+	fill: #FFAA00
+}
+
+.fill--off {
+	transition: fill 0.5s;
+	fill: #8CCEDA
+}
+
+.stroke--on {
+	transition: stroke 0.5s;
+	stroke: #FFAA00
+}
+
+.stroke--off {
+	transition: stroke 0.5s;
+	stroke: #8CCEDA
 }
 
 

@@ -5,6 +5,7 @@ import { BOOL_OFF, BOOL_ON, BOOL_TRANSITION_OFF, BOOL_TRANSITION_ON } from '../c
 import { boolInvert }  from '../lib/bool'
 import initialState from '../../design/test1.json'
 import { SWITCH, WIRE, AND_GATE, OR_GATE, NOT_GATE, JUNCTION } from '../constants/nodeTypes'
+import { TRANSITION_TIME } from '../constants/constants'
 
 const SWITCH_TOGGLE_ACTION = 'SWITCH_TOGGLE_ACTION'
 const PROPOGATE_CIRCUIT = 'PROPOGATE_CIRCUIT'
@@ -34,7 +35,7 @@ let propogateCircuitWithDelays = function(dispatch, getState) {
     let deferred = q.defer()
     setInterval(function() {
       deferred.resolve()
-    }, 25)
+    }, TRANSITION_TIME)
     return deferred.promise
   })
 }

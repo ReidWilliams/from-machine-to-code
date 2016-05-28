@@ -10,11 +10,11 @@ let colors = ["#8CCEDA", "#FFAA00"]
 
 class SwitchComponent extends Component {
   render() {
-    let fill = "#ff0000"
+    let className
     if (this.props.node.state == BOOL_OFF || this.props.node.state == BOOL_TRANSITION_OFF) {
-      fill = colors[0]
+      className = "fill--off"
     } else if (this.props.node.state == BOOL_ON || this.props.node.state == BOOL_TRANSITION_ON) {
-      fill = colors[1]
+      className = "fill--on"
     } else {
       throw "prop boolState is invalid: " + this.props.node.state
     }
@@ -27,7 +27,7 @@ class SwitchComponent extends Component {
         { // return svg element overriding fill
           React.createElement(
             svgType, 
-            Object.assign({}, this.props.node.svg[svgType], { fill: fill })
+            Object.assign({}, this.props.node.svg[svgType], { className })
           ) 
         }
       </g>

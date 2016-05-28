@@ -22,13 +22,13 @@ class WireComponent extends Component {
     if (this.props.node.svg.path) {
       return(
         <g stroke="none" fill="none" fillRule="evenodd">
-          <path stroke={stroke} fill="none" d={this.props.node.svg.path.d}></path>
+          <path stroke={stroke} strokeWidth="3" fill="none" d={this.props.node.svg.path.d}></path>
         </g>
       )
     } else if (this.props.node.svg.polyline) {
       return(
         <g stroke="none" fill="none" fillRule="evenodd">
-          <polyline stroke={stroke} fill="none" points={this.props.node.svg.polyline.points}></polyline>
+          <polyline stroke={stroke} strokeWidth="3" fill="none" points={this.props.node.svg.polyline.points}></polyline>
         </g>
       )
     } else {

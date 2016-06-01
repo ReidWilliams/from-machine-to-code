@@ -20,7 +20,7 @@ import util from 'util'
 import Q from 'q'
 import _ from 'underscore'
 
-import { SWITCH, WIRE, JUNCTION, NOT_GATE, AND_GATE, OR_GATE } from '../client/constants/nodeTypes'
+import { SWITCH, WIRE, JUNCTION, NOT_GATE, AND_GATE, OR_GATE, XOR_GATE } from '../client/constants/nodeTypes'
 import { BOOL_OFF } from '../client/constants/boolStates'
 
 let parseString = xml2js.parseString
@@ -118,6 +118,8 @@ let mapType = function(label) {
 			return AND_GATE
 		case "or":
 			return OR_GATE
+		case "xor":
+			return XOR_GATE
 		default:
 			throw ("unknown type " + label)
 	}

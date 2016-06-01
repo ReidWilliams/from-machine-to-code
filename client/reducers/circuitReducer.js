@@ -4,7 +4,7 @@ import q from 'q'
 import { BOOL_OFF, BOOL_ON, BOOL_TRANSITION_OFF, BOOL_TRANSITION_ON } from '../constants/boolStates'
 import { boolInvert }  from '../lib/bool'
 import initialState from '../../design/test1.json'
-import { SWITCH, WIRE, AND_GATE, OR_GATE, NOT_GATE, JUNCTION } from '../constants/nodeTypes'
+import { SWITCH, WIRE, AND_GATE, OR_GATE, XOR_GATE, NOT_GATE, JUNCTION } from '../constants/nodeTypes'
 import { TRANSITION_TIME } from '../constants/constants'
 
 const SWITCH_TOGGLE_ACTION = 'SWITCH_TOGGLE_ACTION'
@@ -88,6 +88,7 @@ let addNodeToChangedNodes = function(appState, node) {
 // Does not recursively propogate changes through whole circuit
 // returns a promise that resolves to newAppState
 let propogateCircuit = function(appState) {
+  debugger
   // nodes who's state has not been propogated to downstream node
   let changedNodes = appState.changedNodes
 
@@ -183,14 +184,14 @@ let computeState = function(nodeType, inputs) {
       } else {
         return BOOL_ON
       }
-      // case XOR_GATE:
-      //   if (inputs[0] === BOOL_ON && inputs[1] === BOOL_OFF) {
-      //     return BOOL_ON
-      //   } else if (inputs[0] === BOOL_OFFf && inputs[1] === BOOL_ON) {
-      //     return BOOL_ON
-      //   } else {
-      //     return BOOL_OFF
-      //   }
+    case XOR_GATE:
+      if (inputs[0] === BOOL_ON && inputs[1] === BOOL_OFF) {
+        return BOOL_ON
+      } else if (inputs[0] === BOOL_OFF && inputs[1] === BOOL_ON) {
+        return BOOL_ON
+      } else {
+        return BOOL_OFF
+      }
     default:
       throw("nodeType " + nodeType + " doesn't match anything we know about")
   }

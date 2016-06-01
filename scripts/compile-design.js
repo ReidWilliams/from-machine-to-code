@@ -20,7 +20,7 @@ import util from 'util'
 import Q from 'q'
 import _ from 'underscore'
 
-import { SWITCH, WIRE, JUNCTION, NOT_GATE, AND_GATE, OR_GATE, XOR_GATE } from '../client/constants/nodeTypes'
+import { SWITCH, LED, WIRE, JUNCTION, NOT_GATE, AND_GATE, OR_GATE, XOR_GATE } from '../client/constants/nodeTypes'
 import { BOOL_OFF } from '../client/constants/boolStates'
 
 let parseString = xml2js.parseString
@@ -108,6 +108,8 @@ let mapType = function(label) {
 	switch (label) {
 		case "switch":
 			return SWITCH
+		case "led":
+			return LED
 		case "wire":
 			return WIRE
 		case "junction":
@@ -142,7 +144,8 @@ let getEndpoints = function(wire) {
 	}
 
 	if (_.first(points).x >= _.last(points).x) {
-		throw ("start point is to the right of end point for wire " + wire.svg.polyline.d)
+
+		throw ("start point is to the right of end point for wire " + util.inspect(wire.svg, false, null))
 	}
 
 	return {

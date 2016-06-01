@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import _ from 'lodash'
 
 import SvgComponent from '../components/SvgComponent'
 import SwitchComponent from '../components/SwitchComponent'
 import WireComponent from '../components/WireComponent'
 import GateComponent from '../components/GateComponent'
-import { switchToggled } from '../reducers/circuitReducer'
+import { switchToggled, immediatelyPropogateCircuit } from '../reducers/circuitReducer'
 import { BOOL_OFF, BOOL_ON, BOOL_TRANSITION_OFF, BOOL_TRANSITION_ON } from '../constants/boolStates'
 import { SWITCH, WIRE, AND_GATE, OR_GATE, NOT_GATE, JUNCTION } from '../constants/nodeTypes'
 
@@ -21,28 +22,45 @@ function mapDispatchToProps(dispatch) {
     switchToggled: function(nodeId) {
       let circuit = 0
       dispatch(switchToggled(circuit, nodeId))
+    },
+    immediatelyPropogateCircuit: function() {
+      let circuit = 0
+      dispatch(immediatelyPropogateCircuit(circuit))
     }
   }
 }
 
 class CircuitContainer extends Component {
+  componentWillMount() {
+    this.props.immediatelyPropogateCircuit()
+  }
+
   render() {
     let _this = this
+    let wires = _.filter(this.props.allNodes, function(n) {
+      return n.type === WIRE
+    })
+    let notWires = _.filter(this.props.allNodes, function(n) {
+      return n.type !== WIRE
+    })
+
     return (
       <div className="test-svg-container centered">
         <SvgComponent>
-          { this.props.allNodes.map(function(node) {
+          { wires.map(function(node) {
+            // render wires first so they're underneath
+            return (<WireComponent node={node} />)
+          })}
+
+          { notWires.map(function(node) {
             switch (node.type) {
               case SWITCH:
                 return (<SwitchComponent node={node} clickHandler={() => _this.props.switchToggled(node.nodeId)} />)
-              case WIRE:
-                return (<WireComponent node={node} />)
               default:
                 // GateComponent renders AND, OR, NOT, XOR, and JUNCTION
                 // basically anything tat's a non-interactive filled shape
                 return (<GateComponent node={node} />)
-            }
-          })}
+            }})}
         </SvgComponent>
       </div>
     )

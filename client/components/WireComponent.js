@@ -10,11 +10,11 @@ let colors = ["#8CCEDA", "#FFAA00"]
 
 class WireComponent extends Component {
   render() {
-    let stroke = "#ff0000"
+    let className
     if (this.props.node.state == BOOL_OFF || this.props.node.state == BOOL_TRANSITION_OFF) {
-      stroke = colors[0]
+      className = "stroke--off"
     } else if (this.props.node.state == BOOL_ON || this.props.node.state == BOOL_TRANSITION_ON) {
-      stroke = colors[1]
+      className = "stroke--on"
     } else {
       throw "prop boolState is invalid: " + this.props.node.state
     }
@@ -22,13 +22,13 @@ class WireComponent extends Component {
     if (this.props.node.svg.path) {
       return(
         <g stroke="none" fill="none" fillRule="evenodd">
-          <path stroke={stroke} fill="none" d={this.props.node.svg.path.d}></path>
+          <path className={className} strokeWidth="3" fill="none" d={this.props.node.svg.path.d}></path>
         </g>
       )
     } else if (this.props.node.svg.polyline) {
       return(
         <g stroke="none" fill="none" fillRule="evenodd">
-          <polyline stroke={stroke} fill="none" points={this.props.node.svg.polyline.points}></polyline>
+          <polyline className={className} strokeWidth="3" fill="none" points={this.props.node.svg.polyline.points}></polyline>
         </g>
       )
     } else {

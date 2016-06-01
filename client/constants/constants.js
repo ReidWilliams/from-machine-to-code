@@ -1,0 +1,1 @@
+export let TRANSITION_TIME = 100 // ms

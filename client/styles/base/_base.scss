@@ -9,10 +9,9 @@ body {
 }
 
 .test-svg-container {
-	width: 600px;
-	height: 600px;
+	width: 800px;
+	height: 800px;
 }
-
 
 .centered {
 	margin: auto;
@@ -20,6 +19,26 @@ body {
 
 .component--switch {
 	cursor: pointer;
+}
+
+.fill--on {
+	transition: fill 200ms;
+	fill: #FFAA00
+}
+
+.fill--off {
+	transition: fill 200ms;
+	fill: #8CCEDA
+}
+
+.stroke--on {
+	transition: stroke 200ms;
+	stroke: #FFAA00
+}
+
+.stroke--off {
+	transition: stroke 200ms;
+	stroke: #8CCEDA
 }
 
 

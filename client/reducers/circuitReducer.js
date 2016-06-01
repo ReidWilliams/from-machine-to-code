@@ -1,22 +1,60 @@
 import _ from 'underscore'
 import q from 'q'
+import util from 'util'
 
 import { BOOL_OFF, BOOL_ON, BOOL_TRANSITION_OFF, BOOL_TRANSITION_ON } from '../constants/boolStates'
 import { boolInvert }  from '../lib/bool'
 import initialState from '../../design/test1.json'
-import { SWITCH, WIRE, AND_GATE, OR_GATE, NOT_GATE, JUNCTION } from '../constants/nodeTypes'
+import { SWITCH, LED, WIRE, AND_GATE, OR_GATE, XOR_GATE, NOT_GATE, JUNCTION } from '../constants/nodeTypes'
+import { TRANSITION_TIME } from '../constants/constants'
 
 const SWITCH_TOGGLE_ACTION = 'SWITCH_TOGGLE_ACTION'
 const PROPOGATE_CIRCUIT = 'PROPOGATE_CIRCUIT'
 
 // exported action creator
 export let switchToggled = function(circuitId, nodeId) {
-  return function(dispatch) {
+  return function(dispatch, getState) {
     dispatch({ type: SWITCH_TOGGLE_ACTION, circuitId, nodeId })
-    dispatch({ type: PROPOGATE_CIRCUIT})
+    propogateCircuitWithDelays(dispatch, getState)
   }
 }
- 
+
+export let immediatelyPropogateCircuit = function(circuitId) {
+  return function(dispatch, getState) {
+    recursivelyPropogateCircuit(dispatch, getState, function() {
+      // "noop" callback to recursivelyPropogateCircuit 
+      // don't want delays in propogation with immediatePropogateCircuit
+      let deferred = q.defer()
+      deferred.resolve()
+      return deferred.promise
+    })
+  }
+}
+
+let propogateCircuitWithDelays = function(dispatch, getState) {
+  recursivelyPropogateCircuit(dispatch, getState, function() {
+    let deferred = q.defer()
+    setInterval(function() {
+      deferred.resolve()
+    }, TRANSITION_TIME)
+    return deferred.promise
+  })
+}
+
+// Recursively propogates changed circuit nodes' state to downstream nodes
+// until no remaining changes are left
+// dispatch and getState are redux objects. Callback is a function that returns
+// a promise that is called before recursive call. Use this to create a short 
+// delay between propogation steps to show flow of changes through the circuit to user.
+let recursivelyPropogateCircuit = function(dispatch, getState, callback) {
+  if (getState().circuitNodes.changedNodes.length > 0) {
+    callback().then(function() {
+      dispatch({ type: PROPOGATE_CIRCUIT })
+      recursivelyPropogateCircuit(dispatch, getState, callback)
+    })
+  }
+}
+
 // For below functions, use variable named appState to refer to the
 // redux state object. Use variables named state to refer to a node's
 // state, e.g. an AND gate's boolean state.
@@ -47,7 +85,10 @@ let addNodeToChangedNodes = function(appState, node) {
   })
 }
 
-let propogateCircuit = function(appState) {
+// propogates changes to a node one node downstream
+// Does not recursively propogate changes through whole circuit
+// returns a promise that resolves to newAppState
+let propogateCircuit = function(appState) {  
   // nodes who's state has not been propogated to downstream node
   let changedNodes = appState.changedNodes
 
@@ -61,12 +102,7 @@ let propogateCircuit = function(appState) {
     newAppState = propogateChangedNode(newAppState, changedNode)
   })
 
-  if (newAppState.changedNodes.length > 0) {
-    // recurse if there are new nodes in changedNodes
-    return propogateCircuit(newAppState)
-  } else {
-    return newAppState
-  }
+  return newAppState
 }
 
 // propogates state of node to downstream nodes, changes downstream node state, and
@@ -148,16 +184,18 @@ let computeState = function(nodeType, inputs) {
       } else {
         return BOOL_ON
       }
-      // case XOR_GATE:
-      //   if (inputs[0] === BOOL_ON && inputs[1] === BOOL_OFF) {
-      //     return BOOL_ON
-      //   } else if (inputs[0] === BOOL_OFFf && inputs[1] === BOOL_ON) {
-      //     return BOOL_ON
-      //   } else {
-      //     return BOOL_OFF
-      //   }
+    case XOR_GATE:
+      if (inputs[0] === BOOL_ON && inputs[1] === BOOL_OFF) {
+        return BOOL_ON
+      } else if (inputs[0] === BOOL_OFF && inputs[1] === BOOL_ON) {
+        return BOOL_ON
+      } else {
+        return BOOL_OFF
+      }
+    case LED:
+      return inputs[0]
     default:
-      throw("nodeType " + nodeType + " doesn't match anything we know about")
+      console.error("nodeType " + nodeType + " doesn't match anything we know about")
   }
 }
 

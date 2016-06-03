@@ -6,11 +6,12 @@
 	
 	- Circuit nodes are nested two groups deep in root svg. 
 	- Each circuit node is a single svg primitive (circle, path, polyline). 
+	- Each circuit node is labeled with svg id property as switch, led, wire, and, or, xor
 	- connectvitity between switchs, gates, wires is inferred based on svg geometry
-	- signals flow left to right, so leftmost point of a wire is it's input, rightmost is output
+	- signal flows along wire in direction wire is drawn. I.e. first point in the line is assumed to be input, last assumed to be output
 	- gates and switches always connect by wires (no gate to gate direct connection)
 	- wires are always lines, there's no branching of wires to more than one output
-	- a gate that has more than one output is implemented as more than one wire
+	- a gate that has more than one output is implemented as more than one wire originating from gate
 	- junctions (little circles) show connected wires, implemented as another sibling output to wire
 */
 
@@ -141,11 +142,6 @@ let getEndpoints = function(wire) {
 		points = getPolylinePoints(wire.svg.polyline.points)
 	} else {
 		throw ("unrecognized svg for wire: " + String(wire))
-	}
-
-	if (_.first(points).x >= _.last(points).x) {
-
-		throw ("start point is to the right of end point for wire " + util.inspect(wire.svg, false, null))
 	}
 
 	return {

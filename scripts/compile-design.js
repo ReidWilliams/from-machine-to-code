@@ -75,13 +75,10 @@ let buildAppState = function(svg) {
 
 	// deal with junctions
 
-	let changedNodes = _.filter(nodes, function(n) {
-		return n.type === SWITCH
-	})
-
 	return {
 		allNodes: nodes,
-		changedNodes
+		changedNodes: nodes 
+		// initially flag all nodes as having changed so propogation gets circuit into consistent state
 	}
 }
 

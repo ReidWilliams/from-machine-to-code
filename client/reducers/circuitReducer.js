@@ -152,8 +152,9 @@ let updateNodeStateFromInputs = function(appState, nodeId, inputIndex, nodeInput
     allNodes: newAllNodes
   })
 
+  debugger
   // if node's state changed, add it to list of changed nodes
-  if (newNode.state !== appState.allNodes[nodeId]) {
+  if (newNode.state !== appState.allNodes[nodeId].state) {
     return addNodeToChangedNodes(newAppState, newNode)
   }
 

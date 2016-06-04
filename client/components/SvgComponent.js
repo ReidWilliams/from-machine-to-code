@@ -5,7 +5,7 @@ class SvgComponent extends Component {
   render() {
     
     return(
-      <svg width="800px" height="600px">
+      <svg width="100%" viewBox="0 0 3000 5500">
         {this.props.children}
       </svg>
     )

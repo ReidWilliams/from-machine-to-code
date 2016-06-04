@@ -80,6 +80,7 @@ export let circuitReducer = function(appState=initialState, action) {
 
 // adds node to nodeChangedNodes list
 let addNodeToChangedNodes = function(appState, node) {
+  console.log('changed node ' + node.id)
   return Object.assign({}, appState, {
     changedNodes: [...appState.changedNodes, node]
   })

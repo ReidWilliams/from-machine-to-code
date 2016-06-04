@@ -46,6 +46,8 @@ Explore and program a tiny microprocessor starting from a single gate. An explor
 - we can visualize this as individual gates
 - we can also visualize this as a box "register file"
 
+#### Talk about clocks and edge triggered registers?
+
 #### Register files can have many cubbies and remember numbers
 - 4 bit address, 4 bit data register file
 - don't show as gates (probably too complicated)

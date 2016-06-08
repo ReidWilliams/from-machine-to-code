@@ -45,7 +45,7 @@ class CircuitContainer extends Component {
     })
 
     return (
-      <div className="test-svg-container centered">
+      <div className="circuit-container">
         <SvgComponent>
           { wires.map(function(node) {
             // render wires first so they're underneath

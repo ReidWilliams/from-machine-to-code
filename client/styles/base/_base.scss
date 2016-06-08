@@ -1,20 +1,32 @@
-/************************************************************************ 
+@mixin centered {
+	margin: auto;
+	display: block;
+}
 
-CSS Styling for index.html
+@mixin full-width {
+	width: 100%;
+}
 
-*************************************************************************/
+.centered {
+	@include centered;
+}
+
 body {
 	background-color: white;
 	position: relative;
 }
 
-.test-svg-container {
-	width: 800px;
-	height: 800px;
+.essay {
+	@include font-body;
+	width: 600px;
+	font-size: 16px;
+	text-align: justify;
+	@include centered;
 }
 
-.centered {
-	margin: auto;
+.circuit-container {
+	width: 500px;
+	@include centered;
 }
 
 .component--switch {

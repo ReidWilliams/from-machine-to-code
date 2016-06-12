@@ -1,1 +1,1 @@
-export let TRANSITION_TIME = 200 // ms
+export let TRANSITION_TIME = 50 // ms

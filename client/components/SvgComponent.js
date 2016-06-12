@@ -5,7 +5,7 @@ class SvgComponent extends Component {
   render() {
     
     return(
-      <svg className="centered" viewBox="0 0 1500 3000">
+      <svg className="centered" viewBox="0 0 3000 3000">
         {this.props.children}
       </svg>
     )

@@ -24,9 +24,17 @@ class GateComponent extends Component {
     let svgType = Object.keys(this.props.node.svg)[0]
 
     // return svg element overriding fill
-    return React.createElement(
-      svgType, 
-      Object.assign({}, this.props.node.svg[svgType], { className })
+    return(
+      <g onClick={() => { 
+          console.log("nodeId: " + this.props.node.nodeId) 
+        }}
+      >
+        {
+          React.createElement(
+          svgType, 
+          Object.assign({}, this.props.node.svg[svgType], { className })
+        )}
+      </g>
     )
   }
 }

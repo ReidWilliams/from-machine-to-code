@@ -80,9 +80,19 @@ export let circuitReducer = function(appState=initialState, action) {
 
 // adds node to nodeChangedNodes list
 let addNodeToChangedNodes = function(appState, node) {
-  console.log('changed node ' + node.id)
+  console.log("adding" + node.nodeId)
+  
+  // list of all nodes in changedNodes excet node
+  let allButNew = _.filter(appState.changedNodes, function(n) {
+    return n.nodeId !== node.nodeId
+  })
+
+  // Return allButNew and node. If node with same nodeId existed, it gets replaced with this one
+  // This is important because sometimes a node will be changed twice in one cycle because
+  // both its inputs change in same cycle. Don't want to add the node twice to
+  // changedNodes but do want latest state
   return Object.assign({}, appState, {
-    changedNodes: [...appState.changedNodes, node]
+    changedNodes: [...allButNew, node]
   })
 }
 

@@ -21,7 +21,8 @@ import util from 'util'
 import Q from 'q'
 import _ from 'underscore'
 
-import { SWITCH, LED, WIRE, JUNCTION, NOT_GATE, BUFFER_GATE, AND_GATE, OR_GATE, XOR_GATE } from '../client/constants/nodeTypes'
+import { 	SWITCH, CLOCK, LED, WIRE, JUNCTION, NOT_GATE, 
+					BUFFER_GATE, AND_GATE, OR_GATE, XOR_GATE } from '../client/constants/nodeTypes'
 import { BOOL_OFF } from '../client/constants/boolStates'
 
 let parseString = xml2js.parseString
@@ -114,6 +115,8 @@ let mapType = function(label) {
 	switch (label) {
 		case "switch":
 			return SWITCH
+		case "clock":
+			return CLOCK
 		case "led":
 			return LED
 		case "wire":

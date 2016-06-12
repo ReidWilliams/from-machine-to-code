@@ -5,9 +5,6 @@ import React, { Component } from 'react'
 
 import { BOOL_OFF, BOOL_ON, BOOL_TRANSITION_OFF, BOOL_TRANSITION_ON } from '../constants/boolStates'
 
-// off and on. right now we don't animate transitions
-let colors = ["#8CCEDA", "#FFAA00"]
-
 class SwitchComponent extends Component {
   render() {
     let className

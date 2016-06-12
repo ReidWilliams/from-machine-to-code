@@ -6,9 +6,6 @@ import React, { Component } from 'react'
 import { BOOL_OFF, BOOL_ON, BOOL_TRANSITION_OFF, BOOL_TRANSITION_ON } from '../constants/boolStates'
 import { AND_GATE, OR_GATE, NOT_GATE, JUNCTION } from '../constants/nodeTypes'
 
-// off and on. right now we don't animate transitions
-let colors = ["#8CCEDA", "#FFAA00"]
-
 class GateComponent extends Component {
   render() {
     let className

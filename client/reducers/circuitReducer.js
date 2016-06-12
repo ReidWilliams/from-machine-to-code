@@ -80,8 +80,6 @@ export let circuitReducer = function(appState=initialState, action) {
 
 // adds node to nodeChangedNodes list
 let addNodeToChangedNodes = function(appState, node) {
-  console.log("adding" + node.nodeId)
-  
   // list of all nodes in changedNodes excet node
   let allButNew = _.filter(appState.changedNodes, function(n) {
     return n.nodeId !== node.nodeId

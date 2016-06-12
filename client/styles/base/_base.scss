@@ -41,7 +41,7 @@ body {
 }
 
 .circuit-container {
-	width: 500px;
+	width: 100%;
 	@include centered;
 }
 
@@ -50,23 +50,23 @@ body {
 }
 
 .fill--on {
-	transition: fill 200ms;
-	fill: #FFAA00
+	transition: fill 300ms;
+	fill: #FF2B84
 }
 
 .fill--off {
-	transition: fill 200ms;
-	fill: #8CCEDA
+	transition: fill 300ms;
+	fill: #D2E9EA
 }
 
 .stroke--on {
-	transition: stroke 200ms;
-	stroke: #FFAA00
+	transition: stroke 300ms;
+	stroke: #FF2B84
 }
 
 .stroke--off {
-	transition: stroke 200ms;
-	stroke: #8CCEDA
+	transition: stroke 300ms;
+	stroke: #D2E9EA
 }
 
 

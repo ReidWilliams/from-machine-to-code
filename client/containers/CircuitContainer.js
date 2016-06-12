@@ -4,11 +4,12 @@ import _ from 'lodash'
 
 import SvgComponent from '../components/SvgComponent'
 import SwitchComponent from '../components/SwitchComponent'
+import ClockComponent from '../components/ClockComponent'
 import WireComponent from '../components/WireComponent'
 import GateComponent from '../components/GateComponent'
 import { switchToggled, immediatelyPropogateCircuit } from '../reducers/circuitReducer'
 import { BOOL_OFF, BOOL_ON, BOOL_TRANSITION_OFF, BOOL_TRANSITION_ON } from '../constants/boolStates'
-import { SWITCH, WIRE, AND_GATE, OR_GATE, NOT_GATE, JUNCTION } from '../constants/nodeTypes'
+import { SWITCH, CLOCK, WIRE, AND_GATE, OR_GATE, NOT_GATE, JUNCTION } from '../constants/nodeTypes'
 
 
 function mapStateToProps(state) {
@@ -56,6 +57,8 @@ class CircuitContainer extends Component {
             switch (node.type) {
               case SWITCH:
                 return (<SwitchComponent node={node} clickHandler={() => _this.props.switchToggled(node.nodeId)} />)
+              case CLOCK:
+                return (<ClockComponent node={node} clickHandler={() => _this.props.switchToggled(node.nodeId)} />)
               default:
                 // GateComponent renders AND, OR, NOT, XOR, and JUNCTION
                 // basically anything tat's a non-interactive filled shape

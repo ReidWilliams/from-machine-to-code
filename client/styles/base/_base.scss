@@ -50,22 +50,22 @@ body {
 }
 
 .fill--on {
-	transition: fill 300ms;
+	transition: fill 150ms;
 	fill: #FF2B84
 }
 
 .fill--off {
-	transition: fill 300ms;
+	transition: fill 150ms;
 	fill: #D2E9EA
 }
 
 .stroke--on {
-	transition: stroke 300ms;
+	transition: stroke 150ms;
 	stroke: #FF2B84
 }
 
 .stroke--off {
-	transition: stroke 300ms;
+	transition: stroke 150ms;
 	stroke: #D2E9EA
 }
 

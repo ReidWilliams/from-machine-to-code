@@ -21,7 +21,7 @@ import util from 'util'
 import Q from 'q'
 import _ from 'underscore'
 
-import { SWITCH, LED, WIRE, JUNCTION, NOT_GATE, AND_GATE, OR_GATE, XOR_GATE } from '../client/constants/nodeTypes'
+import { SWITCH, LED, WIRE, JUNCTION, NOT_GATE, BUFFER_GATE, AND_GATE, OR_GATE, XOR_GATE } from '../client/constants/nodeTypes'
 import { BOOL_OFF } from '../client/constants/boolStates'
 
 let parseString = xml2js.parseString
@@ -84,13 +84,21 @@ let buildAppState = function(svg) {
 
 // figures out node type and creates node object
 let createNode = function(n, id, element) {
-	let node = {
-		nodeId: id,
-		type: mapType(n.$.id),
-		state: BOOL_OFF,
-		inputs: [],
-		outputs: [],
-		svg: {}
+	let node
+	try {
+		node = {
+			nodeId: id,
+			type: mapType(n.$.id),
+			state: BOOL_OFF,
+			inputs: [],
+			outputs: [],
+			svg: {}
+		}
+	} catch (err) {
+		console.log("error parsing svg file")
+		console.log(err)
+		console.log("working id is " + id)
+		process.exit(1)
 	}
 
 	// set svg property to object keyed to element type (circle, path, polyline)
@@ -114,6 +122,8 @@ let mapType = function(label) {
 			return JUNCTION
 		case "not":
 			return NOT_GATE
+		case "buffer":
+			return BUFFER_GATE
 		case "and":
 			return AND_GATE
 		case "or":

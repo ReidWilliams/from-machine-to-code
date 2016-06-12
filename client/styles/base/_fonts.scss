@@ -1,3 +1,22 @@
+@font-face {
+	font-family: maisonNeue;
+	src: url(/assets/fonts/MaisonNeue-Light.otf);
+}
+
+@font-face {
+	font-family: akkurat;
+	src: url(/assets/fonts/Akkurat-Light.otf);
+}
+
 @mixin font-body {
   font-family: 'Fabrikat'
 }
+
+@mixin font-body2 {
+	font-family: maisonNeue;
+}
+
+@mixin font-body3 {
+	font-family: akkurat;
+}
+

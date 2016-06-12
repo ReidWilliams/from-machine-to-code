@@ -5,7 +5,7 @@ import util from 'util'
 import { BOOL_OFF, BOOL_ON, BOOL_TRANSITION_OFF, BOOL_TRANSITION_ON } from '../constants/boolStates'
 import { boolInvert }  from '../lib/bool'
 import initialState from '../../design/test1.json'
-import { SWITCH, LED, WIRE, AND_GATE, OR_GATE, XOR_GATE, NOT_GATE, JUNCTION } from '../constants/nodeTypes'
+import { SWITCH, LED, WIRE, AND_GATE, OR_GATE, XOR_GATE, NOT_GATE, BUFFER_GATE, JUNCTION } from '../constants/nodeTypes'
 import { TRANSITION_TIME } from '../constants/constants'
 
 const SWITCH_TOGGLE_ACTION = 'SWITCH_TOGGLE_ACTION'
@@ -184,6 +184,12 @@ let computeState = function(nodeType, inputs) {
         return BOOL_OFF
       } else {
         return BOOL_ON
+      }
+    case BUFFER_GATE:
+      if (inputs[0] === BOOL_ON ) {
+        return BOOL_ON
+      } else {
+        return BOOL_OFF
       }
     case XOR_GATE:
       if (inputs[0] === BOOL_ON && inputs[1] === BOOL_OFF) {

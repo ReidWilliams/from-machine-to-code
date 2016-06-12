@@ -24,6 +24,22 @@ body {
 	@include centered;
 }
 
+.essay2 {
+	@include font-body2;
+	width: 600px;
+	font-size: 16px;
+	text-align: justify;
+	@include centered;
+}
+
+.essay3 {
+	@include font-body3;
+	width: 600px;
+	font-size: 16px;
+	text-align: justify;
+	@include centered;
+}
+
 .circuit-container {
 	width: 500px;
 	@include centered;

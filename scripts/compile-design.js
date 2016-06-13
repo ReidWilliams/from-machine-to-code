@@ -59,6 +59,10 @@ let buildAppState = function(svg) {
 		nodes.push(createNode(p, id++, 'polyline'))
 	})
 
+	_.each(nodesObj.rect, function(p) {
+		nodes.push(createNode(p, id++, 'rect'))
+	})
+
 	let wires = _.filter(nodes, function(n) {
 		return n.type === WIRE
 	})
@@ -100,6 +104,10 @@ let createNode = function(n, id, element) {
 		console.log(err)
 		console.log("working id is " + id)
 		process.exit(1)
+	}
+
+	if (node.type === LED) {
+		debugger
 	}
 
 	// set svg property to object keyed to element type (circle, path, polyline)
@@ -246,8 +254,17 @@ let getGatePoint = function(gate) {
 			x: parseFloat(gate.svg.circle.cx),
 			y: parseFloat(gate.svg.circle.cy)
 		}
+	} else if (gate.svg.rect) {
+		let x = parseFloat(gate.svg.rect.x)
+		let y = parseFloat(gate.svg.rect.y)
+		let w = parseFloat(gate.svg.rect.width)
+		let h = parseFloat(gate.svg.rect.height)
+		point = {
+			x: x + (w / 2),
+			y: y + (h / 2)
+		}
 	} else {
-		throw ("unrecognized svg share for gate: " + String(gate))
+		throw ("unrecognized svg shape for gate: " + util.inspect(gate, false, null))
 	}
 
 	return point

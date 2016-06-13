@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import _ from 'lodash'
 
-import SvgComponent from '../components/SvgComponent'
 import SwitchComponent from '../components/SwitchComponent'
 import ClockComponent from '../components/ClockComponent'
 import WireComponent from '../components/WireComponent'
@@ -46,26 +45,24 @@ class CircuitContainer extends Component {
     })
 
     return (
-      <div className="circuit-container">
-        <SvgComponent>
-          { wires.map(function(node) {
-            // render wires first so they're underneath
-            return (<WireComponent node={node} />)
-          })}
+      <g>
+        { wires.map(function(node) {
+          // render wires first so they're underneath
+          return (<WireComponent node={node} />)
+        })}
 
-          { notWires.map(function(node) {
-            switch (node.type) {
-              case SWITCH:
-                return (<SwitchComponent node={node} clickHandler={() => _this.props.switchToggled(node.nodeId)} />)
-              case CLOCK:
-                return (<ClockComponent node={node} clickHandler={() => _this.props.switchToggled(node.nodeId)} />)
-              default:
-                // GateComponent renders AND, OR, NOT, XOR, and JUNCTION
-                // basically anything tat's a non-interactive filled shape
-                return (<GateComponent node={node} />)
-            }})}
-        </SvgComponent>
-      </div>
+        { notWires.map(function(node) {
+          switch (node.type) {
+            case SWITCH:
+              return (<SwitchComponent node={node} clickHandler={() => _this.props.switchToggled(node.nodeId)} />)
+            case CLOCK:
+              return (<ClockComponent node={node} clickHandler={() => _this.props.switchToggled(node.nodeId)} />)
+            default:
+              // GateComponent renders AND, OR, NOT, XOR, and JUNCTION
+              // basically anything tat's a non-interactive filled shape
+              return (<GateComponent node={node} />)
+          }})}
+      </g>
     )
   }
 }

@@ -4,24 +4,26 @@ import util from 'util'
 
 import { BOOL_OFF, BOOL_ON, BOOL_TRANSITION_OFF, BOOL_TRANSITION_ON } from '../constants/boolStates'
 import { boolInvert }  from '../lib/bool'
-import initialState from '../../design/test1.json'
 import { SWITCH, LED, WIRE, AND_GATE, OR_GATE, XOR_GATE, NOT_GATE, BUFFER_GATE, JUNCTION } from '../constants/nodeTypes'
 import { TRANSITION_TIME } from '../constants/constants'
+import { initialState } from './mergeDesigns'
 
 const SWITCH_TOGGLE_ACTION = 'SWITCH_TOGGLE_ACTION'
 const PROPOGATE_CIRCUIT = 'PROPOGATE_CIRCUIT'
 
-// exported action creator
-export let switchToggled = function(circuitId, nodeId) {
+// exported action creator for toggling a switch
+export let switchToggled = function(circuitName, nodeId) {
   return function(dispatch, getState) {
-    dispatch({ type: SWITCH_TOGGLE_ACTION, circuitId, nodeId })
-    propogateCircuitWithDelays(dispatch, getState)
+    dispatch({ type: SWITCH_TOGGLE_ACTION, circuitName, nodeId })
+    propogateCircuitWithDelays(dispatch, getState, circuitName)
   }
 }
 
-export let immediatelyPropogateCircuit = function(circuitId) {
+// exported action creator for instantly propogating state changes in a circuit
+// used during react componnent initialization
+export let immediatelyPropogateCircuit = function(circuitName) {
   return function(dispatch, getState) {
-    recursivelyPropogateCircuit(dispatch, getState, function() {
+    recursivelyPropogateCircuit(dispatch, getState, circuitName, function() {
       // "noop" callback to recursivelyPropogateCircuit 
       // don't want delays in propogation with immediatePropogateCircuit
       let deferred = q.defer()
@@ -31,8 +33,9 @@ export let immediatelyPropogateCircuit = function(circuitId) {
   }
 }
 
-let propogateCircuitWithDelays = function(dispatch, getState) {
-  recursivelyPropogateCircuit(dispatch, getState, function() {
+// propogate circuit node change with timing delays to create animating effect
+let propogateCircuitWithDelays = function(dispatch, getState, circuitName) {
+  recursivelyPropogateCircuit(dispatch, getState, circuitName, function() {
     let deferred = q.defer()
     setInterval(function() {
       deferred.resolve()
@@ -46,11 +49,11 @@ let propogateCircuitWithDelays = function(dispatch, getState) {
 // dispatch and getState are redux objects. Callback is a function that returns
 // a promise that is called before recursive call. Use this to create a short 
 // delay between propogation steps to show flow of changes through the circuit to user.
-let recursivelyPropogateCircuit = function(dispatch, getState, callback) {
-  if (getState().circuitNodes.changedNodes.length > 0) {
+let recursivelyPropogateCircuit = function(dispatch, getState, circuitName, callback) {
+  if (getState().circuits[circuitName].changedNodes.length > 0) {
     callback().then(function() {
-      dispatch({ type: PROPOGATE_CIRCUIT })
-      recursivelyPropogateCircuit(dispatch, getState, callback)
+      dispatch({ type: PROPOGATE_CIRCUIT, circuitName })
+      recursivelyPropogateCircuit(dispatch, getState, circuitName, callback)
     })
   }
 }
@@ -60,7 +63,21 @@ let recursivelyPropogateCircuit = function(dispatch, getState, callback) {
 // state, e.g. an AND gate's boolean state.
 
 // handle user changes to switch and circuit propogation
-export let circuitReducer = function(appState=initialState, action) {
+export let circuitsReducer = function(appState=initialState, action) {
+  let circuitName = action.circuitName
+  if (circuitName) {
+    // call reducer for changed circuit only
+    let newCircuit = circuitReducer(appState[circuitName], action)
+    // create new object and merge in changed circuit with existing circuits
+    let newState = Object.assign({}, appState)
+    newState[circuitName] = newCircuit
+    return newState
+  }
+  return appState
+}
+
+// top level reducer function for a single circuit instance
+let circuitReducer = function(appState, action) {
   switch (action.type) {
     case SWITCH_TOGGLE_ACTION:
       let nodeId = action.nodeId

@@ -11,23 +11,18 @@
 	@include centered;
 }
 
-.full-width {
-	@include full-width;
+.column {
+	width: 600px;
+}
+
+.svg-width-large-gates {
+	width: 40%;
+	min-width: 400px;
 }
 
 body {
 	background-color: white;
 	position: relative;
-}
-
-.banner-component {
-	width: 70%;
-}
-
-.banner-headline {
-	@include font-banner-headline;
-	font-size: 120px;
-	fill: #ffffff;
 }
 
 .essay {

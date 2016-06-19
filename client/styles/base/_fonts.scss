@@ -13,7 +13,6 @@
 	src: url(/assets/fonts/CircularStd-Book.otf);
 }
 
-
 @mixin font-banner-headline {
 	font-family: 'circularStd';
 }
@@ -27,6 +26,10 @@
 }
 
 @mixin font-body3 {
+	font-family: akkurat;
+}
+
+@mixin font-banner-subtitle {
 	font-family: akkurat;
 }
 

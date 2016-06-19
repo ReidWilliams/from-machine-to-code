@@ -1,67 +1,79 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import _ from 'lodash'
+import R from 'ramda'
 
 import SwitchComponent from '../components/SwitchComponent'
+import LEDComponent from '../components/LEDComponent'
 import ClockComponent from '../components/ClockComponent'
 import WireComponent from '../components/WireComponent'
 import GateComponent from '../components/GateComponent'
 import { switchToggled, immediatelyPropogateCircuit } from '../reducers/circuitReducer'
 import { BOOL_OFF, BOOL_ON, BOOL_TRANSITION_OFF, BOOL_TRANSITION_ON } from '../constants/boolStates'
-import { SWITCH, CLOCK, WIRE, AND_GATE, OR_GATE, NOT_GATE, JUNCTION } from '../constants/nodeTypes'
+import { SWITCH, LED, CLOCK, WIRE, AND_GATE, OR_GATE, NOT_GATE, JUNCTION } from '../constants/nodeTypes'
 
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
   return {
-    allNodes: state.circuitNodes.allNodes
+    circuitNodes: state.circuits[ownProps.circuitName].allNodes
   }
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch, ownProps) {
   return {
     switchToggled: function(nodeId) {
-      let circuit = 0
-      dispatch(switchToggled(circuit, nodeId))
+      dispatch(switchToggled(ownProps.circuitName, nodeId))
     },
     immediatelyPropogateCircuit: function() {
-      let circuit = 0
-      dispatch(immediatelyPropogateCircuit(circuit))
+      dispatch(immediatelyPropogateCircuit(ownProps.circuitName))
     }
   }
 }
 
 class CircuitContainer extends Component {
   componentWillMount() {
-    this.props.immediatelyPropogateCircuit()
+    this.props.immediatelyPropogateCircuit(this.props.circuitName)
   }
 
   render() {
     let _this = this
-    let wires = _.filter(this.props.allNodes, function(n) {
-      return n.type === WIRE
-    })
-    let notWires = _.filter(this.props.allNodes, function(n) {
-      return n.type !== WIRE
-    })
+    let filterNodes = predicate => { return R.filter(predicate, this.props.circuitNodes) }
+    let isType = R.curry((type, node) => { return node.type === type })
+
+    let isWire = isType(WIRE)
+    let isSwitch = isType(SWITCH)
+    let isLED = isType(LED)
+    let isClock = isType(CLOCK)
+    let isGate = node => { return !(isWire(node) || isSwitch(node) || isClock(node)) }
+
+    // calling switchToggler with argument returns function of 0 arguments
+    let switchToggler = nodeId => {
+      return () => { return _this.props.switchToggled(nodeId) }
+    }
+
+    let renderWire = wire => { return (<WireComponent node={wire} />) }
+    let renderSwitch = node => { return (<SwitchComponent node={node} clickHandler={switchToggler(node.nodeId)} />) }
+    let renderLED = node => { return (<LEDComponent node={node} />) }
+    let renderClock = node => { return (<ClockComponent node={node} clickHandler={switchToggler(node.nodeId)}  />) }
+    let renderGate = node => { return (<GateComponent node={node} />) }
+
+    let wires = filterNodes(isWire)
+    let switches = filterNodes(isSwitch)
+    let leds = filterNodes(isLED)
+    let clocks = filterNodes(isClock)
+    let gates = filterNodes(isGate)
+
+    // let renderedNodes = R.map(renderGate, gates)
+    let renderedNodes = [].concat(
+      R.map(renderWire, wires),
+      R.map(renderSwitch, switches),
+      R.map(renderLED, leds),
+      R.map(renderClock, clocks),
+      R.map(renderGate, gates)
+    )
 
     return (
       <g>
-        { wires.map(function(node) {
-          // render wires first so they're underneath
-          return (<WireComponent node={node} />)
-        })}
-
-        { notWires.map(function(node) {
-          switch (node.type) {
-            case SWITCH:
-              return (<SwitchComponent node={node} clickHandler={() => _this.props.switchToggled(node.nodeId)} />)
-            case CLOCK:
-              return (<ClockComponent node={node} clickHandler={() => _this.props.switchToggled(node.nodeId)} />)
-            default:
-              // GateComponent renders AND, OR, NOT, XOR, and JUNCTION
-              // basically anything tat's a non-interactive filled shape
-              return (<GateComponent node={node} />)
-          }})}
+        { renderedNodes }
       </g>
     )
   }

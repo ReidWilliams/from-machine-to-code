@@ -77,6 +77,7 @@
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "q": "^1.4.1",
+    "ramda": "^0.21.0",
     "react": "0.14.6",
     "react-addons-test-utils": "0.14.6",
     "react-addons-update": "^15.0.2",

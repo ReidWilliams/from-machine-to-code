@@ -14,7 +14,7 @@ class BannerComponent extends Component {
   	      	<HeadlineCopyComponent />
   	      </g>
         </svg>
-        <h1 className="column">The world of microprocessor</h1>
+        <h1 className="column">blah blah</h1>
       </div>
     )
   }

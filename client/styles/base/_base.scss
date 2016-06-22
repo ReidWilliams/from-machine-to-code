@@ -12,12 +12,18 @@
 }
 
 .column {
-	width: 600px;
+	width: 700px;
 }
 
 .svg-width-large-gates {
-	width: 40%;
+	width: 50%;
 	min-width: 400px;
+	max-width: 600px;
+}
+
+.svg-vertical-margin {
+	margin-top: 100px;
+	margin-bottom: 100px;
 }
 
 body {
@@ -43,7 +49,7 @@ body {
 
 .essay3 {
 	@include font-body3;
-	width: 600px;
+	width: 700px;
 	font-size: 16px;
 	text-align: justify;
 	@include centered;
@@ -54,18 +60,25 @@ body {
 	@include centered;
 }
 
-.component--switch {
+.component-switch {
 	cursor: pointer;
 }
 
-.fill--on {
+.fill-on {
 	transition: fill 150ms;
 	fill: #FF2B84
 }
 
-.fill--off {
+.fill-off {
 	transition: fill 150ms;
 	fill: #D2E9EA
+}
+
+.clickable {
+	&:hover {
+		fill: #A0DDDF;
+		transition: fill 200ms;
+	}
 }
 
 .stroke--on {

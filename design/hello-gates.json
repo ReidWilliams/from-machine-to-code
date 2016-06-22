@@ -18,7 +18,7 @@
           "d": "M316.5,18 L378.718069,18",
           "id": "wire",
           "stroke": "#D2E9EA",
-          "strokeWidth": "3"
+          "stroke-width": "3"
         }
       }
     },
@@ -31,8 +31,8 @@
       ],
       "outputs": [
         {
-          "nodeId": 3,
-          "nodeInput": 1
+          "nodeId": 5,
+          "nodeInput": 0
         }
       ],
       "svg": {
@@ -40,7 +40,7 @@
           "d": "M391.910375,41 L454.718069,41",
           "id": "wire",
           "stroke": "#D2E9EA",
-          "strokeWidth": "3"
+          "stroke-width": "3"
         }
       }
     },
@@ -54,7 +54,7 @@
       "outputs": [
         {
           "nodeId": 3,
-          "nodeInput": 2
+          "nodeInput": 1
         }
       ],
       "svg": {
@@ -62,7 +62,7 @@
           "d": "M317.5,66 L378.718069,66",
           "id": "wire",
           "stroke": "#D2E9EA",
-          "strokeWidth": "3"
+          "stroke-width": "3"
         }
       }
     },
@@ -71,7 +71,6 @@
       "type": "AND_GATE",
       "state": "BOOL_OFF",
       "inputs": [
-        "BOOL_OFF",
         "BOOL_OFF",
         "BOOL_OFF"
       ],
@@ -110,6 +109,22 @@
     },
     {
       "nodeId": 5,
+      "type": "LED",
+      "state": "BOOL_OFF",
+      "inputs": [
+        "BOOL_OFF"
+      ],
+      "outputs": [],
+      "svg": {
+        "path": {
+          "d": "M463,54.0095459 C470.179702,54.0095459 476,48.1871107 476,41.0047729 C476,33.8224352 470.179702,28 463,28 C455.820298,28 450,33.8224352 450,41.0047729 C450,48.1871107 455.820298,54.0095459 463,54.0095459 Z",
+          "id": "led",
+          "fill": "#FF2B84"
+        }
+      }
+    },
+    {
+      "nodeId": 6,
       "type": "SWITCH",
       "state": "BOOL_OFF",
       "inputs": [],
@@ -128,28 +143,6 @@
       }
     },
     {
-      "nodeId": 6,
-      "type": "WIRE",
-      "state": "BOOL_OFF",
-      "inputs": [
-        "BOOL_OFF"
-      ],
-      "outputs": [
-        {
-          "nodeId": 9,
-          "nodeInput": 0
-        }
-      ],
-      "svg": {
-        "path": {
-          "d": "M316.5,218 L373.5,218",
-          "id": "wire",
-          "stroke": "#D2E9EA",
-          "strokeWidth": "3"
-        }
-      }
-    },
-    {
       "nodeId": 7,
       "type": "WIRE",
       "state": "BOOL_OFF",
@@ -158,16 +151,16 @@
       ],
       "outputs": [
         {
-          "nodeId": 9,
-          "nodeInput": 1
+          "nodeId": 10,
+          "nodeInput": 0
         }
       ],
       "svg": {
         "path": {
-          "d": "M408.910375,242 L460.5,242",
+          "d": "M316.5,218 L373.5,218",
           "id": "wire",
           "stroke": "#D2E9EA",
-          "strokeWidth": "3"
+          "stroke-width": "3"
         }
       }
     },
@@ -180,8 +173,30 @@
       ],
       "outputs": [
         {
-          "nodeId": 9,
-          "nodeInput": 2
+          "nodeId": 12,
+          "nodeInput": 0
+        }
+      ],
+      "svg": {
+        "path": {
+          "d": "M408.910375,242 L460.5,242",
+          "id": "wire",
+          "stroke": "#D2E9EA",
+          "stroke-width": "3"
+        }
+      }
+    },
+    {
+      "nodeId": 9,
+      "type": "WIRE",
+      "state": "BOOL_OFF",
+      "inputs": [
+        "BOOL_OFF"
+      ],
+      "outputs": [
+        {
+          "nodeId": 10,
+          "nodeInput": 1
         }
       ],
       "svg": {
@@ -189,22 +204,21 @@
           "d": "M315.5,268 L374.5,268",
           "id": "wire",
           "stroke": "#D2E9EA",
-          "strokeWidth": "3"
+          "stroke-width": "3"
         }
       }
     },
     {
-      "nodeId": 9,
+      "nodeId": 10,
       "type": "XOR_GATE",
       "state": "BOOL_OFF",
       "inputs": [
-        "BOOL_OFF",
         "BOOL_OFF",
         "BOOL_OFF"
       ],
       "outputs": [
         {
-          "nodeId": 7,
+          "nodeId": 8,
           "nodeInput": 0
         }
       ],
@@ -217,13 +231,13 @@
       }
     },
     {
-      "nodeId": 10,
+      "nodeId": 11,
       "type": "SWITCH",
       "state": "BOOL_OFF",
       "inputs": [],
       "outputs": [
         {
-          "nodeId": 6,
+          "nodeId": 7,
           "nodeInput": 0
         }
       ],
@@ -236,13 +250,29 @@
       }
     },
     {
-      "nodeId": 11,
+      "nodeId": 12,
+      "type": "LED",
+      "state": "BOOL_OFF",
+      "inputs": [
+        "BOOL_OFF"
+      ],
+      "outputs": [],
+      "svg": {
+        "path": {
+          "d": "M463,255.009546 C470.179702,255.009546 476,249.187111 476,242.004773 C476,234.822435 470.179702,229 463,229 C455.820298,229 450,234.822435 450,242.004773 C450,249.187111 455.820298,255.009546 463,255.009546 Z",
+          "id": "led",
+          "fill": "#FF2B84"
+        }
+      }
+    },
+    {
+      "nodeId": 13,
       "type": "SWITCH",
       "state": "BOOL_OFF",
       "inputs": [],
       "outputs": [
         {
-          "nodeId": 8,
+          "nodeId": 9,
           "nodeInput": 0
         }
       ],
@@ -255,29 +285,7 @@
       }
     },
     {
-      "nodeId": 12,
-      "type": "WIRE",
-      "state": "BOOL_OFF",
-      "inputs": [
-        "BOOL_OFF"
-      ],
-      "outputs": [
-        {
-          "nodeId": 15,
-          "nodeInput": 0
-        }
-      ],
-      "svg": {
-        "path": {
-          "d": "M13.5,18 L81.7180688,18",
-          "id": "wire",
-          "stroke": "#D2E9EA",
-          "strokeWidth": "3"
-        }
-      }
-    },
-    {
-      "nodeId": 13,
+      "nodeId": 14,
       "type": "WIRE",
       "state": "BOOL_OFF",
       "inputs": [
@@ -291,15 +299,15 @@
       ],
       "svg": {
         "path": {
-          "d": "M94.9103748,41 L157.718069,41",
+          "d": "M13.5,18 L81.7180688,18",
           "id": "wire",
           "stroke": "#D2E9EA",
-          "strokeWidth": "3"
+          "stroke-width": "3"
         }
       }
     },
     {
-      "nodeId": 14,
+      "nodeId": 15,
       "type": "WIRE",
       "state": "BOOL_OFF",
       "inputs": [
@@ -307,7 +315,29 @@
       ],
       "outputs": [
         {
-          "nodeId": 15,
+          "nodeId": 19,
+          "nodeInput": 0
+        }
+      ],
+      "svg": {
+        "path": {
+          "d": "M94.9103748,41 L157.718069,41",
+          "id": "wire",
+          "stroke": "#D2E9EA",
+          "stroke-width": "3"
+        }
+      }
+    },
+    {
+      "nodeId": 16,
+      "type": "WIRE",
+      "state": "BOOL_OFF",
+      "inputs": [
+        "BOOL_OFF"
+      ],
+      "outputs": [
+        {
+          "nodeId": 17,
           "nodeInput": 1
         }
       ],
@@ -316,12 +346,12 @@
           "d": "M11.5,66 L81.7180688,66",
           "id": "wire",
           "stroke": "#D2E9EA",
-          "strokeWidth": "3"
+          "stroke-width": "3"
         }
       }
     },
     {
-      "nodeId": 15,
+      "nodeId": 17,
       "type": "OR_GATE",
       "state": "BOOL_OFF",
       "inputs": [
@@ -330,7 +360,7 @@
       ],
       "outputs": [
         {
-          "nodeId": 13,
+          "nodeId": 15,
           "nodeInput": 0
         }
       ],
@@ -339,43 +369,6 @@
           "d": "M78.795428,41.9184984 C78.7954292,15.5249857 65.6550769,5.33524932 65.6550769,5.33524932 C62.6727342,2.08731732 63.8341281,-0.383408647 68.2275429,0.0492795474 C68.2275429,0.0492795474 114.483646,-0.545651793 114.483646,41.5891645 C114.483646,83.7239797 68.2275429,83.1290493 68.2275429,83.1290493 C63.8244665,83.4576208 62.8330253,81.2412064 65.742534,77.9274099 C65.742534,77.9274099 78.7954268,68.3120111 78.795428,41.9184984 Z",
           "id": "or",
           "fill": "#D2E9EA"
-        }
-      }
-    },
-    {
-      "nodeId": 16,
-      "type": "SWITCH",
-      "state": "BOOL_OFF",
-      "inputs": [],
-      "outputs": [
-        {
-          "nodeId": 12,
-          "nodeInput": 0
-        }
-      ],
-      "svg": {
-        "path": {
-          "d": "M13,31.0095459 C20.1797017,31.0095459 26,25.1871107 26,18.0047729 C26,10.8224352 20.1797017,5 13,5 C5.82029825,5 0,10.8224352 0,18.0047729 C0,25.1871107 5.82029825,31.0095459 13,31.0095459 Z",
-          "id": "switch",
-          "fill": "#FF2B84"
-        }
-      }
-    },
-    {
-      "nodeId": 17,
-      "type": "LED",
-      "state": "BOOL_OFF",
-      "inputs": [
-        "BOOL_OFF"
-      ],
-      "outputs": [],
-      "svg": {
-        "path": {
-          "d": "M163,54.0095459 C170.179702,54.0095459 176,48.1871107 176,41.0047729 C176,33.8224352 170.179702,28 163,28 C155.820298,28 150,33.8224352 150,41.0047729 C150,48.1871107 155.820298,54.0095459 163,54.0095459 Z",
-          "id": "led",
-          "stroke": "#D2E9EA",
-          "strokeWidth": "3",
-          "fill": "#FF2B84"
         }
       }
     },
@@ -392,6 +385,41 @@
       ],
       "svg": {
         "path": {
+          "d": "M13,31.0095459 C20.1797017,31.0095459 26,25.1871107 26,18.0047729 C26,10.8224352 20.1797017,5 13,5 C5.82029825,5 0,10.8224352 0,18.0047729 C0,25.1871107 5.82029825,31.0095459 13,31.0095459 Z",
+          "id": "switch",
+          "fill": "#FF2B84"
+        }
+      }
+    },
+    {
+      "nodeId": 19,
+      "type": "LED",
+      "state": "BOOL_OFF",
+      "inputs": [
+        "BOOL_OFF"
+      ],
+      "outputs": [],
+      "svg": {
+        "path": {
+          "d": "M163,54.0095459 C170.179702,54.0095459 176,48.1871107 176,41.0047729 C176,33.8224352 170.179702,28 163,28 C155.820298,28 150,33.8224352 150,41.0047729 C150,48.1871107 155.820298,54.0095459 163,54.0095459 Z",
+          "id": "led",
+          "fill": "#FF2B84"
+        }
+      }
+    },
+    {
+      "nodeId": 20,
+      "type": "SWITCH",
+      "state": "BOOL_OFF",
+      "inputs": [],
+      "outputs": [
+        {
+          "nodeId": 16,
+          "nodeInput": 0
+        }
+      ],
+      "svg": {
+        "path": {
           "d": "M12.9952288,79 C20.1722955,79 25.9904576,73.1797017 25.9904576,66 C25.9904576,58.8202983 20.1722955,53 12.9952288,53 C5.81816212,53 0,58.8202983 0,66 C0,73.1797017 5.81816212,79 12.9952288,79 Z",
           "id": "switch",
           "fill": "#D2E9EA"
@@ -399,7 +427,7 @@
       }
     },
     {
-      "nodeId": 19,
+      "nodeId": 21,
       "type": "WIRE",
       "state": "BOOL_OFF",
       "inputs": [
@@ -407,7 +435,7 @@
       ],
       "outputs": [
         {
-          "nodeId": 22,
+          "nodeId": 25,
           "nodeInput": 0
         }
       ],
@@ -416,12 +444,12 @@
           "d": "M10.5,242 L83.7180688,242",
           "id": "wire",
           "stroke": "#D2E9EA",
-          "strokeWidth": "3"
+          "stroke-width": "3"
         }
       }
     },
     {
-      "nodeId": 20,
+      "nodeId": 22,
       "type": "WIRE",
       "state": "BOOL_OFF",
       "inputs": [
@@ -429,8 +457,8 @@
       ],
       "outputs": [
         {
-          "nodeId": 22,
-          "nodeInput": 1
+          "nodeId": 24,
+          "nodeInput": 0
         }
       ],
       "svg": {
@@ -438,18 +466,18 @@
           "d": "M96.9103748,242 L159.718069,242",
           "id": "wire",
           "stroke": "#D2E9EA",
-          "strokeWidth": "3"
+          "stroke-width": "3"
         }
       }
     },
     {
-      "nodeId": 21,
+      "nodeId": 23,
       "type": "SWITCH",
       "state": "BOOL_OFF",
       "inputs": [],
       "outputs": [
         {
-          "nodeId": 19,
+          "nodeId": 21,
           "nodeInput": 0
         }
       ],
@@ -457,23 +485,36 @@
         "path": {
           "d": "M13,255.009546 C20.1797017,255.009546 26,249.187111 26,242.004773 C26,234.822435 20.1797017,229 13,229 C5.82029825,229 0,234.822435 0,242.004773 C0,249.187111 5.82029825,255.009546 13,255.009546 Z",
           "id": "switch",
-          "stroke": "#D2E9EA",
-          "strokeWidth": "6",
           "fill": "#FF2B84"
         }
       }
     },
     {
-      "nodeId": 22,
+      "nodeId": 24,
+      "type": "LED",
+      "state": "BOOL_OFF",
+      "inputs": [
+        "BOOL_OFF"
+      ],
+      "outputs": [],
+      "svg": {
+        "path": {
+          "d": "M163,255.009546 C170.179702,255.009546 176,249.187111 176,242.004773 C176,234.822435 170.179702,229 163,229 C155.820298,229 150,234.822435 150,242.004773 C150,249.187111 155.820298,255.009546 163,255.009546 Z",
+          "id": "led",
+          "fill": "#FF2B84"
+        }
+      }
+    },
+    {
+      "nodeId": 25,
       "type": "NOT_GATE",
       "state": "BOOL_OFF",
       "inputs": [
-        "BOOL_OFF",
         "BOOL_OFF"
       ],
       "outputs": [
         {
-          "nodeId": 20,
+          "nodeId": 22,
           "nodeInput": 0
         }
       ],
@@ -505,7 +546,7 @@
           "d": "M316.5,18 L378.718069,18",
           "id": "wire",
           "stroke": "#D2E9EA",
-          "strokeWidth": "3"
+          "stroke-width": "3"
         }
       }
     },
@@ -518,8 +559,8 @@
       ],
       "outputs": [
         {
-          "nodeId": 3,
-          "nodeInput": 1
+          "nodeId": 5,
+          "nodeInput": 0
         }
       ],
       "svg": {
@@ -527,7 +568,7 @@
           "d": "M391.910375,41 L454.718069,41",
           "id": "wire",
           "stroke": "#D2E9EA",
-          "strokeWidth": "3"
+          "stroke-width": "3"
         }
       }
     },
@@ -541,7 +582,7 @@
       "outputs": [
         {
           "nodeId": 3,
-          "nodeInput": 2
+          "nodeInput": 1
         }
       ],
       "svg": {
@@ -549,7 +590,7 @@
           "d": "M317.5,66 L378.718069,66",
           "id": "wire",
           "stroke": "#D2E9EA",
-          "strokeWidth": "3"
+          "stroke-width": "3"
         }
       }
     },
@@ -558,7 +599,6 @@
       "type": "AND_GATE",
       "state": "BOOL_OFF",
       "inputs": [
-        "BOOL_OFF",
         "BOOL_OFF",
         "BOOL_OFF"
       ],
@@ -597,6 +637,22 @@
     },
     {
       "nodeId": 5,
+      "type": "LED",
+      "state": "BOOL_OFF",
+      "inputs": [
+        "BOOL_OFF"
+      ],
+      "outputs": [],
+      "svg": {
+        "path": {
+          "d": "M463,54.0095459 C470.179702,54.0095459 476,48.1871107 476,41.0047729 C476,33.8224352 470.179702,28 463,28 C455.820298,28 450,33.8224352 450,41.0047729 C450,48.1871107 455.820298,54.0095459 463,54.0095459 Z",
+          "id": "led",
+          "fill": "#FF2B84"
+        }
+      }
+    },
+    {
+      "nodeId": 6,
       "type": "SWITCH",
       "state": "BOOL_OFF",
       "inputs": [],
@@ -615,28 +671,6 @@
       }
     },
     {
-      "nodeId": 6,
-      "type": "WIRE",
-      "state": "BOOL_OFF",
-      "inputs": [
-        "BOOL_OFF"
-      ],
-      "outputs": [
-        {
-          "nodeId": 9,
-          "nodeInput": 0
-        }
-      ],
-      "svg": {
-        "path": {
-          "d": "M316.5,218 L373.5,218",
-          "id": "wire",
-          "stroke": "#D2E9EA",
-          "strokeWidth": "3"
-        }
-      }
-    },
-    {
       "nodeId": 7,
       "type": "WIRE",
       "state": "BOOL_OFF",
@@ -645,16 +679,16 @@
       ],
       "outputs": [
         {
-          "nodeId": 9,
-          "nodeInput": 1
+          "nodeId": 10,
+          "nodeInput": 0
         }
       ],
       "svg": {
         "path": {
-          "d": "M408.910375,242 L460.5,242",
+          "d": "M316.5,218 L373.5,218",
           "id": "wire",
           "stroke": "#D2E9EA",
-          "strokeWidth": "3"
+          "stroke-width": "3"
         }
       }
     },
@@ -667,8 +701,30 @@
       ],
       "outputs": [
         {
-          "nodeId": 9,
-          "nodeInput": 2
+          "nodeId": 12,
+          "nodeInput": 0
+        }
+      ],
+      "svg": {
+        "path": {
+          "d": "M408.910375,242 L460.5,242",
+          "id": "wire",
+          "stroke": "#D2E9EA",
+          "stroke-width": "3"
+        }
+      }
+    },
+    {
+      "nodeId": 9,
+      "type": "WIRE",
+      "state": "BOOL_OFF",
+      "inputs": [
+        "BOOL_OFF"
+      ],
+      "outputs": [
+        {
+          "nodeId": 10,
+          "nodeInput": 1
         }
       ],
       "svg": {
@@ -676,22 +732,21 @@
           "d": "M315.5,268 L374.5,268",
           "id": "wire",
           "stroke": "#D2E9EA",
-          "strokeWidth": "3"
+          "stroke-width": "3"
         }
       }
     },
     {
-      "nodeId": 9,
+      "nodeId": 10,
       "type": "XOR_GATE",
       "state": "BOOL_OFF",
       "inputs": [
-        "BOOL_OFF",
         "BOOL_OFF",
         "BOOL_OFF"
       ],
       "outputs": [
         {
-          "nodeId": 7,
+          "nodeId": 8,
           "nodeInput": 0
         }
       ],
@@ -704,13 +759,13 @@
       }
     },
     {
-      "nodeId": 10,
+      "nodeId": 11,
       "type": "SWITCH",
       "state": "BOOL_OFF",
       "inputs": [],
       "outputs": [
         {
-          "nodeId": 6,
+          "nodeId": 7,
           "nodeInput": 0
         }
       ],
@@ -723,13 +778,29 @@
       }
     },
     {
-      "nodeId": 11,
+      "nodeId": 12,
+      "type": "LED",
+      "state": "BOOL_OFF",
+      "inputs": [
+        "BOOL_OFF"
+      ],
+      "outputs": [],
+      "svg": {
+        "path": {
+          "d": "M463,255.009546 C470.179702,255.009546 476,249.187111 476,242.004773 C476,234.822435 470.179702,229 463,229 C455.820298,229 450,234.822435 450,242.004773 C450,249.187111 455.820298,255.009546 463,255.009546 Z",
+          "id": "led",
+          "fill": "#FF2B84"
+        }
+      }
+    },
+    {
+      "nodeId": 13,
       "type": "SWITCH",
       "state": "BOOL_OFF",
       "inputs": [],
       "outputs": [
         {
-          "nodeId": 8,
+          "nodeId": 9,
           "nodeInput": 0
         }
       ],
@@ -742,29 +813,7 @@
       }
     },
     {
-      "nodeId": 12,
-      "type": "WIRE",
-      "state": "BOOL_OFF",
-      "inputs": [
-        "BOOL_OFF"
-      ],
-      "outputs": [
-        {
-          "nodeId": 15,
-          "nodeInput": 0
-        }
-      ],
-      "svg": {
-        "path": {
-          "d": "M13.5,18 L81.7180688,18",
-          "id": "wire",
-          "stroke": "#D2E9EA",
-          "strokeWidth": "3"
-        }
-      }
-    },
-    {
-      "nodeId": 13,
+      "nodeId": 14,
       "type": "WIRE",
       "state": "BOOL_OFF",
       "inputs": [
@@ -778,15 +827,15 @@
       ],
       "svg": {
         "path": {
-          "d": "M94.9103748,41 L157.718069,41",
+          "d": "M13.5,18 L81.7180688,18",
           "id": "wire",
           "stroke": "#D2E9EA",
-          "strokeWidth": "3"
+          "stroke-width": "3"
         }
       }
     },
     {
-      "nodeId": 14,
+      "nodeId": 15,
       "type": "WIRE",
       "state": "BOOL_OFF",
       "inputs": [
@@ -794,7 +843,29 @@
       ],
       "outputs": [
         {
-          "nodeId": 15,
+          "nodeId": 19,
+          "nodeInput": 0
+        }
+      ],
+      "svg": {
+        "path": {
+          "d": "M94.9103748,41 L157.718069,41",
+          "id": "wire",
+          "stroke": "#D2E9EA",
+          "stroke-width": "3"
+        }
+      }
+    },
+    {
+      "nodeId": 16,
+      "type": "WIRE",
+      "state": "BOOL_OFF",
+      "inputs": [
+        "BOOL_OFF"
+      ],
+      "outputs": [
+        {
+          "nodeId": 17,
           "nodeInput": 1
         }
       ],
@@ -803,12 +874,12 @@
           "d": "M11.5,66 L81.7180688,66",
           "id": "wire",
           "stroke": "#D2E9EA",
-          "strokeWidth": "3"
+          "stroke-width": "3"
         }
       }
     },
     {
-      "nodeId": 15,
+      "nodeId": 17,
       "type": "OR_GATE",
       "state": "BOOL_OFF",
       "inputs": [
@@ -817,7 +888,7 @@
       ],
       "outputs": [
         {
-          "nodeId": 13,
+          "nodeId": 15,
           "nodeInput": 0
         }
       ],
@@ -826,43 +897,6 @@
           "d": "M78.795428,41.9184984 C78.7954292,15.5249857 65.6550769,5.33524932 65.6550769,5.33524932 C62.6727342,2.08731732 63.8341281,-0.383408647 68.2275429,0.0492795474 C68.2275429,0.0492795474 114.483646,-0.545651793 114.483646,41.5891645 C114.483646,83.7239797 68.2275429,83.1290493 68.2275429,83.1290493 C63.8244665,83.4576208 62.8330253,81.2412064 65.742534,77.9274099 C65.742534,77.9274099 78.7954268,68.3120111 78.795428,41.9184984 Z",
           "id": "or",
           "fill": "#D2E9EA"
-        }
-      }
-    },
-    {
-      "nodeId": 16,
-      "type": "SWITCH",
-      "state": "BOOL_OFF",
-      "inputs": [],
-      "outputs": [
-        {
-          "nodeId": 12,
-          "nodeInput": 0
-        }
-      ],
-      "svg": {
-        "path": {
-          "d": "M13,31.0095459 C20.1797017,31.0095459 26,25.1871107 26,18.0047729 C26,10.8224352 20.1797017,5 13,5 C5.82029825,5 0,10.8224352 0,18.0047729 C0,25.1871107 5.82029825,31.0095459 13,31.0095459 Z",
-          "id": "switch",
-          "fill": "#FF2B84"
-        }
-      }
-    },
-    {
-      "nodeId": 17,
-      "type": "LED",
-      "state": "BOOL_OFF",
-      "inputs": [
-        "BOOL_OFF"
-      ],
-      "outputs": [],
-      "svg": {
-        "path": {
-          "d": "M163,54.0095459 C170.179702,54.0095459 176,48.1871107 176,41.0047729 C176,33.8224352 170.179702,28 163,28 C155.820298,28 150,33.8224352 150,41.0047729 C150,48.1871107 155.820298,54.0095459 163,54.0095459 Z",
-          "id": "led",
-          "stroke": "#D2E9EA",
-          "strokeWidth": "3",
-          "fill": "#FF2B84"
         }
       }
     },
@@ -879,6 +913,41 @@
       ],
       "svg": {
         "path": {
+          "d": "M13,31.0095459 C20.1797017,31.0095459 26,25.1871107 26,18.0047729 C26,10.8224352 20.1797017,5 13,5 C5.82029825,5 0,10.8224352 0,18.0047729 C0,25.1871107 5.82029825,31.0095459 13,31.0095459 Z",
+          "id": "switch",
+          "fill": "#FF2B84"
+        }
+      }
+    },
+    {
+      "nodeId": 19,
+      "type": "LED",
+      "state": "BOOL_OFF",
+      "inputs": [
+        "BOOL_OFF"
+      ],
+      "outputs": [],
+      "svg": {
+        "path": {
+          "d": "M163,54.0095459 C170.179702,54.0095459 176,48.1871107 176,41.0047729 C176,33.8224352 170.179702,28 163,28 C155.820298,28 150,33.8224352 150,41.0047729 C150,48.1871107 155.820298,54.0095459 163,54.0095459 Z",
+          "id": "led",
+          "fill": "#FF2B84"
+        }
+      }
+    },
+    {
+      "nodeId": 20,
+      "type": "SWITCH",
+      "state": "BOOL_OFF",
+      "inputs": [],
+      "outputs": [
+        {
+          "nodeId": 16,
+          "nodeInput": 0
+        }
+      ],
+      "svg": {
+        "path": {
           "d": "M12.9952288,79 C20.1722955,79 25.9904576,73.1797017 25.9904576,66 C25.9904576,58.8202983 20.1722955,53 12.9952288,53 C5.81816212,53 0,58.8202983 0,66 C0,73.1797017 5.81816212,79 12.9952288,79 Z",
           "id": "switch",
           "fill": "#D2E9EA"
@@ -886,7 +955,7 @@
       }
     },
     {
-      "nodeId": 19,
+      "nodeId": 21,
       "type": "WIRE",
       "state": "BOOL_OFF",
       "inputs": [
@@ -894,7 +963,7 @@
       ],
       "outputs": [
         {
-          "nodeId": 22,
+          "nodeId": 25,
           "nodeInput": 0
         }
       ],
@@ -903,12 +972,12 @@
           "d": "M10.5,242 L83.7180688,242",
           "id": "wire",
           "stroke": "#D2E9EA",
-          "strokeWidth": "3"
+          "stroke-width": "3"
         }
       }
     },
     {
-      "nodeId": 20,
+      "nodeId": 22,
       "type": "WIRE",
       "state": "BOOL_OFF",
       "inputs": [
@@ -916,8 +985,8 @@
       ],
       "outputs": [
         {
-          "nodeId": 22,
-          "nodeInput": 1
+          "nodeId": 24,
+          "nodeInput": 0
         }
       ],
       "svg": {
@@ -925,18 +994,18 @@
           "d": "M96.9103748,242 L159.718069,242",
           "id": "wire",
           "stroke": "#D2E9EA",
-          "strokeWidth": "3"
+          "stroke-width": "3"
         }
       }
     },
     {
-      "nodeId": 21,
+      "nodeId": 23,
       "type": "SWITCH",
       "state": "BOOL_OFF",
       "inputs": [],
       "outputs": [
         {
-          "nodeId": 19,
+          "nodeId": 21,
           "nodeInput": 0
         }
       ],
@@ -944,23 +1013,36 @@
         "path": {
           "d": "M13,255.009546 C20.1797017,255.009546 26,249.187111 26,242.004773 C26,234.822435 20.1797017,229 13,229 C5.82029825,229 0,234.822435 0,242.004773 C0,249.187111 5.82029825,255.009546 13,255.009546 Z",
           "id": "switch",
-          "stroke": "#D2E9EA",
-          "strokeWidth": "6",
           "fill": "#FF2B84"
         }
       }
     },
     {
-      "nodeId": 22,
+      "nodeId": 24,
+      "type": "LED",
+      "state": "BOOL_OFF",
+      "inputs": [
+        "BOOL_OFF"
+      ],
+      "outputs": [],
+      "svg": {
+        "path": {
+          "d": "M163,255.009546 C170.179702,255.009546 176,249.187111 176,242.004773 C176,234.822435 170.179702,229 163,229 C155.820298,229 150,234.822435 150,242.004773 C150,249.187111 155.820298,255.009546 163,255.009546 Z",
+          "id": "led",
+          "fill": "#FF2B84"
+        }
+      }
+    },
+    {
+      "nodeId": 25,
       "type": "NOT_GATE",
       "state": "BOOL_OFF",
       "inputs": [
-        "BOOL_OFF",
         "BOOL_OFF"
       ],
       "outputs": [
         {
-          "nodeId": 20,
+          "nodeId": 22,
           "nodeInput": 0
         }
       ],

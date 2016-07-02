@@ -1,0 +1,28 @@
+// Wire to a list of nodes, this component interprets the on / off
+// state of those nodes as a binary number and displays the decimal value
+// prop named bits is array of bits to use. First item is least significant bit
+
+import React, { Component } from 'react'
+import R from 'ramda'
+
+import { BOOL_OFF, BOOL_ON, BOOL_TRANSITION_OFF, BOOL_TRANSITION_ON } from '../constants/boolStates'
+import { boolStateToIntegers } from '../reducers/circuitReducerHelpers'
+
+class DecimalNumberComponent extends Component {
+  render() { 
+    // iterator function for reduce
+    // treats index as a digit in N bit number
+    // raises 2 to the index and multiplies by bit.
+    let multiplyBit = (accum, bit, index) => { return accum + (bit * (2**index)) }
+    let reduceWithIndex = R.addIndex(R.reduce)
+
+    let decimal = reduceWithIndex(multiplyBit, 0, R.map(boolStateToIntegers, this.props.bits))
+
+    return(   
+      <text className="decimal-number">{ decimal }</text>
+    )
+  }
+}
+
+export default DecimalNumberComponent
+

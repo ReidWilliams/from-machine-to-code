@@ -18,7 +18,7 @@
 .svg-width-large-gates {
 	width: 50%;
 	min-width: 400px;
-	max-width: 600px;
+	max-width: 500px;
 }
 
 .svg-vertical-margin {
@@ -62,6 +62,13 @@ body {
 
 .component-switch {
 	cursor: pointer;
+}
+
+.decimal-number {
+	stroke: none;
+	fill: #D2E9EA;
+	font-size: 30px;
+	@include font-body3;
 }
 
 .fill-on {

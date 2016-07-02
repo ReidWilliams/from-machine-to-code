@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import BannerComponent from '../components/BannerComponent'
 import HelloGatesComponent from '../components/HelloGatesComponent'
 import VampiresComponent from '../components/VampiresComponent'
-import Adder1Component from '../components/Adder1Component'
+import Adder1Container from '../containers/Adder1Container'
 
 class App extends Component {
   render() {
@@ -39,7 +39,7 @@ class App extends Component {
                 pulvinar, ultrices nulla in, eleifend dolor. Fusce et lectus nisl.
                 </p>
             </div>
-            <Adder1Component />
+            <Adder1Container />
     	</div>
     )
   }

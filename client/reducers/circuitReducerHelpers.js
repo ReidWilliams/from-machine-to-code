@@ -10,8 +10,28 @@ const transformTable = {
   BOOL_TRANSITION_ON: 1
 }
 
-// converts constant BOOL_OFF, BOOL_ON, etc to integer 0 or 1
-export let boolStateToIntegers = (state) => { return transformTable[state] }
+// translates constant BOOL_OFF, BOOL_ON, etc to integer 0 or 1
+export let boolStateToInteger = R.prop(R.__, transformTable)
 
-// returns node state from node object
-export let getState = (nodeObj) => { return nodeObj['state'] }
+// gets node state from node object
+export let getState = R.prop('state')
+
+// gets node object from node id
+export let findObject = (id) => { return R.find(R.propEq('nodeId', id)) }
+
+// returns array of bits (lsb first) from
+// array of circuit node ids
+export let bitArrayFromNodeIds = (nodeIds, nodeArray) => {
+
+  // create list of finder functions
+  let finders = R.map(findObject, nodeIds)
+
+  // finder takes list and returns object
+  // findTransform outputs an integer given a specific finder function that   
+  let findTransform = (finder) => {
+    let f = R.compose(boolStateToInteger, getState, finder)
+    return f(nodeArray)
+  }
+
+  return R.map(findTransform, finders)
+}

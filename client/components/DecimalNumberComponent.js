@@ -6,7 +6,6 @@ import React, { Component } from 'react'
 import R from 'ramda'
 
 import { BOOL_OFF, BOOL_ON, BOOL_TRANSITION_OFF, BOOL_TRANSITION_ON } from '../constants/boolStates'
-import { boolStateToIntegers } from '../reducers/circuitReducerHelpers'
 
 class DecimalNumberComponent extends Component {
   render() { 
@@ -16,10 +15,10 @@ class DecimalNumberComponent extends Component {
     let multiplyBit = (accum, bit, index) => { return accum + (bit * (2**index)) }
     let reduceWithIndex = R.addIndex(R.reduce)
 
-    let decimal = reduceWithIndex(multiplyBit, 0, R.map(boolStateToIntegers, this.props.bits))
+    let decimal = reduceWithIndex(multiplyBit, 0, this.props.bits)
 
     return(   
-      <text className="decimal-number">{ decimal }</text>
+      <text className="fill-on large-svg-text">{ decimal }</text>
     )
   }
 }

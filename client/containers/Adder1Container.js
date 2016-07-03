@@ -27,16 +27,20 @@ class Adder1Container extends Component {
     let outputBitsForDecimal = bitArrayFromNodeIds([5, 4], this.props.circuits[CIRCUIT_NAME].allNodes)
 
     return(   
-      <div style={{"position":"static"}} className="centered svg-width-large-gates svg-vertical-margin">
-        <div style={{"position":"absolute", "left":"100px", "top":"100px"}}>
-          <DecimalNumberComponent bits={input0BitForDecimal} clickable={true} anchor="middle" />
-        </div>
-        <DecimalNumberComponent bits={input1BitForDecimal} clickable={true} anchor="middle" />
-        <DecimalNumberComponent bits={outputBitsForDecimal} anchor="middle" />
-        <svg viewBox="0 0 476 184">
-        	<g transform="translate(74,0)">
-  	      	<CircuitContainer circuitName={CIRCUIT_NAME} />
-  	      </g>
+      <div className="centered svg-width-large-gates svg-vertical-margin">
+        <svg viewBox="-10 0 500 184">
+          <g transform="translate(35,70)">
+            <DecimalNumberComponent bits={input0BitForDecimal} clickable={true} anchor="middle" />
+          </g>
+          <g transform="translate(35,170)">
+            <DecimalNumberComponent bits={input1BitForDecimal} clickable={true} anchor="middle" />
+          </g>
+          <g transform="translate(450,120)">
+            <DecimalNumberComponent bits={outputBitsForDecimal} anchor="middle" />
+          </g>
+          <g transform="translate(74,0)">
+            <CircuitContainer circuitName={CIRCUIT_NAME} />
+          </g>
         </svg>
       </div>
     )

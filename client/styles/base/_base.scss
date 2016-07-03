@@ -1,7 +1,9 @@
 $circuit-color-on	: #FF2B84;
 $circuit-color-off: #D2E9EA;
 $circuit-color-hover: #A0DDDF;
-$circuit-color-label: #776F72;
+$circuit-decimal-text-fill: #BAD5D6;
+$circuit-decimal-rect-fill: #F5FAFA;
+$circuit-decimal-rect-stroke: #EBEFF0;
 
 @mixin centered {
 	margin: auto;

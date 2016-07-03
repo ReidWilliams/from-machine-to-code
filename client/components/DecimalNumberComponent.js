@@ -14,14 +14,16 @@ class DecimalNumberComponent extends Component {
     // raises 2 to the index and multiplies by bit.
     let multiplyBit = (accum, bit, index) => { return accum + (bit * (2**index)) }
     let reduceWithIndex = R.addIndex(R.reduce)
-
     let decimal = reduceWithIndex(multiplyBit, 0, this.props.bits)
+    
     let fillClass = (decimal === 0)? "fill-off" : "fill-off"
     let className = "decimal-number " + fillClass
-    let style = {"textAnchor": this.props.anchor }
+    let style = {"textAnchor": this.props.anchor}
 
-    return(   
-      <div className={className} style={style}>{ decimal }</div>
+    return(  
+      <g> 
+      <text className="decimal-number" style={style}>{ decimal }</text>
+      </g>
     )
   }
 }

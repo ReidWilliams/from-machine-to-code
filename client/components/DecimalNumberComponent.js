@@ -16,9 +16,12 @@ class DecimalNumberComponent extends Component {
     let reduceWithIndex = R.addIndex(R.reduce)
 
     let decimal = reduceWithIndex(multiplyBit, 0, this.props.bits)
+    let fillClass = (decimal === 0)? "fill-off" : "fill-off"
+    let className = "decimal-number " + fillClass
+    let style = {"textAnchor": this.props.anchor }
 
     return(   
-      <text className="fill-on large-svg-text">{ decimal }</text>
+      <div className={className} style={style}>{ decimal }</div>
     )
   }
 }

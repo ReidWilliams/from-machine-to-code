@@ -1,3 +1,8 @@
+$circuit-color-on	: #FF2B84;
+$circuit-color-off: #D2E9EA;
+$circuit-color-hover: #A0DDDF;
+$circuit-color-label: #776F72;
+
 @mixin centered {
 	margin: auto;
 	display: block;
@@ -31,32 +36,14 @@ body {
 	position: relative;
 }
 
-.essay {
-	@include font-body;
-	width: 600px;
+.body-copy {
+	font-family: $font-body;
 	font-size: 16px;
 	text-align: justify;
-	@include centered;
 }
 
-.essay2 {
-	@include font-body2;
-	width: 600px;
-	font-size: 16px;
-	text-align: justify;
-	@include centered;
-}
-
-.essay3 {
-	@include font-body3;
+.body-copy-container {
 	width: 700px;
-	font-size: 16px;
-	text-align: justify;
-	@include centered;
-}
-
-.circuit-container {
-	width: 100%;
 	@include centered;
 }
 
@@ -64,37 +51,31 @@ body {
 	cursor: pointer;
 }
 
-.large-svg-text {
-	stroke: none;
-	font-size: 30px;
-	@include font-body3;
-}
-
 .fill-on {
 	transition: fill 150ms;
-	fill: #FF2B84
+	fill: $circuit-color-on;
 }
 
 .fill-off {
 	transition: fill 150ms;
-	fill: #D2E9EA
+	fill: $circuit-color-off
 }
 
 .clickable {
 	&:hover {
-		fill: #A0DDDF;
+		fill: $circuit-color-hover;
 		transition: fill 200ms;
 	}
 }
 
-.stroke--on {
+.stroke-on {
 	transition: stroke 150ms;
-	stroke: #FF2B84
+	stroke: $circuit-color-on;
 }
 
-.stroke--off {
+.stroke-off {
 	transition: stroke 150ms;
-	stroke: #D2E9EA
+	stroke: $circuit-color-off;
 }
 
 

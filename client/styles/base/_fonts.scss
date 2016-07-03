@@ -13,23 +13,12 @@
 	src: url(/assets/fonts/CircularStd-Book.otf);
 }
 
-@mixin font-banner-headline {
-	font-family: 'circularStd';
+@font-face {
+	font-family: lora;
+	src: url(https://fonts.googleapis.com/css?family=Lora);
 }
 
-@mixin font-body {
-  font-family: 'Fabrikat'
-}
-
-@mixin font-body2 {
-	font-family: maisonNeue;
-}
-
-@mixin font-body3 {
-	font-family: akkurat;
-}
-
-@mixin font-banner-subtitle {
-	font-family: akkurat;
-}
-
+$font-body: akkurat;
+$font-banner-headline: circularStd;
+$font-banner-subtitle: akkurat;
+$font-circuit-label: akkurat;

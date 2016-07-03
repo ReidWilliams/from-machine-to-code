@@ -1,16 +1,16 @@
 import React, {Component} from 'react'
 
-import BannerComponent from '../components/BannerComponent'
-import HelloGatesComponent from '../components/HelloGatesComponent'
-import VampiresComponent from '../components/VampiresComponent'
+import BannerContainer from '../containers/BannerContainer'
+import HelloGatesContainer from '../containers/HelloGatesContainer'
+import VampiresContainer from '../containers/VampiresContainer'
 import Adder1Container from '../containers/Adder1Container'
 
 class App extends Component {
   render() {
     return (
     	<div>
-            <BannerComponent />
-    		<div className="essay3">
+            <BannerContainer />
+    		<div className="body-copy body-copy-container">
     			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sag
     			ittis pretium vestibulum. Vestibulum nec blandit mauris. Phasellus 
     			nec imperdiet est. Integer eu posuere sem. Duis suscipit fringilla 
@@ -19,8 +19,8 @@ class App extends Component {
     			pulvinar, ultrices nulla in, eleifend dolor. Fusce et lectus nisl.
     			</p>
     		</div>
-            <HelloGatesComponent />
-            <div className="essay3">
+            <HelloGatesContainer />
+            <div className="body-copy body-copy-container">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sag
                 ittis pretium vestibulum. Vestibulum nec blandit mauris. Phasellus 
                 nec imperdiet est. Integer eu posuere sem. Duis suscipit fringilla 
@@ -29,8 +29,8 @@ class App extends Component {
                 pulvinar, ultrices nulla in, eleifend dolor. Fusce et lectus nisl.
                 </p>
             </div>
-            <VampiresComponent />
-            <div className="essay3">
+            <VampiresContainer />
+            <div className="body-copy body-copy-container">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sag
                 ittis pretium vestibulum. Vestibulum nec blandit mauris. Phasellus 
                 nec imperdiet est. Integer eu posuere sem. Duis suscipit fringilla 

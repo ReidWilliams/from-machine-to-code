@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 
 import CircuitContainer from '../containers/CircuitContainer'
 
-class VampiresComponent extends Component {
+class VampiresContainer extends Component {
   render() { 
     return(   
       <div className="centered svg-width-large-gates svg-vertical-margin">
@@ -17,4 +17,4 @@ class VampiresComponent extends Component {
   }
 }
 
-export default VampiresComponent
+export default VampiresContainer

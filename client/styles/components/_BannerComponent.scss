@@ -2,13 +2,13 @@
   width: 70%;
 
   .banner-headline {
-    @include font-banner-headline;
+    font-family: $font-banner-headline;
     font-size: 120px;
     fill: #ffffff;
   }
 
   h1 {
-    @include font-banner-subtitle;
+    font-family: $font-banner-subtitle;
     font-size: 40px;
     color: #111111;
   }

@@ -21,16 +21,21 @@ function mapDispatchToProps(dispatch, ownProps) {
 
 class Adder1Container extends Component {
   render() { 
-    let bitsForDecimal = bitArrayFromNodeIds([5, 4], this.props.circuits[CIRCUIT_NAME].allNodes)
+
+    let input0BitForDecimal = bitArrayFromNodeIds([2], this.props.circuits[CIRCUIT_NAME].allNodes)
+    let input1BitForDecimal = bitArrayFromNodeIds([3], this.props.circuits[CIRCUIT_NAME].allNodes)
+    let outputBitsForDecimal = bitArrayFromNodeIds([5, 4], this.props.circuits[CIRCUIT_NAME].allNodes)
 
     return(   
-      <div className="centered svg-width-large-gates svg-vertical-margin">
+      <div style={{"position":"static"}} className="centered svg-width-large-gates svg-vertical-margin">
+        <div style={{"position":"absolute", "left":"100px", "top":"100px"}}>
+          <DecimalNumberComponent bits={input0BitForDecimal} clickable={true} anchor="middle" />
+        </div>
+        <DecimalNumberComponent bits={input1BitForDecimal} clickable={true} anchor="middle" />
+        <DecimalNumberComponent bits={outputBitsForDecimal} anchor="middle" />
         <svg viewBox="0 0 476 184">
         	<g transform="translate(74,0)">
   	      	<CircuitContainer circuitName={CIRCUIT_NAME} />
-            <g transform="translate(100,100)">
-              <DecimalNumberComponent bits={bitsForDecimal} />
-            </g>
   	      </g>
         </svg>
       </div>

@@ -1,10 +1,10 @@
 // Globals
 import React, { Component } from 'react'
 
-import HeadlineCopyComponent from './HeadlineCopyComponent'
+import HeadlineCopyComponent from '../components/HeadlineCopyComponent'
 import CircuitContainer from '../containers/CircuitContainer'
 
-class BannerComponent extends Component {
+class BannerContainer extends Component {
   render() { 
     return(   
       <div className="centered banner-component">
@@ -20,4 +20,4 @@ class BannerComponent extends Component {
   }
 }
 
-export default BannerComponent
+export default BannerContainer

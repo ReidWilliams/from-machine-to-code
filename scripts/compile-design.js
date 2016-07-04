@@ -13,7 +13,9 @@
 	- wires are always lines, there's no branching of wires to more than one output
 	- a gate that has more than one output is implemented as more than one wire originating from gate
 	- junctions (little circles) show connected wires, implemented as another sibling output to wire
-*/
+	- outputs allNodes list -> list of node object with nodeIds 0, 1, 2, etc.
+	- node with nodeId N can be accessed as allNodes[N]
+	*/
 
 import xml2js from 'xml2js'
 import fs from 'fs'

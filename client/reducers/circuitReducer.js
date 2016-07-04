@@ -8,13 +8,22 @@ import { SWITCH, LED, WIRE, AND_GATE, OR_GATE, XOR_GATE, NOT_GATE, BUFFER_GATE, 
 import { TRANSITION_TIME } from '../constants/constants'
 import { initialState } from './mergeDesigns'
 
-const SWITCH_TOGGLE_ACTION = 'SWITCH_TOGGLE_ACTION'
+const NODE_SET_STATE_ACTION = 'NODE_SET_STATE_ACTION'
 const PROPOGATE_CIRCUIT = 'PROPOGATE_CIRCUIT'
 
 // exported action creator for toggling a switch
 export let switchToggled = function(circuitName, nodeId) {
   return function(dispatch, getState) {
-    dispatch({ type: SWITCH_TOGGLE_ACTION, circuitName, nodeId })
+    let currentBoolState = getState().circuits[circuitName].allNodes[nodeId].state
+    let toggled = boolInvert(currentBoolState)
+    dispatch({ type: NODE_SET_STATE_ACTION, circuitName, nodeId, boolState:toggled })
+    propogateCircuitWithDelays(dispatch, getState, circuitName)
+  }
+}
+
+export let setNodeState = function(circuitName, nodeId, boolState) {
+  return function(dispatch, getState) {
+    dispatch({ type: NODE_SET_STATE_ACTION, circuitName, nodeId, boolState })
     propogateCircuitWithDelays(dispatch, getState, circuitName)
   }
 }
@@ -79,14 +88,14 @@ export let circuitsReducer = function(appState=initialState, action) {
 // top level reducer function for a single circuit instance
 let circuitReducer = function(appState, action) {
   switch (action.type) {
-    case SWITCH_TOGGLE_ACTION:
+    case NODE_SET_STATE_ACTION:
       let nodeId = action.nodeId
+      let boolState = action.boolState
       let newAppState = Object.assign({}, appState)
       newAppState.allNodes = appState.allNodes.slice(0) // shallow copy array
       newAppState.allNodes[nodeId] = Object.assign({}, appState.allNodes[nodeId])
 
-      let toggled = boolInvert(newAppState.allNodes[nodeId].state)
-      newAppState.allNodes[nodeId].state = toggled
+      newAppState.allNodes[nodeId].state = boolState
       return addNodeToChangedNodes(newAppState, newAppState.allNodes[nodeId])
     case PROPOGATE_CIRCUIT:
       return propogateCircuit(appState)      

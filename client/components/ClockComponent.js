@@ -8,7 +8,7 @@ import { CLOCK_INTERVAL } from '../constants/constants'
 
 class ClockComponent extends Component {
   componentDidMount() {
-    setInterval(this.props.clickHandler, CLOCK_INTERVAL)
+    // setInterval(this.props.clickHandler, CLOCK_INTERVAL)
   }
 
   render() {

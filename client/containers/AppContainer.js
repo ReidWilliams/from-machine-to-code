@@ -4,7 +4,7 @@ import BannerContainer from '../containers/BannerContainer'
 import HelloGatesContainer from '../containers/HelloGatesContainer'
 import VampiresContainer from '../containers/VampiresContainer'
 import BinaryNumberContainer from '../containers/BinaryNumberContainer'
-import Adder1Container from '../containers/Adder1Container'
+// import Adder1Container from '../containers/Adder1Container'
 
 class App extends Component {
   render() {
@@ -50,7 +50,7 @@ class App extends Component {
                 pulvinar, ultrices nulla in, eleifend dolor. Fusce et lectus nisl.
                 </p>
             </div>
-            <Adder1Container />
+            
     	</div>
     )
   }

@@ -9,9 +9,9 @@ class SwitchComponent extends Component {
   render() {
     let className
     if (this.props.node.state == BOOL_OFF || this.props.node.state == BOOL_TRANSITION_OFF) {
-      className = "component-switch fill-off clickable"
+      className = "cursor-pointer fill-off clickable"
     } else if (this.props.node.state == BOOL_ON || this.props.node.state == BOOL_TRANSITION_ON) {
-      className = "component-switch fill-on"
+      className = "cursor-pointer fill-on"
     } else {
       throw "prop boolState is invalid: " + this.props.node.state
     }

@@ -1,3 +1,5 @@
+// various functions to support getting and manipulating circuit state data
+
 import R from 'ramda'
 
 import { BOOL_OFF, BOOL_ON, BOOL_TRANSITION_OFF, BOOL_TRANSITION_ON } from '../constants/boolStates'
@@ -7,31 +9,40 @@ const transformTable = {
   BOOL_OFF: 0,
   BOOL_TRANSITION_OFF: 0,
   BOOL_ON: 1,
-  BOOL_TRANSITION_ON: 1
+  BOOL_TRANSITION_ON: 1,
+  0: BOOL_OFF,
+  1: BOOL_ON
 }
 
 // translates constant BOOL_OFF, BOOL_ON, etc to integer 0 or 1
-export let boolStateToInteger = R.prop(R.__, transformTable)
+let boolStateToInteger = R.prop(R.__, transformTable)
+let intToBoolState = R.prop(R.__, transformTable)
 
 // gets node state from node object
-export let getState = R.prop('state')
+let getState = R.prop('state')
 
 // gets node object from node id
-export let findObject = (id) => { return R.find(R.propEq('nodeId', id)) }
+let findObject = (id) => { return R.find(R.propEq('nodeId', id)) }
+
+// takes datat structure and list of functions and applies
+// each function to the object, returning a list of results
+let mapApply = R.curry((data, fns) => {
+  return R.map((fn) => { return fn(data) }, fns)
+})
+
+// ids: [1, 2, 3]
+// objectList: [node, node, node]
+// returns list of node objects with given ids
+let findObjects = (idList, objectList) => {
+  // create list of finder functions
+  let finders = R.map(findObject, idList)
+  return mapApply(objectList, finders)
+}
 
 // returns array of bits (lsb first) from
-// array of circuit node ids
-export let bitArrayFromNodeIds = (nodeIds, nodeArray) => {
-
-  // create list of finder functions
-  let finders = R.map(findObject, nodeIds)
-
-  // finder takes list and returns object
-  // findTransform outputs an integer given a specific finder function that   
-  let findTransform = (finder) => {
-    let f = R.compose(boolStateToInteger, getState, finder)
-    return f(nodeArray)
-  }
-
-  return R.map(findTransform, finders)
+// array of circuit nodes
+let bitArrayFromNodeList = (nodeList) => {
+  return R.map(R.compose(boolStateToInteger, getState), nodeList) 
 }
+
+export { bitArrayFromNodeList, intToBoolState, findObject, findObjects }

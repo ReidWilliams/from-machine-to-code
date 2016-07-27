@@ -6,7 +6,8 @@ $circuit-decimal-rect-fill: #F5FAFA;
 $circuit-decimal-rect-stroke: #EBEFF0;
 
 @mixin centered {
-	margin: auto;
+	margin-left: auto;
+	margin-right: auto;
 	display: block;
 }
 
@@ -40,8 +41,32 @@ body {
 
 .body-copy {
 	font-family: $font-body;
-	font-size: 16px;
-	text-align: justify;
+	font-size: 18px;
+	text-align: left;
+}
+
+.banner-subhead-copy {
+	font-family: $font-banner-subtitle;
+	font-size: 22px;
+	text-align: left;
+	color: $circuit-color-on;
+}
+
+.paragraph-title-copy {
+	font-family: $font-body;
+	font-size: 22px;
+	text-align: left;
+	color: $circuit-color-on;
+}
+
+.paragraph-title-spacer {
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+.banner-subhead-margin {
+	margin-top: 20px;
+	margin-bottom: 30px;
 }
 
 .body-copy-container {

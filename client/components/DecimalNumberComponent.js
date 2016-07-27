@@ -14,13 +14,13 @@ class DecimalNumberComponent extends Component {
     let _this = this
 
     // parent passes list of nodes from which we compute a decimal number to display
-    let bitsForDecimal = bitArrayFromNodeList(this.props.nodes)  
+    let bits = bitArrayFromNodeList(this.props.nodes)  
     // iterator function for reduce
     // treats index as a digit in N bit number
     // raises 2 to the index and multiplies by bit.
     let multiplyBit = (accum, bit, index) => { return accum + (bit * (2**index)) }
     let reduceWithIndex = R.addIndex(R.reduce)
-    let decimal = reduceWithIndex(multiplyBit, 0, bitsForDecimal)
+    let decimal = reduceWithIndex(multiplyBit, 0, bits)
 
     let toBinaryString = (string) => { return parseInt(string).toString(2) }
     let split = (string) => { return string.split('') }
@@ -43,17 +43,19 @@ class DecimalNumberComponent extends Component {
     // call passed props setState function on pairs of node (to update) and boolState
     // value to update it with
     let clickHandler = () => { 
+      if (_this.props.setState === undefined) { return }
       // list of BOOL_ON, etc constants
       let boolList = decToBoolConstArray(decimal + 1, _this.props.nodes.length)
       R.zipWith(_this.props.setState, _this.props.nodes, boolList)
     }
     
     let fillClass = (decimal === 0)? "fill-off" : "fill-off"
-    let className = "decimal-number " + fillClass
     let style = {"textAnchor": this.props.anchor}
+    let className = _this.props.setState? "cursor-pointer" : ""
+
 
     return(  
-      <g className="cursor-pointer" onClick={clickHandler}>
+      <g className={className} onClick={clickHandler}>
       <rect className="decimal-number-rect" 
         x={this.props.bgX} 
         y={this.props.bgY} 

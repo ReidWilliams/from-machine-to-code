@@ -13,7 +13,9 @@
 	- wires are always lines, there's no branching of wires to more than one output
 	- a gate that has more than one output is implemented as more than one wire originating from gate
 	- junctions (little circles) show connected wires, implemented as another sibling output to wire
-*/
+	- outputs allNodes list -> list of node object with nodeIds 0, 1, 2, etc.
+	- node with nodeId N can be accessed as allNodes[N]
+	*/
 
 import xml2js from 'xml2js'
 import fs from 'fs'
@@ -21,7 +23,8 @@ import util from 'util'
 import Q from 'q'
 import _ from 'underscore'
 
-import { SWITCH, LED, WIRE, JUNCTION, NOT_GATE, AND_GATE, OR_GATE, XOR_GATE } from '../client/constants/nodeTypes'
+import { 	SWITCH, CLOCK, LED, WIRE, JUNCTION, NOT_GATE, 
+					BUFFER_GATE, AND_GATE, OR_GATE, XOR_GATE } from '../client/constants/nodeTypes'
 import { BOOL_OFF } from '../client/constants/boolStates'
 
 let parseString = xml2js.parseString
@@ -58,6 +61,10 @@ let buildAppState = function(svg) {
 		nodes.push(createNode(p, id++, 'polyline'))
 	})
 
+	_.each(nodesObj.rect, function(p) {
+		nodes.push(createNode(p, id++, 'rect'))
+	})
+
 	let wires = _.filter(nodes, function(n) {
 		return n.type === WIRE
 	})
@@ -84,13 +91,25 @@ let buildAppState = function(svg) {
 
 // figures out node type and creates node object
 let createNode = function(n, id, element) {
-	let node = {
-		nodeId: id,
-		type: mapType(n.$.id),
-		state: BOOL_OFF,
-		inputs: [],
-		outputs: [],
-		svg: {}
+	let node
+	try {
+		node = {
+			nodeId: id,
+			type: mapType(n.$.id),
+			state: BOOL_OFF,
+			inputs: [],
+			outputs: [],
+			svg: {}
+		}
+	} catch (err) {
+		console.log("error parsing svg file")
+		console.log(err)
+		console.log("working id is " + id)
+		process.exit(1)
+	}
+
+	if (node.type === LED) {
+		debugger
 	}
 
 	// set svg property to object keyed to element type (circle, path, polyline)
@@ -106,6 +125,8 @@ let mapType = function(label) {
 	switch (label) {
 		case "switch":
 			return SWITCH
+		case "clock":
+			return CLOCK
 		case "led":
 			return LED
 		case "wire":
@@ -114,6 +135,8 @@ let mapType = function(label) {
 			return JUNCTION
 		case "not":
 			return NOT_GATE
+		case "buffer":
+			return BUFFER_GATE
 		case "and":
 			return AND_GATE
 		case "or":
@@ -233,8 +256,17 @@ let getGatePoint = function(gate) {
 			x: parseFloat(gate.svg.circle.cx),
 			y: parseFloat(gate.svg.circle.cy)
 		}
+	} else if (gate.svg.rect) {
+		let x = parseFloat(gate.svg.rect.x)
+		let y = parseFloat(gate.svg.rect.y)
+		let w = parseFloat(gate.svg.rect.width)
+		let h = parseFloat(gate.svg.rect.height)
+		point = {
+			x: x + (w / 2),
+			y: y + (h / 2)
+		}
 	} else {
-		throw ("unrecognized svg share for gate: " + String(gate))
+		throw ("unrecognized svg shape for gate: " + util.inspect(gate, false, null))
 	}
 
 	return point

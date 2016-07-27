@@ -1,44 +1,108 @@
-/************************************************************************ 
+$circuit-color-on	: #FF2B84;
+$circuit-color-off: #D2E9EA;
+$circuit-color-hover: #A0DDDF;
+$circuit-decimal-text-fill: #BAD5D6;
+$circuit-decimal-rect-fill: #F5FAFA;
+$circuit-decimal-rect-stroke: #EBEFF0;
 
-CSS Styling for index.html
+@mixin centered {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
 
-*************************************************************************/
+@mixin full-width {
+	width: 100%;
+}
+
+.centered {
+	@include centered;
+}
+
+.column {
+	width: 700px;
+}
+
+.svg-width-large-gates {
+	width: 50%;
+	min-width: 400px;
+	max-width: 500px;
+}
+
+.svg-vertical-margin {
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+
 body {
 	background-color: white;
 	position: relative;
 }
 
-.test-svg-container {
-	width: 800px;
-	height: 800px;
+.body-copy {
+	font-family: $font-body;
+	font-size: 18px;
+	text-align: left;
 }
 
-.centered {
-	margin: auto;
+.banner-subhead-copy {
+	font-family: $font-banner-subtitle;
+	font-size: 22px;
+	text-align: left;
+	color: $circuit-color-on;
 }
 
-.component--switch {
+.paragraph-title-copy {
+	font-family: $font-body;
+	font-size: 22px;
+	text-align: left;
+	color: $circuit-color-on;
+}
+
+.paragraph-title-spacer {
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+.banner-subhead-margin {
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+.body-copy-container {
+	width: 700px;
+	@include centered;
+}
+
+.cursor-pointer {
 	cursor: pointer;
 }
 
-.fill--on {
-	transition: fill 200ms;
-	fill: #FFAA00
+.fill-on {
+	transition: fill 150ms;
+	fill: $circuit-color-on;
 }
 
-.fill--off {
-	transition: fill 200ms;
-	fill: #8CCEDA
+.fill-off {
+	transition: fill 150ms;
+	fill: $circuit-color-off
 }
 
-.stroke--on {
-	transition: stroke 200ms;
-	stroke: #FFAA00
+.clickable {
+	&:hover {
+		fill: $circuit-color-hover;
+		transition: fill 200ms;
+	}
 }
 
-.stroke--off {
-	transition: stroke 200ms;
-	stroke: #8CCEDA
+.stroke-on {
+	transition: stroke 150ms;
+	stroke: $circuit-color-on;
+}
+
+.stroke-off {
+	transition: stroke 150ms;
+	stroke: $circuit-color-off;
 }
 
 

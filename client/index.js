@@ -5,13 +5,13 @@ import { combineReducers, createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 
 import AppContainer from './containers/AppContainer'
-import { circuitReducer } from './reducers/circuitReducer'
+import { circuitsReducer } from './reducers/circuitReducer'
 
 // import css
 import './styles/main.scss'
 
 const appReducer = combineReducers({
-  circuitNodes: circuitReducer
+  circuits: circuitsReducer
 })
 
 const createStoreWithMiddleware = applyMiddleware(thunkMiddleware)(createStore)

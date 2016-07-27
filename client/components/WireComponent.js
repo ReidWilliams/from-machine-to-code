@@ -5,16 +5,13 @@ import React, { Component } from 'react'
 
 import { BOOL_OFF, BOOL_ON, BOOL_TRANSITION_OFF, BOOL_TRANSITION_ON } from '../constants/boolStates'
 
-// off and on. right now we don't animate transitions
-let colors = ["#8CCEDA", "#FFAA00"]
-
 class WireComponent extends Component {
   render() {
     let className
     if (this.props.node.state == BOOL_OFF || this.props.node.state == BOOL_TRANSITION_OFF) {
-      className = "stroke--off"
+      className = "stroke-off"
     } else if (this.props.node.state == BOOL_ON || this.props.node.state == BOOL_TRANSITION_ON) {
-      className = "stroke--on"
+      className = "stroke-on"
     } else {
       throw "prop boolState is invalid: " + this.props.node.state
     }

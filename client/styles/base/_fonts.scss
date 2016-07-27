@@ -1,30 +1,24 @@
 @font-face {
-    font-family: 'Circular';
-    src: url('/assets/fonts/CircularStd/CircularStd-Book.otf');
+	font-family: maisonNeue;
+	src: url(/assets/fonts/MaisonNeue-Light.otf);
 }
 
 @font-face {
-    font-family: 'Circular';
-    src: url('/assets/fonts/CircularStd/CircularStd-Black.otf');
-    font-weight: bold;
+	font-family: akkurat;
+	src: url(/assets/fonts/Akkurat-Light.otf);
 }
 
 @font-face {
-    font-family: 'Sentinel';
-    src: url('/assets/fonts/Sentinel/Sentinel-Book.otf');
+	font-family: circularStd;
+	src: url(/assets/fonts/CircularStd-Book.otf);
 }
 
 @font-face {
-    font-family: 'Sentinel';
-    src: url('/assets/fonts/Sentinel/Sentinel-BookItalic.otf');
-    font-weight: italic;
+	font-family: lora;
+	src: url(https://fonts.googleapis.com/css?family=Lora);
 }
 
-/* Use these in individual components */
-@mixin font-circular {
-    font-family: 'Circular';
-}
-
-@mixin font-sentinel {
-    font-family: Sentinel;
-}
+$font-body: akkurat;
+$font-banner-headline: circularStd;
+$font-banner-subtitle: akkurat;
+$font-circuit-label: akkurat;

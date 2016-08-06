@@ -18,7 +18,20 @@
 	src: url(https://fonts.googleapis.com/css?family=Lora);
 }
 
+@font-face {
+	font-family: inputSans;
+	src: url(/assets/fonts/InputSansCondensed-Thin.ttf)
+}
+
+@font-face {
+	font-family: inputSerif;
+	src: url(/assets/fonts/InputSerif-Thin.ttf)
+}
+
 $font-body: akkurat;
+/*$font-body: inputSans;*/
+$font-paragraph-headline: akkurat;
 $font-banner-headline: circularStd;
+/*$font-banner-subtitle: akkurat;*/
 $font-banner-subtitle: akkurat;
 $font-circuit-label: akkurat;

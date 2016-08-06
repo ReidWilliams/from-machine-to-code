@@ -4,6 +4,7 @@ $circuit-color-hover: #A0DDDF;
 $circuit-decimal-text-fill: #BAD5D6;
 $circuit-decimal-rect-fill: #F5FAFA;
 $circuit-decimal-rect-stroke: #EBEFF0;
+$body-copy-color: #636D6E;
 
 @mixin centered {
 	margin-left: auto;
@@ -29,6 +30,12 @@ $circuit-decimal-rect-stroke: #EBEFF0;
 	max-width: 500px;
 }
 
+.svg-width-small-gates {
+	width: 50%;
+	min-width: 400px;
+	max-width: 700px;
+}
+
 .svg-vertical-margin {
 	margin-top: 100px;
 	margin-bottom: 100px;
@@ -43,6 +50,7 @@ body {
 	font-family: $font-body;
 	font-size: 18px;
 	text-align: left;
+	color: $body-copy-color;
 }
 
 .banner-subhead-copy {
@@ -53,7 +61,7 @@ body {
 }
 
 .paragraph-title-copy {
-	font-family: $font-body;
+	font-family: $font-paragraph-headline;
 	font-size: 22px;
 	text-align: left;
 	color: $circuit-color-on;

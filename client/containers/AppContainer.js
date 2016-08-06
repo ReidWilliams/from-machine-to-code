@@ -5,6 +5,7 @@ import HelloGatesContainer from '../containers/HelloGatesContainer'
 import VampiresContainer from '../containers/VampiresContainer'
 import BinaryNumberContainer from '../containers/BinaryNumberContainer'
 import Adder1Container from '../containers/Adder1Container'
+import Adder3Container from '../containers/Adder3Container'
 
 class App extends Component {
   render() {
@@ -81,6 +82,16 @@ class App extends Component {
                 </p>
             </div>
             <Adder1Container />
+
+
+            <div className="body-copy body-copy-container">
+                <h1 className="paragraph-title-copy paragraph-title-spacer">Adding larger numbers</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sag
+                ittis pretium vestibulum. Vestibulum nec blandit mauris. Phasellus 
+                nec imperdiet est. 
+                </p>
+            </div>
+            <Adder3Container />
             
     	</div>
     )

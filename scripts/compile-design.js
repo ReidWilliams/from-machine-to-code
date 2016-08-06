@@ -108,10 +108,6 @@ let createNode = function(n, id, element) {
 		process.exit(1)
 	}
 
-	if (node.type === LED) {
-		debugger
-	}
-
 	// set svg property to object keyed to element type (circle, path, polyline)
 	// with value being parsed properties
 	node.svg[element] = n.$

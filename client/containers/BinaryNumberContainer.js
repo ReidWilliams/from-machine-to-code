@@ -32,19 +32,23 @@ class BinaryNumberContainer extends Component {
     let nodes = findObjects(displayIdList, this.props.circuits[CIRCUIT_NAME].allNodes)
    
     return(   
-      <div className="centered svg-width-large-gates svg-vertical-margin">
-        <svg viewBox="-0 0 300 175">
-          <g transform="translate(60,0)">
-            <g transform="translate(120,115)">
-              <DecimalNumberComponent 
-                nodes={nodes}
-                setState={this.props.setState}
-                anchor="middle"
-                bgX="-55" bgY="-69" bgWidth="112" bgHeight="82" />
+      <div>
+        <div className="centered body-width-line" />
+        <div className="centered svg-width-circuit svg-vertical-margin">
+          <svg viewBox="-0 0 700 175">
+            <g transform="translate(375,0)">
+              <g transform="translate(-80,115)">
+                <DecimalNumberComponent 
+                  nodes={nodes}
+                  setState={this.props.setState}
+                  anchor="middle"
+                  bgX="-55" bgY="-69" bgWidth="112" bgHeight="82" />
+              </g>
+              <CircuitContainer circuitName={CIRCUIT_NAME} />
             </g>
-            <CircuitContainer circuitName={CIRCUIT_NAME} />
-          </g>
-        </svg>
+          </svg>
+        </div>
+        <div className="centered body-width-line" />
       </div>
     )
   }

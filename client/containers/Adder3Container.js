@@ -34,21 +34,39 @@ class Adder3Container extends Component {
     let output = findObjects([26, 25, 27, 28], this.props.circuits[CIRCUIT_NAME].allNodes)
 
     return(   
-      <div className="centered svg-width-small-gates svg-vertical-margin">
-        <svg viewBox="0 0 1150 600">
-          <g transform="translate(20,170)">
-            <DecimalNumberComponent nodes={input0} setState={this.props.setState} anchor="middle" />
-          </g>
-          <g transform="translate(20,330)">
-            <DecimalNumberComponent nodes={input1} setState={this.props.setState} anchor="middle" />
-          </g>
-          <g transform="translate(1100,250)">
-            <DecimalNumberComponent nodes={output} anchor="middle" />
-          </g>
-          <g transform="translate(60,0)">
-            <CircuitContainer circuitName={CIRCUIT_NAME} />
-          </g>
-        </svg>
+      <div>
+        <div className="centered body-width-line" />
+        <div className="centered svg-width-circuit svg-vertical-margin">
+          <svg viewBox="-30 -5 1225 600">
+            <g transform="translate(0,0)">
+              <g transform="translate(10,165)">
+                <DecimalNumberComponent 
+                  nodes={input0} 
+                  setState={this.props.setState} 
+                  anchor="middle" 
+                  bgX="-40" bgY="-69" bgWidth="80" bgHeight="82" />
+              </g>
+              <g transform="translate(10,345)">
+                <DecimalNumberComponent 
+                  nodes={input1} 
+                  setState={this.props.setState} 
+                  anchor="middle" 
+                  bgX="-40" bgY="-69" bgWidth="80" bgHeight="82" />
+              </g>
+              <g transform="translate(1130,253)">
+                <DecimalNumberComponent 
+                  nodes={output} 
+                  setState={this.props.setState} 
+                  anchor="middle" 
+                  bgX="-55" bgY="-69" bgWidth="115" bgHeight="82" />
+              </g>
+              <g transform="translate(60,0)">
+                <CircuitContainer circuitName={CIRCUIT_NAME} />
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div className="centered body-width-line" />
       </div>
     )
   }

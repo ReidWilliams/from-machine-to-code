@@ -5,6 +5,7 @@ $circuit-decimal-text-fill: #BAD5D6;
 $circuit-decimal-rect-fill: #F5FAFA;
 $circuit-decimal-rect-stroke: #EBEFF0;
 $body-copy-color: #636D6E;
+$body-light: #E4EFF0;
 
 @mixin centered {
 	margin-left: auto;
@@ -24,14 +25,8 @@ $body-copy-color: #636D6E;
 	width: 700px;
 }
 
-.svg-width-large-gates {
-	width: 50%;
-	min-width: 400px;
-	max-width: 500px;
-}
-
-.svg-width-small-gates {
-	width: 70%;
+.svg-width-circuit {
+	width: 80%;
 	min-width: 400px;
 }
 
@@ -63,17 +58,29 @@ body {
 	font-family: $font-paragraph-headline;
 	font-size: 22px;
 	text-align: left;
-	color: $circuit-color-on;
+	color: $body-copy-color;
+}
+
+.circuit-label {
+	font-family: $font-body;
+	text-align: center;
+	color: $body-copy-color;
+	text-anchor: middle;
 }
 
 .paragraph-title-spacer {
-	margin-top: 40px;
+	margin-top: 10px;
 	margin-bottom: 40px;
 }
 
 .banner-subhead-margin {
 	margin-top: 20px;
 	margin-bottom: 30px;
+}
+
+.body-width-line {
+	width: 700px;
+	border-top: 1px solid $body-light;
 }
 
 .body-copy-container {

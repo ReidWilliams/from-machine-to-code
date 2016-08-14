@@ -27,19 +27,17 @@ function mapDispatchToProps(dispatch, ownProps) {
 
 class FullAdderContainer extends Component {
   render() { 
-
-    // circuit nodes for input switches, output led
-    // let input0 = findObjects([0, 1, 2], this.props.circuits[CIRCUIT_NAME].allNodes)
-    // let input1 = findObjects([7, 8, 9], this.props.circuits[CIRCUIT_NAME].allNodes)
-    // let output = findObjects([3, 4, 5, 6], this.props.circuits[CIRCUIT_NAME].allNodes)
-
     return(   
-      <div className="centered svg-width-small-gates svg-vertical-margin">
-        <svg viewBox="0 0 1000 360">
-          <g transform="translate(300,0)">
-            <CircuitContainer circuitName={CIRCUIT_NAME} />
-          </g>
-        </svg>
+      <div>
+        <div className="centered body-width-line" />
+        <div className="centered svg-width-circuit svg-vertical-margin">
+          <svg viewBox="0 0 1050 360">
+            <g transform="translate(330,0)">
+              <CircuitContainer circuitName={CIRCUIT_NAME} />
+            </g>
+          </svg>
+        </div>
+        <div className="centered body-width-line" />
       </div>
     )
   }

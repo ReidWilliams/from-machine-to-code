@@ -8,7 +8,7 @@ import CircuitContainer from '../containers/CircuitContainer'
 import DecimalNumberComponent from '../components/DecimalNumberComponent'
 import { BOOL_OFF, BOOL_ON, BOOL_TRANSITION_OFF, BOOL_TRANSITION_ON } from '../constants/boolStates'
 
-const CIRCUIT_NAME = "adder3"
+const CIRCUIT_NAME = "fullAdder"
 
 function mapStateToProps(state, ownProps) {
   return {
@@ -25,27 +25,18 @@ function mapDispatchToProps(dispatch, ownProps) {
   }
 }
 
-class Adder3Container extends Component {
+class FullAdderContainer extends Component {
   render() { 
 
     // circuit nodes for input switches, output led
-    let input0 = findObjects([0, 2, 4], this.props.circuits[CIRCUIT_NAME].allNodes)
-    let input1 = findObjects([1, 3, 5], this.props.circuits[CIRCUIT_NAME].allNodes)
-    let output = findObjects([26, 25, 27, 28], this.props.circuits[CIRCUIT_NAME].allNodes)
+    // let input0 = findObjects([0, 1, 2], this.props.circuits[CIRCUIT_NAME].allNodes)
+    // let input1 = findObjects([7, 8, 9], this.props.circuits[CIRCUIT_NAME].allNodes)
+    // let output = findObjects([3, 4, 5, 6], this.props.circuits[CIRCUIT_NAME].allNodes)
 
     return(   
       <div className="centered svg-width-small-gates svg-vertical-margin">
-        <svg viewBox="0 0 1150 600">
-          <g transform="translate(20,170)">
-            <DecimalNumberComponent nodes={input0} setState={this.props.setState} anchor="middle" />
-          </g>
-          <g transform="translate(20,330)">
-            <DecimalNumberComponent nodes={input1} setState={this.props.setState} anchor="middle" />
-          </g>
-          <g transform="translate(1100,250)">
-            <DecimalNumberComponent nodes={output} anchor="middle" />
-          </g>
-          <g transform="translate(60,0)">
+        <svg viewBox="0 0 1000 360">
+          <g transform="translate(300,0)">
             <CircuitContainer circuitName={CIRCUIT_NAME} />
           </g>
         </svg>
@@ -54,4 +45,4 @@ class Adder3Container extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Adder3Container)
+export default connect(mapStateToProps, mapDispatchToProps)(FullAdderContainer)

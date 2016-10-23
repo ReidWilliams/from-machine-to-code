@@ -6,6 +6,7 @@ $circuit-decimal-rect-fill: #F5FAFA;
 $circuit-decimal-rect-stroke: #EBEFF0;
 $body-copy-color: #636D6E;
 $body-light: #E4EFF0;
+$global-transition-time: 200ms;
 
 @mixin centered {
 	margin-left: auto;
@@ -93,12 +94,12 @@ body {
 }
 
 .fill-on {
-	transition: fill 150ms;
+	transition: fill $global-transition-time;
 	fill: $circuit-color-on;
 }
 
 .fill-off {
-	transition: fill 150ms;
+	transition: fill $global-transition-time;
 	fill: $circuit-color-off
 }
 
@@ -110,12 +111,12 @@ body {
 }
 
 .stroke-on {
-	transition: stroke 150ms;
+	transition: stroke $global-transition-time;
 	stroke: $circuit-color-on;
 }
 
 .stroke-off {
-	transition: stroke 150ms;
+	transition: stroke $global-transition-time;
 	stroke: $circuit-color-off;
 }
 

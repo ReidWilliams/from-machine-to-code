@@ -37,7 +37,7 @@ class Adder3Container extends Component {
       <div>
         <div className="centered body-width-line" />
         <div className="centered svg-width-circuit svg-vertical-margin">
-          <svg viewBox="-30 -5 1225 600">
+          <svg viewBox="-30 -5 1225 470">
             <g transform="translate(0,0)">
               <g transform="translate(10,165)">
                 <DecimalNumberComponent 

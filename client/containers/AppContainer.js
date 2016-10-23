@@ -7,6 +7,7 @@ import BinaryNumberContainer from '../containers/BinaryNumberContainer'
 import Adder1Container from '../containers/Adder1Container'
 import FullAdderContainer from '../containers/FullAdderContainer'
 import Adder3Container from '../containers/Adder3Container'
+import FlipFlopContainer from '../containers/FlipFlopContainer'
 
 class App extends Component {
   render() {
@@ -102,6 +103,23 @@ class App extends Component {
                 </p>
             </div>
             <Adder3Container />
+
+            <div className="body-copy body-copy-container">
+                <h1 className="paragraph-title-copy paragraph-title-spacer">Remembering a bit</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sag
+                ittis pretium vestibulum. Vestibulum nec blandit mauris. Phasellus 
+                nec imperdiet est. 
+                </p>
+            </div>
+            <FlipFlopContainer />
+
+            <div className="body-copy body-copy-container">
+                <h1 className="paragraph-title-copy paragraph-title-spacer">Bob Lablaw</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sag
+                ittis pretium vestibulum. Vestibulum nec blandit mauris. Phasellus 
+                nec imperdiet est. 
+                </p>
+            </div>
             
     	</div>
     )

@@ -13,6 +13,7 @@ class SwitchComponent extends Component {
     } else if (this.props.node.state == BOOL_ON || this.props.node.state == BOOL_TRANSITION_ON) {
       className = "cursor-pointer fill-on"
     } else {
+      console.log("switch nodeId is ", this.props.node.nodeId)
       throw "prop boolState is invalid: " + this.props.node.state
     }
 
@@ -20,7 +21,10 @@ class SwitchComponent extends Component {
     let svgType = Object.keys(this.props.node.svg)[0]
 
     return (
-      <g onClick={this.props.clickHandler}>
+      <g onClick={() => {
+          console.log("nodeId: " + this.props.node.nodeId) 
+          this.props.clickHandler()
+        }}>
         { // return svg element overriding fill
           React.createElement(
             svgType, 

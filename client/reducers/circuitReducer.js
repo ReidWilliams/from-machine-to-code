@@ -46,9 +46,10 @@ export let immediatelyPropogateCircuit = function(circuitName) {
 let propogateCircuitWithDelays = function(dispatch, getState, circuitName) {
   recursivelyPropogateCircuit(dispatch, getState, circuitName, function() {
     let deferred = q.defer()
+    let transitionTime = getState().circuits[circuitName].transitionTime || TRANSITION_TIME
     setInterval(function() {
       deferred.resolve()
-    }, TRANSITION_TIME)
+    }, transitionTime)
     return deferred.promise
   })
 }

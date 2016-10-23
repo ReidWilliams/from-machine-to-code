@@ -1,7 +1,6 @@
 {
-  "name": "fraction",
+  "name": "from-machine-to-code",
   "version": "1.0.0",
-  "description": "Fractional home investments made easy",
   "main": "app.js",
   "babel": {
     "presets": [
@@ -20,9 +19,7 @@
     "compile": "babel-node scripts/compile-design.js ./design/test1.svg ./design/test1.json"
   },
   "author": {
-    "name": "Gavin McDermott",
-    "email": "gavinmcdermott@gmail.com",
-    "url": "http://www.gavinmcdermott.com"
+    "name": "Reid Williams"
   },
   "license": "ISC",
   "dependencies": {

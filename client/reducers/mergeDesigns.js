@@ -5,7 +5,8 @@ import binaryNumbers from '../../design/json/binary-numbers.json'
 import adder1 from '../../design/json/1-bit-adder.json'
 import fullAdder from '../../design/json/full-adder.json'
 import adder3 from '../../design/json/3-bit-adder.json'
-import flipFlop from '../../design/json/flip-flop.json'
+import latch from '../../design/json/latch.json'
+import register from '../../design/json/register.json'
 
 export let initialState = {
   banner,
@@ -15,7 +16,8 @@ export let initialState = {
   adder1,
   fullAdder,
   adder3,
-  flipFlop
+  latch,
+  register
 }
 
 

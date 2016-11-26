@@ -7,6 +7,7 @@ import fullAdder from '../../design/json/full-adder.json'
 import adder3 from '../../design/json/3-bit-adder.json'
 import latch from '../../design/json/latch.json'
 import register from '../../design/json/register.json'
+import calculator from '../../design/json/calculator.json'
 
 export let initialState = {
   banner,
@@ -17,7 +18,8 @@ export let initialState = {
   fullAdder,
   adder3,
   latch,
-  register
+  register,
+  calculator
 }
 
 

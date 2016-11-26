@@ -56,7 +56,7 @@ class Adder3Container extends Component {
               <g transform="translate(1130,253)">
                 <DecimalNumberComponent 
                   nodes={output} 
-                  setState={this.props.setState} 
+                  setState={undefined} 
                   anchor="middle" 
                   bgX="-55" bgY="-69" bgWidth="115" bgHeight="82" />
               </g>

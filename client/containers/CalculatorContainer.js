@@ -32,7 +32,7 @@ class Calculator extends Component {
       <div>
         <div className="centered body-width-line" />
         <div className="centered svg-width-circuit svg-vertical-margin">
-          <svg viewBox="0 -10 2100 850">
+          <svg viewBox="0 -10 1900 850">
             <g transform="translate(68,590) scale(1.6)">
               <DecimalNumberComponent 
                 nodes={input} 
@@ -40,7 +40,7 @@ class Calculator extends Component {
                 anchor="middle" 
                 bgX="-40" bgY="-69" bgWidth="80" bgHeight="82" />
             </g>
-            <g transform="translate(2030,590) scale(1.6)">
+            <g transform="translate(1830,590) scale(1.6)">
               <DecimalNumberComponent 
                 nodes={output} 
                 setState={undefined} 

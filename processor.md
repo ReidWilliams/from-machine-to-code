@@ -7,12 +7,13 @@
 6 bit output register drives 8x8 grid. One square in the grid is lit up and can move up, down, left, right through addition and subtraction.
 
 #### Registers
-Single 6 bit register. Push and Pop move value of output register to this register.
+Single 6 bit register. PUSH and POP instructions copy value to/from output register to this register.
 
 #### Instruction set
-Instructions are 3 bits which selects one of 8 op-codes. No arguments or literals in instruction set because there is no memory or register file.
+Instructions are 4 bits which selects one of 16 op-codes.
 
 Instructions:
+
 1. ADD1
 1. ADD7
 1. ADD8
@@ -33,6 +34,7 @@ Instructions:
 #### Pac Man
 > Program that uses inputs A and B to move a cursor around the grid
 
+```
 BRNA
 JMP8
 BRNB
@@ -49,5 +51,5 @@ RST
 RST
 SUB1
 RST
-
+```
 

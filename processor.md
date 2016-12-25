@@ -34,16 +34,16 @@ Instructions are 3 bits which selects one of 8 op-codes.
 
 Instructions:
 
-Binary | Instruction
----    | ---
-000    | ADD1
-001    | ADD8
-010    | SUB1
-011    | SUB8
-100    | BRA 
-101    | JMP4
-110    | RSTP
-111    | RSTO
+| Binary | Instruction | ALU B   | ALU A = OUT | OUT = ALU | PC+1 |
+| ------ | ----------- | ------- | ----------  | --------- | ---- |
+| 000    | ADD1        | 0000001 | 1           | 1         | 1    |
+| 001    | ADD8        | 0000001 | 1           | 1         | 1    |
+| 010    | SUB1        | 0000001 | 1           | 1         | 1    |
+| 011    | SUB8        | 0000001 | 1           | 1         | 1    |
+| 100    | BRA         | 0000001 | 1           | 1         | 1    |
+| 101    | JMP4        | 0000001 | 1           | 1         | 1    |
+| 110    | RSTP        | 0000001 | 1           | 1         | 1    |
+| 111    | RSTO        | 0000001 | 1           | 1         | 1    |
 
 #### Controlled fall
 > Program that uses input move a cursor left and right as it falls

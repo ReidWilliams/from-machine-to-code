@@ -1,8 +1,5 @@
 ## Programmable machine design
 
-#### Open question
-Best way to force PC to 0 on reset, and output reg to 18 (nice place to start). May want to have gating or mode for ALU that forces input A to be 0. 
-
 #### Instruction memory
 3 bit program counter, 8 instruction programs
 
@@ -24,7 +21,8 @@ Inputs:
 
 Outputs: 
 - 6 ALU B input bits.
-- gate ALU A input from OUTREG or PCREG 
+- gate ALU A input from OUTREG or PCREG
+- force ALU A to 0
 - gate output register from self/ALU
 - gate PCREG from PCREG+1 or ALU
 
@@ -34,16 +32,16 @@ Instructions are 3 bits which selects one of 8 op-codes.
 
 Instructions:
 
-| Binary | Instruction | ALU B   | ALU A = OUT | OUT = ALU | PC+1 |
-| ------ | ----------- | ------- | ----------  | --------- | ---- |
-| 000    | ADD1        | 0000001 | 1           | 1         | 1    |
-| 001    | ADD8        | 0000001 | 1           | 1         | 1    |
-| 010    | SUB1        | 0000001 | 1           | 1         | 1    |
-| 011    | SUB8        | 0000001 | 1           | 1         | 1    |
-| 100    | BRA         | 0000001 | 1           | 1         | 1    |
-| 101    | JMP4        | 0000001 | 1           | 1         | 1    |
-| 110    | RSTP        | 0000001 | 1           | 1         | 1    |
-| 111    | RSTO        | 0000001 | 1           | 1         | 1    |
+| Binary | Instruction | ALU B  | ALU A = OUT | ALU A ZERO | OUT = ALU | PC+1 |
+| ------ | ----------- | ------ | ----------  | ---------  | --------- | ---- |
+| 000    | ADD1        | 000001 | 1           | 0          | 1         | 1    |
+| 001    | ADD8        | 001000 | 1           | 0          | 1         | 1    |
+| 010    | SUB1        | 111111 | 1           | 0          | 1         | 1    |
+| 011    | SUB8        | 111000 | 1           | 0          | 1         | 1    |
+| 100    | BRA         | 0000?? | 0           | 0          | 0         | 0    |
+| 101    | JMP4        | 000100 | 0           | 0          | 0         | 0    |
+| 110    | RSTP        | 000000 | 0           | 0          | 0         | 0    |
+| 111    | RSTO        | 010010 | 1           | 1          | 1         | 1    |
 
 #### Controlled fall
 > Program that uses input move a cursor left and right as it falls

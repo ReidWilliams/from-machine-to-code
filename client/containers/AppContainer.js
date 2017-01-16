@@ -10,8 +10,7 @@ import Adder3Container from '../containers/Adder3Container'
 import LatchContainer from '../containers/LatchContainer'
 import RegisterContainer from '../containers/RegisterContainer'
 import CalculatorContainer from '../containers/CalculatorContainer'
-
-import PixelDisplayComponent from '../components/PixelDisplayComponent'
+import ProcessorContainer from '../containers/ProcessorContainer'
 
 class App extends Component {
   render() {
@@ -142,11 +141,12 @@ class App extends Component {
                 nec imperdiet est. 
                 </p>
             </div>
+            <ProcessorContainer />
 
-            <svg viewBox="0 0 3000 3000">
-              <PixelDisplayComponent inputBus={[0, 0, 1, 0, 1, 0]}/>
-            </svg>
-            
+
+
+           
+         
     	</div>
     )
   }

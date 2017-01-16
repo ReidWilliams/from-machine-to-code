@@ -11,6 +11,8 @@ import LatchContainer from '../containers/LatchContainer'
 import RegisterContainer from '../containers/RegisterContainer'
 import CalculatorContainer from '../containers/CalculatorContainer'
 
+import PixelDisplayComponent from '../components/PixelDisplayComponent'
+
 class App extends Component {
   render() {
     return (
@@ -140,6 +142,10 @@ class App extends Component {
                 nec imperdiet est. 
                 </p>
             </div>
+
+            <svg viewBox="0 0 3000 3000">
+              <PixelDisplayComponent inputBus={[0, 0, 1, 0, 1, 0]}/>
+            </svg>
             
     	</div>
     )

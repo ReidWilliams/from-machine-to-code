@@ -1,8 +1,5 @@
 ## Programmable machine design
 
-#### Open question
-Best way to force PC to 0 on reset, and output reg to 18 (nice place to start). May want to have gating or mode for ALU that forces input A to be 0. 
-
 #### Instruction memory
 3 bit program counter, 8 instruction programs
 
@@ -24,7 +21,8 @@ Inputs:
 
 Outputs: 
 - 6 ALU B input bits.
-- gate ALU A input from OUTREG or PCREG 
+- gate ALU A input from OUTREG or PCREG
+- force ALU A to 0
 - gate output register from self/ALU
 - gate PCREG from PCREG+1 or ALU
 
@@ -34,14 +32,16 @@ Instructions are 3 bits which selects one of 8 op-codes.
 
 Instructions:
 
-1. ADD1
-1. ADD8
-1. SUB1
-1. SUB8
-1. BRA
-1. JMP4
-1. RSTP
-1. RSTO
+| Binary | Instruction | ALU B  | ALU A = OUT | ALU A ZERO | OUT = ALU | PC+1 |
+| ------ | ----------- | ------ | ----------  | ---------  | --------- | ---- |
+| 000    | BRA         | 0000?? | 0           | 0          | 0         | 0    |
+| 001    | JMP4        | 000100 | 0           | 0          | 0         | 0    |
+| 010    | RSTP        | 000000 | 0           | 0          | 0         | 0    |
+| 011    | RSTO        | 010010 | 1           | 1          | 1         | 1    |
+| 100    | ADD1        | 000001 | 1           | 0          | 1         | 1    |
+| 101    | ADD8        | 001000 | 1           | 0          | 1         | 1    |
+| 110    | SUB1        | 111111 | 1           | 0          | 1         | 1    |
+| 111    | SUB8        | 111000 | 1           | 0          | 1         | 1    |
 
 #### Controlled fall
 > Program that uses input move a cursor left and right as it falls

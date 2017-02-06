@@ -8,7 +8,7 @@ import adder3 from '../../design/json/3-bit-adder.json'
 import latch from '../../design/json/latch.json'
 import register from '../../design/json/register.json'
 import calculator from '../../design/json/calculator.json'
-import cpu1 from '../../design/json/cpu-1.json'
+import cpu1 from '../../design/json/cpu-2.json'
 
 export let initialState = {
   banner,

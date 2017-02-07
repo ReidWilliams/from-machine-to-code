@@ -29,12 +29,11 @@ function mapDispatchToProps(dispatch, ownProps) {
 class Processor extends Component {
   render() { 
     // let input = findObjects([0, 1, 2], this.props.circuits[CIRCUIT_NAME].allNodes)
-    let registerObjs = findObjects([14, 57, 87, 100, 44, 74], this.props.circuits[CIRCUIT_NAME].allNodes)
+    let registerObjs = findObjects([14, 54, 86, 99, 41, 73], this.props.circuits[CIRCUIT_NAME].allNodes)
     let displayBus = R.map((obj) => {
       return (obj.state === BOOL_ON)? 1 : 0
     }, registerObjs)
-    
-    console.log(displayBus)
+  
 
     return(   
       <div>
@@ -44,7 +43,7 @@ class Processor extends Component {
           	<g transform="translate(140,0)">
             	<CircuitContainer circuitName="cpu1" />
             </g>
-            <g transform="translate(2500, 0)">
+            <g transform="translate(3000, 0)">
               <PixelDisplayComponent inputBus={displayBus}/>
             </g>
           </svg>

@@ -30,18 +30,26 @@ Outputs:
 #### Instruction set
 Instructions are 3 bits which selects one of 8 op-codes.
 
-Instructions:
+Instruction logic for display phase:
 
 | Binary | Instruction | ALU B        | DIS -> ALU A | 0 -> ALU A | ALU -> DIS |
 | ------ | ----------- | ------------ | ------------ | ---------- | ---------- |
-| 000    | BRA         | 1 or 2       | 0            | 0          | 0          |
-| 001    | JMP4        | ```000100``` | 0            | 0          | 0          |
-| 010    | RSTP        | ```000000``` | 0            | 0          | 0          |
 | 011    | RSTD        | ```010010``` | 1            | 1          | 1          |
 | 100    | ADD1        | ```000001``` | 1            | 0          | 1          |
 | 101    | ADD8        | ```001000``` | 1            | 0          | 1          |
 | 110    | SUB1        | ```111111``` | 1            | 0          | 1          |
 | 111    | SUB8        | ```111000``` | 1            | 0          | 1          |
+| *      | *           | ```000000``` | 1            | 0          | 1          |
+
+Instruction logic for PC phase:
+
+| Binary | Instruction | ALU B        | DIS -> ALU A | 0 -> ALU A | ALU -> DIS |
+| ------ | ----------- | ------------ | ------------ | ---------- | ---------- |
+| 000    | BRA-0       | ```000001``` | 0            | 0          | 0          |
+| 000    | BRA-1       | ```000010``` | 0            | 0          | 0          |
+| 001    | JMP4        | ```000100``` | 0            | 0          | 0          |
+| 010    | RSTP        | ```000000``` | 0            | 0          | 0          |
+| *      | *           | ```000001``` | 0            | 0          | 0          |
 
 #### Controlled fall
 > Program that uses input move a cursor left and right as it falls

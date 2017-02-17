@@ -38,12 +38,12 @@ class Processor extends Component {
     return(   
       <div>
         <div className="centered body-width-line" />
-        <div className="centered svg-width-circuit svg-vertical-margin">
-          <svg viewBox="0 -10 4000 4000">
+        <div className="centered svg-width-processor svg-vertical-margin">
+          <svg viewBox="0 -10 6500 4000">
           	<g transform="translate(140,0)">
             	<CircuitContainer circuitName="cpu1" />
             </g>
-            <g transform="translate(3000, 0)">
+            <g transform="translate(5500, 250)">
               <PixelDisplayComponent inputBus={displayBus}/>
             </g>
           </svg>

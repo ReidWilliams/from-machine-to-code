@@ -32,16 +32,16 @@ Instructions are 3 bits which selects one of 8 op-codes.
 
 Instructions:
 
-| Binary | Instruction | ALU B  | ALU A = OUT | ALU A ZERO | OUT = ALU | PC+1 |
-| ------ | ----------- | ------ | ----------  | ---------  | --------- | ---- |
-| 000    | BRA         | 0000?? | 0           | 0          | 0         | 0    |
-| 001    | JMP4        | 000100 | 0           | 0          | 0         | 0    |
-| 010    | RSTP        | 000000 | 0           | 0          | 0         | 0    |
-| 011    | RSTO        | 010010 | 1           | 1          | 1         | 1    |
-| 100    | ADD1        | 000001 | 1           | 0          | 1         | 1    |
-| 101    | ADD8        | 001000 | 1           | 0          | 1         | 1    |
-| 110    | SUB1        | 111111 | 1           | 0          | 1         | 1    |
-| 111    | SUB8        | 111000 | 1           | 0          | 1         | 1    |
+| Binary | Instruction | ALU B  | DIS -> ALU A | 0 -> ALU A | ALU -> DIS |
+| ------ | ----------- | ------ | ------------ | ---------- | ---------- |
+| 000    | BRA         | 1 or 2 | 0            | 0          | 0          |
+| 001    | JMP4        | 000100 | 0            | 0          | 0          |
+| 010    | RSTP        | 000000 | 0            | 0          | 0          |
+| 011    | RSTO        | 010010 | 1            | 1          | 1          |
+| 100    | ADD1        | 000001 | 1            | 0          | 1          |
+| 101    | ADD8        | 001000 | 1            | 0          | 1          |
+| 110    | SUB1        | 111111 | 1            | 0          | 1          |
+| 111    | SUB8        | 111000 | 1            | 0          | 1          |
 
 #### Controlled fall
 > Program that uses input move a cursor left and right as it falls

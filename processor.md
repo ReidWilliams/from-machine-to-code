@@ -41,7 +41,7 @@ Instruction logic for display phase:
 | 0     | 101    | ADD8        | ```001000``` | 1            | 0          | 1          |
 | 0     | 110    | SUB1        | ```111111``` | 1            | 0          | 1          |
 | 0     | 111    | SUB8        | ```111000``` | 1            | 0          | 1          |
-| 0     | *      | *           | ```000000``` | 1            | 0          | 1          |
+| 0     | 0**    | *           | ```000000``` | 1            | 0          | 1          |
 
 Instruction logic for PC phase:
 
@@ -51,7 +51,7 @@ Instruction logic for PC phase:
 | 1     | 000    | BRA-1       | ```000010``` | 0            | 0          | 0          |
 | 1     | 001    | JMP4        | ```000100``` | 0            | 0          | 0          |
 | 1     | 010    | RSTP        | ```000000``` | 0            | 0          | 0          |
-| 1     | *      | *           | ```000001``` | 0            | 0          | 0          |
+| 1     | 1**    | *           | ```000001``` | 0            | 0          | 0          |
 
 #### Controlled fall
 > Program that uses input move a cursor left and right as it falls

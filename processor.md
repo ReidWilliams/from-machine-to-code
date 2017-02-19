@@ -39,7 +39,7 @@ Instruction logic for display phase:
 | 0     | 101    | ADD8        | ```001``` | 1             | 1           | 0            | 0         |
 | 0     | 110    | SUB1        | ```111``` | 1             | 0           | 0            | 0         |
 | 0     | 111    | SUB8        | ```111``` | 1             | 1           | 0            | 0         |
-| 0     | 0xx    | x           | ```---``` | 0             | -           | 0            | 0         |
+| 0     | 0xx    | x           | ```000``` | -             | -           | 0            | 0         |
 
 Instruction logic for PC phase:
 

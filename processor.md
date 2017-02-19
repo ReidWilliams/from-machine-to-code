@@ -24,21 +24,17 @@ Outputs:
 - 3 ALU B input bits
 - DIS -> ALU A: 1 means route one of the display registers to ALU input, 0 means route PC register
 - Y -> ALU A: 1 means route display Y register to ALU, 0 means routes X
-- force ALU A to 0
-- gate output register from self/ALU
-- gate PCREG from PCREG+1 or ALU
-
+- 0 -> DIS: force all display bits to 0
+- 0 -> PC: force PC register to 0
 
 #### Instruction set
-TODO: with two 3 bit display registers, what happens to RSTD instruction which sets X and Y to 0?
-(just have zero out logic as part of data paths for both X and Y registers without using ALU)
 Instructions are 3 bits which selects one of 8 op-codes.
 
 Instruction logic for display phase:
 
 | Phase | Binary | Instruction | ALU B        | DIS -> ALU A | 0 -> ALU A | ALU -> DIS |
 | ----- | ------ | ----------- | ------------ | ------------ | ---------- | ---------- |
-| 0     | 011    | RSTD        | ```010010``` | 1            | 1          | 1          |
+| 0     | 011    | RSTD        | ```000000``` | 1            | 1          | 1          |
 | 0     | 100    | ADD1        | ```000001``` | 1            | 0          | 1          |
 | 0     | 101    | ADD8        | ```001000``` | 1            | 0          | 1          |
 | 0     | 110    | SUB1        | ```111111``` | 1            | 0          | 1          |

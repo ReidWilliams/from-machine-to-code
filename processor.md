@@ -4,12 +4,10 @@
 3 bit program counter, 8 instruction programs
 
 #### Output + Display
-6 bit output register drives 8x8 grid. One square in the grid is lit up and can move up, down, left, right through addition and subtraction. Register named DISPLAY.
-
-Input to register has mux that switches between output of ALU and output of register
+Two 3-bit output registers set the X and Y coordinates of an 8x8 display. 
 
 #### ALU
-ALU adds two 6 bit numbers.
+ALU adds two 3 bit numbers.
 
 #### Control logic
 Two phases: first phase updates display, second phase updates PC. Separated into two phases because there's only one ALU and each phase needs to use it. Each phase is one clock cycle, processor does 1 instruction per two clock cycles.
@@ -18,18 +16,22 @@ Controls second ALU input to do constant additions of 1, 4, 8, and subtractions 
 
 Inputs:
 
+- Phase bit
 - 3 instruction bits
 - 1 User input bit
 
 Outputs: 
-- 6 ALU B input bits.
-- gate ALU A input from DISPLAY or PCREG
+- 3 ALU B input bits
+- DIS -> ALU A: 1 means route one of the display registers to ALU input, 0 means route PC register
+- Y -> ALU A: 1 means route display Y register to ALU, 0 means routes X
 - force ALU A to 0
 - gate output register from self/ALU
 - gate PCREG from PCREG+1 or ALU
 
 
 #### Instruction set
+TODO: with two 3 bit display registers, what happens to RSTD instruction which sets X and Y to 0?
+(just have zero out logic as part of data paths for both X and Y registers without using ALU)
 Instructions are 3 bits which selects one of 8 op-codes.
 
 Instruction logic for display phase:
@@ -47,8 +49,8 @@ Instruction logic for PC phase:
 
 | Phase | Binary | Instruction | ALU B        | DIS -> ALU A | 0 -> ALU A | ALU -> DIS |
 | ----- | ------ | ----------- | ------------ | ------------ | ---------- | ---------- |
-| 1     | 000    | BRA-0       | ```000001``` | 0            | 0          | 0          |
-| 1     | 000    | BRA-1       | ```000010``` | 0            | 0          | 0          |
+| 1     | 000    | BRN-0       | ```000001``` | 0            | 0          | 0          |
+| 1     | 000    | BRN-1       | ```000010``` | 0            | 0          | 0          |
 | 1     | 001    | JMP4        | ```000100``` | 0            | 0          | 0          |
 | 1     | 010    | RSTP        | ```000000``` | 0            | 0          | 0          |
 | 1     | 1**    | *           | ```000001``` | 0            | 0          | 0          |
@@ -58,7 +60,7 @@ Instruction logic for PC phase:
 
 ```
 ADD8
-BRNA
+BRN
 JMP4
 ADD1
 RST
@@ -66,4 +68,3 @@ RST
 SUB1
 RST
 ```
-

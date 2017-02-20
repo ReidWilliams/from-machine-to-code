@@ -29,7 +29,7 @@ function mapDispatchToProps(dispatch, ownProps) {
 class Processor extends Component {
   render() { 
     // let input = findObjects([0, 1, 2], this.props.circuits[CIRCUIT_NAME].allNodes)
-    let registerObjs = findObjects([14, 54, 86, 99, 41, 73], this.props.circuits[CIRCUIT_NAME].allNodes)
+    let registerObjs = findObjects([115, 159, 185, 198, 146, 172], this.props.circuits[CIRCUIT_NAME].allNodes)
     let displayBus = R.map((obj) => {
       return (obj.state === BOOL_ON)? 1 : 0
     }, registerObjs)

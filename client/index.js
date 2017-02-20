@@ -4,7 +4,7 @@ import thunkMiddleware from 'redux-thunk'
 import { combineReducers, createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 
-import AppContainer from './containers/AppContainer'
+import ProcessorAppContainer from './containers/ProcessorAppContainer'
 import { circuitsReducer } from './reducers/circuitReducer'
 
 // import css
@@ -19,7 +19,7 @@ const appStore = createStoreWithMiddleware(appReducer)
 
 ReactDOM.render(
   <Provider store={ appStore }>
-    <AppContainer />
+    <ProcessorAppContainer />
   </Provider>, 
   document.getElementById('app')
 )

@@ -1,0 +1,1 @@
+Control line for PC -> 0 needs to be also gated by ~phase so that PC is zeroed out only in the second phase of the processor.

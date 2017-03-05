@@ -39,7 +39,7 @@ class Processor extends Component {
       <div>
         <div className="centered body-width-line" />
         <div className="centered svg-width-processor svg-vertical-margin">
-          <svg viewBox="0 -10 5000 3000">
+          <svg viewBox="0 -10 5200 3000">
           	<g transform="translate(500,0)">
             	<CircuitContainer circuitName="cpu1" />
             </g>

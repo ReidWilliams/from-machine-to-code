@@ -20,9 +20,7 @@ class App extends Component {
 
              <div className="body-copy body-copy-container">
                 <h1 className="paragraph-title-copy paragraph-title-spacer">Bob Lablaw</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sag
-                ittis pretium vestibulum. Vestibulum nec blandit mauris. Phasellus 
-                nec imperdiet est. 
+                <p>Blah blah blah blah this is the text of the thing that I am writing at some point. 
                 </p>
             </div>
             <ProcessorContainer />

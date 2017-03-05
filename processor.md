@@ -57,13 +57,13 @@ Instruction logic for PC phase:
 > Program that uses input move a cursor left and right as it falls
 
 ```
-ADD8
-BRNA
-JMP4
-ADD1
-RST
-RST
-SUB1
-RST
+ADD8 101
+BRA  000  
+JMP4 001
+ADD1 100
+RSTP 010  
+RSTP 010
+SUB1 110
+RSTP 010 
 ```
 

@@ -1,9 +1,10 @@
 'use strict'
 
  // System Deps
-var autoprefixer =require('autoprefixer');
-var webpack =require('webpack');
-var path =require('path');
+const autoprefixer = require('autoprefixer')
+const webpack = require('webpack')
+const path = require('path')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 
 // Only export the config to be consumed by webpack
@@ -94,6 +95,10 @@ module.exports = {
     // https://github.com/glenjamin/webpack-hot-middleware 
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new CopyWebpackPlugin([
+      { from: 'client/assets', to: 'assets' }
+      // { from: 'client/index.html', to: 'index.html' }
+      ])
   ]
 };

@@ -7,7 +7,10 @@ import BinaryNumberContainer from '../containers/BinaryNumberContainer'
 import Adder1Container from '../containers/Adder1Container'
 import FullAdderContainer from '../containers/FullAdderContainer'
 import Adder3Container from '../containers/Adder3Container'
-import FlipFlopContainer from '../containers/FlipFlopContainer'
+import LatchContainer from '../containers/LatchContainer'
+import RegisterContainer from '../containers/RegisterContainer'
+import CalculatorContainer from '../containers/CalculatorContainer'
+import ProcessorContainer from '../containers/ProcessorContainer'
 
 class App extends Component {
   render() {
@@ -111,7 +114,7 @@ class App extends Component {
                 nec imperdiet est. 
                 </p>
             </div>
-            <FlipFlopContainer />
+            <LatchContainer />
 
             <div className="body-copy body-copy-container">
                 <h1 className="paragraph-title-copy paragraph-title-spacer">Bob Lablaw</h1>
@@ -120,7 +123,30 @@ class App extends Component {
                 nec imperdiet est. 
                 </p>
             </div>
-            
+            <RegisterContainer />
+
+            <div className="body-copy body-copy-container">
+                <h1 className="paragraph-title-copy paragraph-title-spacer">Bob Lablaw</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sag
+                ittis pretium vestibulum. Vestibulum nec blandit mauris. Phasellus 
+                nec imperdiet est. 
+                </p>
+            </div>
+            <CalculatorContainer />
+
+             <div className="body-copy body-copy-container">
+                <h1 className="paragraph-title-copy paragraph-title-spacer">Bob Lablaw</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sag
+                ittis pretium vestibulum. Vestibulum nec blandit mauris. Phasellus 
+                nec imperdiet est. 
+                </p>
+            </div>
+            <ProcessorContainer />
+
+
+
+           
+         
     	</div>
     )
   }

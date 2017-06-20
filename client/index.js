@@ -4,6 +4,7 @@ import thunkMiddleware from 'redux-thunk'
 import { combineReducers, createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 
+// import ProcessorAppContainer from './containers/ProcessorAppContainer'
 import AppContainer from './containers/AppContainer'
 import { circuitsReducer } from './reducers/circuitReducer'
 

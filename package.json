@@ -68,7 +68,7 @@
     "moment": "2.11.0",
     "nock": "5.2.1",
     "node-keybase": "0.0.5",
-    "node-sass": "^3.4.2",
+    "node-sass": "3.7.0",
     "nodemon": "1.8.1",
     "parse": "^1.7.0",
     "passport": "^0.3.2",

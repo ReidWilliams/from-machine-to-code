@@ -75,8 +75,8 @@ body {
 }
 
 .paragraph-title-spacer {
-	margin-top: 10px;
-	margin-bottom: 40px;
+	margin-top: 50px;
+	margin-bottom: 30px;
 }
 
 .banner-subhead-margin {
@@ -86,7 +86,7 @@ body {
 
 .body-width-line {
 	width: 700px;
-	border-top: 1px solid $body-light;
+	border-top: 1px dashed $body-light;
 }
 
 .body-copy-container {

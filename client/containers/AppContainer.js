@@ -19,20 +19,41 @@ class App extends Component {
             <BannerContainer />
     		<div className="body-copy body-copy-container">
     			<p>
-                The microprocessor, the beating heart inside every laptop and smartphone,
-                is a fantastically complex machine built out of nearly  a billion individual parts. The amazing thing
-                is that there are only a few different kinds of parts, and each one
-                is really simple.
+                Close your eyes and picture the most complex machine you own. What is it? 
+                Is it the one you&#39;re using right now to read this? Inside the utility, 
+                delight, and frustration of our many computers, large and small including 
+                this one, is a layer cake of technology. This stack includes HTML, 
+                web browsers, operating systems, compilers, programming languages, 
+                network protocols and many others. 
                 </p>
 
                 <p>
-                This is the story of how these simple components, called logic
-                gates combine to build the tiny programmable computing machines we call
-                microprocessors.
+                At the foundation is one technology that&#39;s special, because historically 
+                it came first, but also because it does something magical that no other machine can 
+                do. It creates one universe inside of another: a neat, abstracted world of 
+                ones, zeros, and software inside a messy, analog world of physics. 
+                </p>
+
+                <p>
+                In 2017, a typical microprocessor houses over a billion transistors. Each 
+                transistor does a bit of magic, helping domesticate electricity into only 
+                one of two possible states: zero or one. Powerful though this sleight of 
+                hand is, it isn’t enough to create a digital universe. It’s the precise 
+                connection of these billion transistors that does it. 
+                </p>
+
+                <p>
+                This post is an interactive tour of a tiny slice of the machine: how 
+                the simplest digital parts work together to represent numbers, do math, 
+                and run programs of software.
                 </p>
 
                 <h1 className="paragraph-title-copy paragraph-title-spacer">Hello gates</h1>
 
+    		</div>
+            <HelloGatesContainer />
+
+            <div className="body-copy body-copy-container">
                 <p>
                 Logic gates are the Lego building blocks of microprocessors.
                 They&#39;re binary devices that do just a little bit of logic. They come in a handful of flavors
@@ -45,13 +66,8 @@ class App extends Component {
                 two inputs and each type of gate responds differently to its inputs. Play with the gates by 
                 turning their inputs on and off.
                 </p>
-
-
-    		</div>
-            <HelloGatesContainer />
-
-            <div className="body-copy body-copy-container">
-             <h1 className="paragraph-title-copy paragraph-title-spacer">Combining gates</h1>
+                
+                <h1 className="paragraph-title-copy paragraph-title-spacer">Combining gates</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sag
                 ittis pretium vestibulum. Vestibulum nec blandit mauris. Phasellus 
                 nec imperdiet est. Integer eu posuere sem. Duis suscipit fringilla 

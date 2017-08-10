@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 
 import BannerContainer from '../containers/BannerContainer'
 import HelloGatesContainer from '../containers/HelloGatesContainer'
+import DeliciousContainer from '../containers/DeliciousContainer'
 import VampiresContainer from '../containers/VampiresContainer'
 import BinaryNumberContainer from '../containers/BinaryNumberContainer'
 import Adder1Container from '../containers/Adder1Container'
@@ -83,8 +84,6 @@ class App extends Component {
           </p>
         </div>
         <VampiresContainer />
-
-
             <div className="body-copy body-copy-container">
                 <h1 className="paragraph-title-copy paragraph-title-spacer">Speaking numbers</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sag

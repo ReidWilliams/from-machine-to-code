@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 
 import BannerContainer from '../containers/BannerContainer'
 import HelloGatesContainer from '../containers/HelloGatesContainer'
-import DeliciousContainer from '../containers/DeliciousContainer'
 import VampiresContainer from '../containers/VampiresContainer'
 import BinaryNumberContainer from '../containers/BinaryNumberContainer'
 import Adder1Container from '../containers/Adder1Container'

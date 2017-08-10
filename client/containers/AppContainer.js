@@ -74,25 +74,27 @@ class App extends Component {
           </p>
           
           <h1 className="paragraph-title-copy paragraph-title-spacer">Combining gates</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sag
-            ittis pretium vestibulum. Vestibulum nec blandit mauris. Phasellus 
-            nec imperdiet est. Integer eu posuere sem. Duis suscipit fringilla 
-            lacus, id viverra justo tempor a. Curabitur nec sem convallis neque 
-            mattis cursus. Mauris feugiat nec dolor a eleifend. Donec non urna 
-            pulvinar, ultrices nulla in, eleifend dolor. Fusce et lectus nisl.
+          <p>
+            Gates can be combined to create more complex logic than just OR, AND, NOT, and XOR.
+            What if we wanted to build a circuit that decided whether an animal was a fish
+            based on whether it swims in water and breaths air. Combing two gates, we can
+            build a simplistic circuit that does just that.
           </p>
         </div>
         <VampiresContainer />
-            <div className="body-copy body-copy-container">
-                <h1 className="paragraph-title-copy paragraph-title-spacer">Speaking numbers</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sag
-                ittis pretium vestibulum. Vestibulum nec blandit mauris. Phasellus 
-                nec imperdiet est. Integer eu posuere sem. Duis suscipit fringilla 
-                lacus, id viverra justo tempor a. Curabitur nec sem convallis neque 
-                mattis cursus. Mauris feugiat nec dolor a eleifend. Donec non urna 
-                pulvinar, ultrices nulla in, eleifend dolor. Fusce et lectus nisl.
-                </p>
-            </div>
+        <div className="body-copy body-copy-container">
+          <h1 className="paragraph-title-copy paragraph-title-spacer">Speaking numbers</h1>
+          <p>
+            Using more gates, we could build more complex logic, like a circuit
+            that helps someone figure out the name of a Pokemon based on its size, shape, 
+            color, and so on. But these circuits are really specialized and can only be used
+            for one thing. Can we build a more general circuit that solves lots of different kinds
+            of problems? One step towards that goal is to represent something more universal than
+            whether an animal lives in the sea or a Pokemon breathers fire. Something like text and numbers.
+            We can use a collection of bits to represent a number. Five bits can represent any number between
+            0 and 31. 
+          </p>
+        </div>
             <BinaryNumberContainer />
 
 

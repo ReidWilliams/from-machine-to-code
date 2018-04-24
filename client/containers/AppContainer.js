@@ -19,23 +19,22 @@ class App extends Component {
         <BannerContainer />
     		<div className="body-copy body-copy-container">
     		  <p>
-            Close your eyes and picture the most complex machine you own. What is it? 
-            Is it the one you&#39;re using right now to read this? Inside the utility, 
-            delight, and frustration of our many computers, large and small including 
-            this one, is a layer cake of technology. This stack includes HTML, 
-            web browsers, operating systems, compilers, programming languages, 
-            network protocols and many others. 
+            Inside our many computers, large and small is a layer cake of technology. 
+            This stack includes the browsers that render web apps, 
+            the operating systems on which they run, and the compilers, programming languages, 
+            and network protocols that make expressing and running all this complexity possible.  
           </p>
 
           <p>
-            At the foundation is one technology that&#39;s special, because historically 
-            it came first, but also because it does something magical that no other machine can 
+            At the foundation of the cake is one technology that&#39;s special because 
+            it does something magical that no other machine can 
             do. It creates one universe inside of another: a neat, abstracted world of 
-            ones, zeros, and software inside a messy, analog world of physics. 
+            ones and zeros inside a messy, analog world of physics. It's where hardware becomes
+            software. 
           </p>
 
           <p>
-            In 2017, a typical microprocessor houses over a billion transistors. Each 
+            A typical microprocessor houses over a billion transistors. Each 
             transistor does a bit of magic, helping domesticate electricity into only 
             one of two possible states: zero or one. Powerful though this sleight of 
             hand is, it isn’t enough to create a digital universe. It’s the precise 
@@ -45,7 +44,7 @@ class App extends Component {
           <p>
             This post is an interactive tour of how 
             the simplest digital parts work together to represent numbers, do math, 
-            remember data, and create programmable machines. 
+            remember data, and create programmable machines. Every picture is interactive.
           </p>
     		</div>
         <div className="body-copy body-copy-container">
@@ -65,105 +64,100 @@ class App extends Component {
           </p>
 
           <p>
-            The logic each gate implements pretty much follows what it&#39;s name suggests, though
-            it turns out how we think about "or" in English isn&#39;t the full picture. With gates, 
-            we need OR which outputs one when either input is one and also when
-            both inputs are one, and separately XOR which outputs one when either input is one but
-            not when both are one. It&#39;s complicated, and better to just play with the four 
-            gates above by clicking to change their inputs. 
+            The logic each gate implements follows the intuition behind its name, though
+            it turns out how we think about "or" in English isn&#39;t the full picture. 
+            There&#39;s OR which outputs one when either input is one but also when
+            both inputs are one. There&#39;s also XOR which outputs one when either input is one but
+            not when both are one. In a moment you&#39;ll see why both are needed. 
           </p>
           
           <h1 className="paragraph-title-copy paragraph-title-spacer">Combining gates</h1>
           <p>
-            Gates can be combined to create more complex logic than just OR, AND, NOT, and XOR.
-            What if we wanted to build a circuit that decided whether an animal was a fish
-            based on whether it swims in water and breaths air. Combing two gates, we can
-            build a simplistic circuit that does just that.
+            What if we wanted to build a circuit that decides whether a poker hand is a straight
+            or a flush? We'd need something more powerful than any one gate can provide. To handle
+            this and other more complex logic, we combine gates into circuits with multiple inputs.
+
           </p>
         </div>
         <VampiresContainer />
         <div className="body-copy body-copy-container">
           <h1 className="paragraph-title-copy paragraph-title-spacer">Speaking numbers</h1>
           <p>
-            Using more gates, we could build more complex logic, like a circuit
-            that helps someone figure out the name of a Pokemon based on its size, shape, 
-            color, and so on. But these circuits are really specialized and can only be used
-            for one thing. Can we build a more general circuit that solves lots of different kinds
-            of problems? One step towards that goal is to represent something more universal than
-            whether an animal lives in the sea or a Pokemon breathers fire. Something like text and numbers.
-            We can use a collection of bits to represent a number. Five bits can represent any number between
+            The problem with the poker hand circuit is it&#39;s specialized and can only be used
+            for one thing. We can start to build more general circuits that solve lots of different kinds
+            of problems by using &#8220;bits&#8221; to represent text and numbers.
+            We can use a collection of five bits to represent any number between
             0 and 31. 
           </p>
         </div>
-            <BinaryNumberContainer />
+        <BinaryNumberContainer />
 
 
-            <div className="body-copy body-copy-container">
-                <h1 className="paragraph-title-copy paragraph-title-spacer">Adding numbers</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sag
-                ittis pretium vestibulum. Vestibulum nec blandit mauris. Phasellus 
-                nec imperdiet est. Integer eu posuere sem. Duis suscipit fringilla 
-                lacus, id viverra justo tempor a. Curabitur nec sem convallis neque 
-                mattis cursus. Mauris feugiat nec dolor a eleifend. Donec non urna 
-                pulvinar, ultrices nulla in, eleifend dolor. Fusce et lectus nisl.
-                </p>
-            </div>
-            <Adder1Container />
+        <div className="body-copy body-copy-container">
+            <h1 className="paragraph-title-copy paragraph-title-spacer">Adding numbers</h1>
+            <p>Now that we can use bits to represent numbers, we&#39;ll want to do
+            something with them, like add them. The XOR gate and the AND gate are really 
+            important to these adder circuits. If you think about how you&#39;d add numbers
+            on paper, the XOR gate is like adding numbers in a column, and the AND gate is
+            like carrying a one left to antoher column. This circuit is called a half adder.
+            </p>
+        </div>
+        <Adder1Container />
 
-            <div className="body-copy body-copy-container">
-                <h1 className="paragraph-title-copy paragraph-title-spacer">Adding larger numbers</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sag
-                ittis pretium vestibulum. Vestibulum nec blandit mauris. Phasellus 
-                nec imperdiet est. 
-                </p>
-            </div>
-            <FullAdderContainer />
+        <div className="body-copy body-copy-container">
+            <h1 className="paragraph-title-copy paragraph-title-spacer">The &#8220;full&#8221; adder</h1>
+            <p>Here&#39;s an adder circuit that is a little more complicated. It adds three 1-bit numbers
+            to make a 2-bit number. This circuit is special becase several can be cobined to make
+            circuits that add much larger numbers.
+            </p>
+        </div>
+        <FullAdderContainer />
 
 
-            <div className="body-copy body-copy-container">
-                <h1 className="paragraph-title-copy paragraph-title-spacer">Adding larger numbers</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sag
-                ittis pretium vestibulum. Vestibulum nec blandit mauris. Phasellus 
-                nec imperdiet est. 
-                </p>
-            </div>
-            <Adder3Container />
+        <div className="body-copy body-copy-container">
+            <h1 className="paragraph-title-copy paragraph-title-spacer">Adding larger numbers</h1>
+            <p>Combining one half adder and two full adders, we can build a circuit that adds
+            much larger numbers! We won&#39;t talk about subtraction, multiplication, or division, but
+            there&#39;s a circuit that can do each.  
+            </p>
+        </div>
+        <Adder3Container />
 
-            <div className="body-copy body-copy-container">
-                <h1 className="paragraph-title-copy paragraph-title-spacer">Remembering a bit</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sag
-                ittis pretium vestibulum. Vestibulum nec blandit mauris. Phasellus 
-                nec imperdiet est. 
-                </p>
-            </div>
-            <LatchContainer />
+        <div className="body-copy body-copy-container">
+            <h1 className="paragraph-title-copy paragraph-title-spacer">Remembering a bit</h1>
+            <p>Adding numbers is great and all, but it would be nice to be able to remember things.
+            By introducing feedback that feeds an output back as an input, a circuit can have
+            memory. 
+            </p>
+        </div>
+        <LatchContainer />
 
-            <div className="body-copy body-copy-container">
-                <h1 className="paragraph-title-copy paragraph-title-spacer">Bob Lablaw</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sag
-                ittis pretium vestibulum. Vestibulum nec blandit mauris. Phasellus 
-                nec imperdiet est. 
-                </p>
-            </div>
-            <RegisterContainer />
+        <div className="body-copy body-copy-container">
+            <h1 className="paragraph-title-copy paragraph-title-spacer">Bob Lablaw</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sag
+            ittis pretium vestibulum. Vestibulum nec blandit mauris. Phasellus 
+            nec imperdiet est. 
+            </p>
+        </div>
+        <RegisterContainer />
 
-            <div className="body-copy body-copy-container">
-                <h1 className="paragraph-title-copy paragraph-title-spacer">Bob Lablaw</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sag
-                ittis pretium vestibulum. Vestibulum nec blandit mauris. Phasellus 
-                nec imperdiet est. 
-                </p>
-            </div>
-            <CalculatorContainer />
+        <div className="body-copy body-copy-container">
+            <h1 className="paragraph-title-copy paragraph-title-spacer">Bob Lablaw</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sag
+            ittis pretium vestibulum. Vestibulum nec blandit mauris. Phasellus 
+            nec imperdiet est. 
+            </p>
+        </div>
+        <CalculatorContainer />
 
-             <div className="body-copy body-copy-container">
-                <h1 className="paragraph-title-copy paragraph-title-spacer">Bob Lablaw</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sag
-                ittis pretium vestibulum. Vestibulum nec blandit mauris. Phasellus 
-                nec imperdiet est. 
-                </p>
-            </div>
-            <ProcessorContainer />
+         <div className="body-copy body-copy-container">
+            <h1 className="paragraph-title-copy paragraph-title-spacer">Bob Lablaw</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sag
+            ittis pretium vestibulum. Vestibulum nec blandit mauris. Phasellus 
+            nec imperdiet est. 
+            </p>
+        </div>
+        <ProcessorContainer />
 
 
 

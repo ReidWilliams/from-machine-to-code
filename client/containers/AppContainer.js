@@ -71,7 +71,7 @@ class App extends Component {
           <h1 className="paragraph-title-copy paragraph-title-spacer">Combining gates</h1>
           <p>
             What if we wanted to build a circuit that decides whether a poker hand is a straight
-            or a flush? We'd need something more powerful than any one gate can provide. To handle
+            or a flush? [find better example] We'd need something more powerful than any one gate can provide. To handle
             this and other more complex logic, we combine gates into circuits with multiple inputs.
 
           </p>
@@ -96,7 +96,7 @@ class App extends Component {
             something with them, like add them. The XOR gate and the AND gate are really 
             important to these adder circuits. If you think about how you&#39;d add numbers
             on paper, the XOR gate is like adding numbers in a column, and the AND gate is
-            like carrying a one left to antoher column. This circuit is called a half adder.
+            like carrying the overflow from one column to the next. This circuit is called a half adder.
             </p>
         </div>
         <Adder1Container />
@@ -114,16 +114,16 @@ class App extends Component {
         <div className="body-copy body-copy-container">
             <h1 className="paragraph-title-copy paragraph-title-spacer">Adding larger numbers</h1>
             <p>Combining one half adder and two full adders, we can build a circuit that adds
-            much larger numbers! We won&#39;t talk about subtraction, multiplication, or division, but
-            there&#39;s a circuit that can do each.  
+            much larger numbers! We won&#39;t talk about subtraction, multiplication, or division here, but
+            there&#39;s a circuit that can do each of them.  
             </p>
         </div>
         <Adder3Container />
 
         <div className="body-copy body-copy-container">
             <h1 className="paragraph-title-copy paragraph-title-spacer">Remembering a bit</h1>
-            <p>Adding numbers is great and all, but it would be nice to be able to remember things.
-            By introducing feedback that feeds an output back as an input, a circuit can have
+            <p>Adding numbers is great, but it would be nice to be able to remember things.
+            By introducing feedback that connects an output back as an input, a circuit can have
             memory. 
             </p>
         </div>
@@ -131,7 +131,7 @@ class App extends Component {
 
         <div className="body-copy body-copy-container">
             <h1 className="paragraph-title-copy paragraph-title-spacer">Bob Lablaw</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sag
+            <p>Talk about need to remember a bit even while an input is changing. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sag
             ittis pretium vestibulum. Vestibulum nec blandit mauris. Phasellus 
             nec imperdiet est. 
             </p>
@@ -140,7 +140,8 @@ class App extends Component {
 
         <div className="body-copy body-copy-container">
             <h1 className="paragraph-title-copy paragraph-title-spacer">Bob Lablaw</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sag
+            <p>Talk about clock enlessly cycling between 0 ad 1 and "pushing" values
+            through the ciruict. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sag
             ittis pretium vestibulum. Vestibulum nec blandit mauris. Phasellus 
             nec imperdiet est. 
             </p>

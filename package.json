@@ -16,6 +16,7 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --content-base client/ --inline",
+    "build": "webpack --content-base client/",
     "compile": "babel-node scripts/compile-design.js ./design/test1.svg ./design/test1.json"
   },
   "author": {

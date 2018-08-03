@@ -19,26 +19,25 @@ class App extends Component {
         <BannerContainer />
     		<div className="body-copy body-copy-container">
     		  <p>
-            Inside our many computers, large and small is a layer cake of technology. 
+            Inside our many computers, from laptop to smart watch, is a layer cake of technology. 
             This stack includes the browsers that render web apps, 
             the operating systems on which they run, and the compilers, programming languages, 
             and network protocols that make expressing and running all this complexity possible.  
           </p>
 
           <p>
-            At the foundation of the cake is one technology that&#39;s special because 
-            it does something magical that no other machine can 
-            do. It creates one universe inside of another: a neat, abstracted world of 
+            At the foundation of the cake is one magical technology that does something special.
+            It creates one universe inside of another: a neat, abstracted world of 
             ones and zeros inside a messy, analog world of physics. It's where hardware becomes
             software. 
           </p>
 
           <p>
-            A typical microprocessor houses over a billion transistors. Each 
+            Inside a typical microprocessor live over a billion transistors. Each 
             transistor does a bit of magic, helping domesticate electricity into only 
             one of two possible states: zero or one. Powerful though this sleight of 
-            hand is, it isn’t enough to create a digital universe. It’s the precise 
-            connection of these billion transistors that does it. 
+            hand is, it isn’t enough to create a digital universe. It's not any one transistor
+            but the precise connection of the billion that does it. 
           </p>
 
           <p>
@@ -57,18 +56,16 @@ class App extends Component {
         <HelloGatesContainer />
         <div className="body-copy body-copy-container">
           <p>
-            Gates are an abstraction. They hide the messy physics of electricity 
+            Gates are an abstraction. They hide the messy physics of electricity
             and form simple rules based on logic in which input bits (each of which can be a zero or a one) 
-            combine to determine an output bit. You can build a lot with four kinds of gates: OR, AND, 
+            combine to determine an output bit. We can build a lot with four kinds of gates: OR, AND, 
             NOT, and XOR.
           </p>
 
           <p>
             The logic each gate implements follows the intuition behind its name, though
-            it turns out how we think about "or" in English isn&#39;t the full picture. 
-            There&#39;s OR which outputs one when either input is one but also when
-            both inputs are one. There&#39;s also XOR which outputs one when either input is one but
-            not when both are one. In a moment you&#39;ll see why both are needed. 
+            it turns out how we think about "or" in English isn&#39;t the full picture. The XOR
+            and OR gates capture slightly different ideas of what "or" means. 
           </p>
           
           <h1 className="paragraph-title-copy paragraph-title-spacer">Combining gates</h1>

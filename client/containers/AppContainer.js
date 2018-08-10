@@ -121,19 +121,26 @@ class App extends Component {
         <Adder3Container />
 
         <div className="body-copy body-copy-container">
-            <h1 className="paragraph-title-copy paragraph-title-spacer">Remembering a bit</h1>
+            <h1 className="paragraph-title-copy paragraph-title-spacer">Remembering a bit through feedback</h1>
             <p>Adding numbers is great, but it would be nice to be able to remember things.
             By introducing feedback that connects an output back as an input, a circuit can have
-            memory. 
+            memory. When the LATCH bit is off, the output is the same as the input. When LATCH is
+            on, the circuit remembers the last input and ignores any changes to the input until
+            LATCH is turned back off.
             </p>
         </div>
         <LatchContainer />
 
         <div className="body-copy body-copy-container">
-            <h1 className="paragraph-title-copy paragraph-title-spacer">Bob Lablaw</h1>
-            <p>Talk about need to remember a bit even while an input is changing. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sag
-            ittis pretium vestibulum. Vestibulum nec blandit mauris. Phasellus 
-            nec imperdiet est. 
+            <h1 className="paragraph-title-copy paragraph-title-spacer">Well behaved memory </h1>
+            <p>Often it&#39;s useful to remember an input just for a moment. This is what the register
+            circuit does. Every time it&#39;s CLOCK bit goes from off to on, it updates its output
+            to be the same as its input, and will keep the output constant until the next off-to-on
+            CLOCK transition.
+
+
+
+           
             </p>
         </div>
         <RegisterContainer />

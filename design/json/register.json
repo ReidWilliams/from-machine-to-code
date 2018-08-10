@@ -21,7 +21,7 @@
     },
     {
       "nodeId": 1,
-      "type": "SWITCH",
+      "type": "CLOCK",
       "state": "BOOL_OFF",
       "inputs": [],
       "outputs": [

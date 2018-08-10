@@ -40,9 +40,10 @@ class ClockComponent extends Component {
     let svgType = Object.keys(this.props.node.svg)[0]
     return (
       <g onClick={() => {
-          console.log("nodeId: " + this.props.node.nodeId) 
-          this.toggleClock()
-        }}>
+            console.log("nodeId: " + this.props.node.nodeId) 
+            this.toggleClock()
+          }}>
+
         { // return svg element overriding fill
           React.createElement(
             svgType, 

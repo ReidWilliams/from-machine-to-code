@@ -24,6 +24,10 @@ function mapDispatchToProps(dispatch, ownProps) {
 
 class Calculator extends Component {
   render() { 
+    let labelStyle = {
+      fontSize: '30px'
+    }
+
     // circuit nodes for input switches, output led
     let input = findObjects([0, 1, 2], this.props.circuits[CIRCUIT_NAME].allNodes)
     let output = findObjects([97, 98, 99], this.props.circuits[CIRCUIT_NAME].allNodes)
@@ -33,6 +37,9 @@ class Calculator extends Component {
         <div className="centered body-width-line" />
         <div className="centered svg-width-circuit svg-vertical-margin">
           <svg viewBox="0 -10 1900 850">
+            <g transform="translate(78,768)">
+              <text className="circuit-label" style={labelStyle}>CLOCK</text>
+            </g>
             <g transform="translate(68,590) scale(1.6)">
               <DecimalNumberComponent 
                 nodes={input} 

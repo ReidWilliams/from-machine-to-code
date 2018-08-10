@@ -70,7 +70,7 @@
     },
     {
       "nodeId": 3,
-      "type": "SWITCH",
+      "type": "CLOCK",
       "state": "BOOL_OFF",
       "inputs": [],
       "outputs": [

@@ -37,13 +37,13 @@ class RegisterContainer extends Component {
         <div className="centered body-width-line" />
         <div className="centered svg-width-circuit svg-vertical-margin">
           <svg viewBox="0 -10 950 235">
-            <g transform="translate(50,83)">
+            <g transform="translate(110 ,83)">
               <ClockLabelComponent 
                 setState={(boolState) => {
                   console.log('setting to ', boolState)
                   this.props.setState(clockSwitch, boolState)
                 }}/>
-            </g><g transform="translate(110,209)">
+            </g><g transform="translate(110, 209)">
               <text className="circuit-label" style={labelStyle}>INPUT</text>
             </g>
           	<g transform="translate(140,0)">

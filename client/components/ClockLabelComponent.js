@@ -54,7 +54,7 @@ class ClockLabelComponent extends Component {
     )
 
     let play = (
-      <polygon id="Triangle" fill="#878484" fill-rule="nonzero" transform="translate(4.500000, 6.000000) rotate(90.000000) translate(-4.500000, -6.000000) " points="4.5 1.5 10.5 10.5 -1.5 10.5"></polygon>
+      <polygon id="Triangle" fill-rule="nonzero" transform="translate(4.500000, 6.000000) rotate(90.000000) translate(-4.500000, -6.000000) " points="4.5 1.5 10.5 10.5 -1.5 10.5"></polygon>
     )
 
     // console.log(this.intervalTimer)
@@ -67,9 +67,9 @@ class ClockLabelComponent extends Component {
     }
 
     return (
-      <g onClick={() => {this.toggleClock()}}>
+      <g className = "cursor-pointer" onClick={() => {this.toggleClock()}}>
         <text className="circuit-label" style={labelStyle}>CLOCK</text>
-        <g transform="translate(30, -15)">
+        <g transform="translate(-35, -9) scale(0.7)" className="clock-play-pause">
           {this.getIcon()}
         </g>
       </g>

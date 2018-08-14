@@ -40,7 +40,6 @@ class RegisterContainer extends Component {
             <g transform="translate(110 ,83)">
               <ClockLabelComponent 
                 setState={(boolState) => {
-                  console.log('setting to ', boolState)
                   this.props.setState(clockSwitch, boolState)
                 }}/>
             </g><g transform="translate(110, 209)">

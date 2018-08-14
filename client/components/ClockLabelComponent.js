@@ -25,7 +25,6 @@ class ClockLabelComponent extends Component {
 
   // play, pause clock
   toggleClock() {
-    console.log(this.state.intervalTimer)
     if(this.state.intervalTimer) {
       // pause
       clearInterval(this.state.intervalTimer)
@@ -61,7 +60,7 @@ class ClockLabelComponent extends Component {
     return (this.state.intervalTimer? pause : play)
   }
 
-  render() {
+  renderLabel() {
     let labelStyle = {
       fontSize: '15px'
     }
@@ -74,6 +73,18 @@ class ClockLabelComponent extends Component {
         </g>
       </g>
     )
+  }
+
+  renderEmpty() {
+    return (<g/>)
+  }
+
+  render() {
+    if (this.props.invisible === undefined || this.props.invisible === false) {
+      return this.renderLabel()
+    } else {
+      return this.renderEmpty()
+    }
   }
 }
 

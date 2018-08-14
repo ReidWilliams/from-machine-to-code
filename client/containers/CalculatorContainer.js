@@ -42,7 +42,6 @@ class Calculator extends Component {
             <g transform="translate(80, 770) scale(2.05)">
               <ClockLabelComponent 
                 setState={(boolState) => {
-                  console.log('setting to ', boolState)
                   this.props.setState(clockSwitch, boolState)
                 }}/>
             </g>

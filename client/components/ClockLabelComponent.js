@@ -1,27 +1,64 @@
-// Interactive button that users can click to turn on or off
+// Interactive clock label that starts / stops the clock
+// Keeps state for clock on / off in local state using setState
+// Not in redux store
 
 // Globals
 import React, { Component } from 'react'
 import { CLOCK_INTERVAL } from '../constants/constants'
 
+import { BOOL_OFF, BOOL_ON } from '../constants/boolStates'
+
 class ClockLabelComponent extends Component {
-  constructor() {
-    super()
-    this.intervalTimer = undefined
+  constructor(props) {
+    super(props)
+
+    // Set the state directly. Use props if necessary.
+    this.state = {
+      intervalTimer: undefined,
+      boolState: BOOL_OFF
+    }
   }
 
   componentDidMount() {
     this.toggleClock()
   }
 
+  // play, pause clock
   toggleClock() {
-    if(this.intervalTimer) {
-      clearInterval(this.intervalTimer)
-      this.intervalTimer = undefined
+    console.log(this.state.intervalTimer)
+    if(this.state.intervalTimer) {
+      // pause
+      clearInterval(this.state.intervalTimer)
+      this.setState({intervalTimer: undefined})
     } else {
-      // this.props.clickHandler()
-      this.intervalTimer = setInterval(this.props.clickHandler, CLOCK_INTERVAL)
+      let handle = setInterval(() => {this.tick()}, CLOCK_INTERVAL)
+      this.tick()
+      this.setState({intervalTimer: handle})
     }
+  }
+
+  // clock tick
+  tick() {
+    let newState = (this.state.boolState === BOOL_OFF)? BOOL_ON : BOOL_OFF
+    this.setState({boolState: newState})
+    this.props.setState(newState)
+  }
+
+  // play or pause depending on state
+  getIcon() {
+    let pause = (
+      <g>
+        <rect id="Rectangle" x="0" y="0" width="4.08333333" height="11.25"></rect>
+        <rect id="Rectangle-Copy" x="5.91666667" y="0" width="4.08333333" height="11.25"></rect>
+      </g>
+    )
+
+    let play = (
+      <polygon id="Triangle" fill="#878484" fill-rule="nonzero" transform="translate(4.500000, 6.000000) rotate(90.000000) translate(-4.500000, -6.000000) " points="4.5 1.5 10.5 10.5 -1.5 10.5"></polygon>
+    )
+
+    // console.log(this.intervalTimer)
+    return (this.state.intervalTimer? pause : play)
   }
 
   render() {
@@ -30,15 +67,10 @@ class ClockLabelComponent extends Component {
     }
 
     return (
-      <g onClick={() => {
-            console.log("nodeId: " + this.props.node.nodeId) 
-            this.toggleClock()
-          }}>
-
+      <g onClick={() => {this.toggleClock()}}>
         <text className="circuit-label" style={labelStyle}>CLOCK</text>
         <g transform="translate(30, -15)">
-          <rect id="Rectangle-Copy" x="0" y="0" width="4" height="10"></rect>
-          <rect id="Rectangle-Copy-2" x="6" y="0" width="4" height="10"></rect>    
+          {this.getIcon()}
         </g>
       </g>
     )

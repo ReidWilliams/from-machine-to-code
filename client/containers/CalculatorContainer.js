@@ -39,7 +39,9 @@ class Calculator extends Component {
         <div className="centered svg-width-circuit svg-vertical-margin">
           <svg viewBox="0 -10 1900 850">
             <g transform="translate(78,768)">
-              <ClockLabelComponent />
+              <ClockLabelComponent 
+                setState={() => {}}
+              />
             </g>
             <g transform="translate(68,590) scale(1.6)">
               <DecimalNumberComponent 

@@ -53,7 +53,10 @@ class CircuitContainer extends Component {
     let renderWire = node => { return (<WireComponent node={node} />) }
     let renderSwitch = node => { return (<SwitchComponent node={node} clickHandler={switchToggler(node.nodeId)} />) }
     let renderLED = node => { return (<LEDComponent node={node} />) }
-    let renderClock = node => { return (<ClockComponent node={node} clickHandler={switchToggler(node.nodeId)} />) }
+    // Clock is rendered as Switch. Originally had clock component with timer that
+    // changed state of clock. Now timer is outside the rendered component so all
+    // that's needed is to render a switch.
+    let renderClock = node => { return (<SwitchComponent node={node} clickHandler={switchToggler(node.nodeId)} />) }
     let renderGate = node => { return (<GateComponent node={node} />) }
 
     let wires = filterNodes(isWire)

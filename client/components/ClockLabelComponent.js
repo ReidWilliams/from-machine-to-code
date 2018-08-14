@@ -40,7 +40,9 @@ class ClockLabelComponent extends Component {
   tick() {
     let newState = (this.state.boolState === BOOL_OFF)? BOOL_ON : BOOL_OFF
     this.setState({boolState: newState})
-    this.props.setState(newState)
+    if (document.hasFocus()) {
+      this.props.setState(newState)
+    }
   }
 
   // play or pause depending on state

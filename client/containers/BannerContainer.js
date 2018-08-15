@@ -30,6 +30,11 @@ function mapDispatchToProps(dispatch, ownProps) {
 }
 
 class BannerContainer extends Component {
+  componentDidMount() {
+    let goSwitch = findObjects([16], this.props.circuits[CIRCUIT_NAME].allNodes)[0]
+    this.props.setState(goSwitch, BOOL_ON)
+  }
+
   render() { 
 
     let clockSwitch = findObjects([17], this.props.circuits[CIRCUIT_NAME].allNodes)[0]

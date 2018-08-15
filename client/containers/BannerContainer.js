@@ -9,6 +9,9 @@ import ClockLabelComponent from '../components/ClockLabelComponent'
 import { findObjects } from '../reducers/circuitReducerHelpers'
 import { setNodeState } from '../reducers/circuitReducer'
 
+// remove after testing
+import { BOOL_OFF, BOOL_ON } from '../constants/boolStates'
+
 const CIRCUIT_NAME = 'banner'
 
 function mapStateToProps(state, ownProps) {

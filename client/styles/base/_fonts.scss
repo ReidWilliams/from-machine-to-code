@@ -1,11 +1,13 @@
 @font-face {
 	font-family: akkurat;
-	src: url(/assets/fonts/Akkurat-Light.otf);
+	src: url("/assets/fonts/Akkurat-Light.otf");
+	// src: url("/test-new-build/assets/fonts/Akkurat-Light.otf");
 }
 
 @font-face {
 	font-family: circularStd;
 	src: url("/assets/fonts/CircularStd-Book.otf");
+	// src: url("/test-new-build/assets/fonts/CircularStd-Book.otf");
 }
 
 $font-body: akkurat;

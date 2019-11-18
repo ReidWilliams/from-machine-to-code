@@ -8,10 +8,11 @@ Explore and program a tiny microprocessor starting from a single gate. An explor
 Requires Node v6.x.
 
 ### Build and deploy
+- edit url paths in `client/styles/base/_fonts.scss` to include `<post-name>` in path
 - `npm run build`
-- copy `assets` folder to s3 bucket at `<root>/assets`
 - copy `client/index.html` to s3 bucket at `<root>/<post-name>/index.html`
-- copy `dist/bundle.js` to s3 bucket at `<root>/<post-name>/dist/bundle.js`
+- copy `dist` folder to s3 bucket at `<root>/<post-name>/dist`
+- copy `assets` folder to s3 bucket at `<root>/<post-name>/assets`
 
 # Outline
 

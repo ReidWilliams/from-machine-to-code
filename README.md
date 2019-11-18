@@ -70,7 +70,9 @@ Explore and program a tiny microprocessor starting from a single gate. An explor
 - what should a fun out put be? Tiny display mapped into memory
 - no interrupts, but registers that capture some simple inputs like mouse and keyboard
 
+### Installation
 
+Requires Node v6.x.
 
 
 

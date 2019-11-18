@@ -3,6 +3,16 @@ Explore and program a tiny microprocessor starting from a single gate. An explor
 
 ![AND gates](https://raw.githubusercontent.com/ReidWilliams/from-machine-to-code/master/client/assets/gates.jpg)
 
+# Installation and deployment
+
+Requires Node v6.x.
+
+### Build and deploy
+- `npm run build`
+- copy `assets` folder to s3 bucket at `<root>/assets`
+- copy `client/index.html` to s3 bucket at `<root>/<post-name>/index.html`
+- copy `dist/bundle.js` to s3 bucket at `<root>/<post-name>/dist/bundle.js`
+
 # Outline
 
 #### Meet the gates
@@ -70,9 +80,6 @@ Explore and program a tiny microprocessor starting from a single gate. An explor
 - what should a fun out put be? Tiny display mapped into memory
 - no interrupts, but registers that capture some simple inputs like mouse and keyboard
 
-### Installation
-
-Requires Node v6.x.
 
 
 

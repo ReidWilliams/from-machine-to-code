@@ -36,7 +36,7 @@
     "body-parser": "1.14.1",
     "bootstrap": "^3.3.6",
     "css-loader": "^0.23.1",
-    "eslint": "^1.7.3",
+    "eslint": "^4.19.1",
     "eslint-loader": "^1.1.0",
     "exports-loader": "0.6.2",
     "express": "^4.13.3",

@@ -5,6 +5,7 @@ import { setNodeState } from '../reducers/circuitReducer'
 import CircuitContainer from '../containers/CircuitContainer'
 import DecimalNumberComponent from '../components/DecimalNumberComponent'
 import ClockLabelComponent from '../components/ClockLabelComponent'
+import { BOOL_ON } from '../constants/boolStates'
 
 const CIRCUIT_NAME = "calculator"
 
@@ -24,6 +25,11 @@ function mapDispatchToProps(dispatch, ownProps) {
 }
 
 class Calculator extends Component {
+  componentDidMount() {
+    const input = findObjects([0], this.props.circuits[CIRCUIT_NAME].allNodes)[0]
+    this.props.setState(input, BOOL_ON)
+  }
+
   render() { 
     let labelStyle = {
       fontSize: '30px'

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="9px" height="12px" viewBox="0 0 9 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
-    <title>Triangle</title>
+<svg width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>play</title>
     <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <polygon id="Triangle" fill="#878484" fill-rule="nonzero" transform="translate(4.500000, 6.000000) rotate(90.000000) translate(-4.500000, -6.000000) " points="4.5 1.5 10.5 10.5 -1.5 10.5"></polygon>
+    <g id="play" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" fill="#EBEBEB" cx="12.5" cy="12.5" r="12.5"></circle>
+        <g transform="translate(7.000000, 4.000000)" fill="#9E9E9E" fill-rule="nonzero" id="Triangle">
+            <path d="M8.06192294,3.16027844 L14.5814345,13.5914969 C14.8741448,14.0598335 14.7317717,14.6767838 14.2634351,14.9694942 C14.1045035,15.0688264 13.9208559,15.1214959 13.7334362,15.1214959 L0.694413083,15.1214959 C0.142128333,15.1214959 -0.305586917,14.6737806 -0.305586917,14.1214959 C-0.305586917,13.9340761 -0.252917472,13.7504285 -0.153585221,13.5914969 L6.36592633,3.16027844 C6.65863666,2.69194191 7.27558704,2.54956875 7.74392357,2.84227908 C7.8726927,2.92275979 7.98144223,3.03150931 8.06192294,3.16027844 Z" transform="translate(7.213925, 8.462489) rotate(90.000000) translate(-7.213925, -8.462489) "></path>
+        </g>
     </g>
 </svg>

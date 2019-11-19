@@ -38,28 +38,28 @@ class Calculator extends Component {
       <div>
         <div className="centered body-width-line" />
         <div className="centered svg-width-circuit svg-vertical-margin">
-          <svg viewBox="0 -10 1900 850">
-            <g transform="translate(80, 770) scale(2.05)">
+          <svg viewBox="0 -10 1910 850">
+            <g transform="translate(95, 770) scale(2.05)">
               <ClockLabelComponent 
                 setState={(boolState) => {
                   this.props.setState(clockSwitch, boolState)
                 }}/>
             </g>
-            <g transform="translate(68,590) scale(1.6)">
+            <g transform="translate(78,590) scale(1.6)">
               <DecimalNumberComponent 
                 nodes={input} 
                 setState={this.props.setState} 
                 anchor="middle" 
                 bgX="-40" bgY="-69" bgWidth="80" bgHeight="82" />
             </g>
-            <g transform="translate(1830,590) scale(1.6)">
+            <g transform="translate(1840,590) scale(1.6)">
               <DecimalNumberComponent 
                 nodes={output} 
                 setState={undefined} 
                 anchor="middle" 
                 bgX="-40" bgY="-69" bgWidth="80" bgHeight="82" />
             </g>
-          	<g transform="translate(140,0)">
+          	<g transform="translate(150,0)">
             	<CircuitContainer circuitName="calculator" />
             </g>
           </svg>

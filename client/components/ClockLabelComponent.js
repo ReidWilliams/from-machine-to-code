@@ -48,14 +48,22 @@ class ClockLabelComponent extends Component {
   // play or pause depending on state
   getIcon() {
     let pause = (
-      <g>
-        <rect id="Rectangle" x="0" y="0" width="4.08333333" height="11.25"></rect>
-        <rect id="Rectangle-Copy" x="5.91666667" y="0" width="4.08333333" height="11.25"></rect>
+      <g id="pause" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" fill="#EBEBEB" cx="12.5" cy="12.5" r="12.5"></circle>
+        <g id="Group" transform="translate(7.000000, 6.000000)" fill="#9E9E9E" fill-rule="nonzero">
+          <rect id="Rectangle" x="0" y="0" width="5" height="14" rx="1"></rect>
+          <rect id="Rectangle-Copy" x="6" y="0" width="5" height="14" rx="1"></rect>
+        </g>
       </g>
     )
 
     let play = (
-      <polygon id="Triangle" fill-rule="nonzero" transform="translate(4.500000, 6.000000) rotate(90.000000) translate(-4.500000, -6.000000) " points="4.5 1.5 10.5 10.5 -1.5 10.5"></polygon>
+      <g id="play" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" fill="#EBEBEB" cx="12.5" cy="12.5" r="12.5"></circle>
+        <g transform="translate(7.000000, 4.000000)" fill="#9E9E9E" fill-rule="nonzero" id="Triangle">
+          <path d="M8.06192294,3.16027844 L14.5814345,13.5914969 C14.8741448,14.0598335 14.7317717,14.6767838 14.2634351,14.9694942 C14.1045035,15.0688264 13.9208559,15.1214959 13.7334362,15.1214959 L0.694413083,15.1214959 C0.142128333,15.1214959 -0.305586917,14.6737806 -0.305586917,14.1214959 C-0.305586917,13.9340761 -0.252917472,13.7504285 -0.153585221,13.5914969 L6.36592633,3.16027844 C6.65863666,2.69194191 7.27558704,2.54956875 7.74392357,2.84227908 C7.8726927,2.92275979 7.98144223,3.03150931 8.06192294,3.16027844 Z" transform="translate(7.213925, 8.462489) rotate(90.000000) translate(-7.213925, -8.462489) "></path>
+        </g>
+      </g>
     )
 
     // console.log(this.intervalTimer)
@@ -70,7 +78,7 @@ class ClockLabelComponent extends Component {
     return (
       <g className = "cursor-pointer" onClick={() => {this.toggleClock()}}>
         <text className="circuit-label" style={labelStyle}>CLOCK</text>
-        <g transform="translate(-35, -9) scale(0.7)" className="clock-play-pause">
+        <g transform="translate(-47, -15) scale(0.8)" className="clock-play-pause">
           {this.getIcon()}
         </g>
       </g>

@@ -54,7 +54,7 @@ class BannerContainer extends Component {
           </svg>
         </div>
         <div className="banner-subhead-margin body-copy-container">
-          <h1 className="banner-subhead-copy">How simple parts combine to create programmable machines</h1>
+          <h1 className="banner-subhead-copy">How simple parts combine to create tiny digital machines</h1>
         </div>
       </div>
     )

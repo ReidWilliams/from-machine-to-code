@@ -1,6 +1,6 @@
 $circuit-color-on	: #FF2B84;
 $circuit-color-off: #D2E9EA;
-$circuit-color-hover: #A0DDDF;
+$circuit-color-hover: #00CDD4;
 $circuit-decimal-text-fill: #BAD5D6;
 $circuit-decimal-rect-fill: #F5FAFA;
 $circuit-decimal-rect-stroke: #EBEFF0;
@@ -42,6 +42,10 @@ $global-transition-time: 200ms;
 	margin-bottom: 100px;
 }
 
+svg text {
+	user-select: none
+}
+
 body {
 	background-color: white;
 	position: relative;
@@ -52,6 +56,10 @@ body {
 	font-size: 18px;
 	text-align: left;
 	color: $body-copy-color;
+}
+
+.is-pink {
+	color: $circuit-color-on;
 }
 
 .banner-subhead-copy {
@@ -65,7 +73,7 @@ body {
 	font-family: $font-paragraph-headline;
 	font-size: 22px;
 	text-align: left;
-	color: $body-copy-color;
+	color: $circuit-color-on;
 }
 
 .circuit-label {
@@ -112,7 +120,7 @@ body {
 .clickable {
 	&:hover {
 		fill: $circuit-color-hover;
-		transition: fill 200ms;
+		transition: fill 100ms;
 	}
 }
 

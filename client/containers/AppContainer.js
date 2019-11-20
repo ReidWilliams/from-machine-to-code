@@ -11,6 +11,7 @@ import LatchContainer from '../containers/LatchContainer'
 import RegisterContainer from '../containers/RegisterContainer'
 import CalculatorContainer from '../containers/CalculatorContainer'
 import ProcessorContainer from '../containers/ProcessorContainer'
+import FooterComponent from '../components/FooterComponent'
 
 class App extends Component {
   render() {
@@ -177,11 +178,7 @@ class App extends Component {
               Stay tuned for a future post where we explore how to make tiny machines programmable.
             </p>
         </div> 
-        <div className="footer">
-          <div className="body-copy-container">
-            Here's some footer text
-          </div>
-        </div>
+        <FooterComponent />
       </div>
     )
   }

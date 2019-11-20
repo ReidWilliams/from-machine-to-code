@@ -56,7 +56,7 @@ body {
 
 .body-copy {
   font-family: $font-body;
-  font-size: 18px;
+  font-size: 20px;
   text-align: left;
   color: $body-copy-color;
 }
@@ -67,14 +67,14 @@ body {
 
 .banner-subhead-copy {
   font-family: $font-banner-subtitle;
-  font-size: 22px;
+  font-size: 26px;
   text-align: left;
   color: $circuit-color-on;
 }
 
 .paragraph-title-copy {
   font-family: $font-paragraph-headline;
-  font-size: 22px;
+  font-size: 26px;
   text-align: left;
   color: $circuit-color-on;
 }
@@ -92,7 +92,7 @@ body {
 }
 
 .banner-subhead-margin {
-  margin-top: 20px;
+  margin-top: 50px;
   margin-bottom: 30px;
 }
 
@@ -108,12 +108,25 @@ body {
 
 .footer {
   width: 100%;
-  height: 100px;
   margin-top: 75px;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   background-color: $circuit-color-off;
+  // color: #ffffff;
+  font-size: 20px;
   @include centered;
+  .title {
+    font-size: 24px;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+    color: $circuit-color-on;
+  }
+  p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
 }
 
 .cursor-pointer {

@@ -15,9 +15,9 @@ import ProcessorContainer from '../containers/ProcessorContainer'
 class App extends Component {
   render() {
     return (
-    	<div>
+      <div>
         <BannerContainer />
-    		<div className="body-copy body-copy-container">
+        <div className="body-copy body-copy-container">
           <p>
             Right now you&#39;re staring at pixels powered by a tiny digital machine
             of astounding complexity. 
@@ -42,10 +42,10 @@ class App extends Component {
           </p>
 
           <p className="is-pink">
-            Every picture in this post is interactive, so please 👉 
+            Every picture in this post is interactive, so 👉 
           </p>
 
-    		</div>
+        </div>
         <div className="body-copy body-copy-container">
           <h1 className="paragraph-title-copy paragraph-title-spacer">Hello gates</h1>
           <p>
@@ -142,21 +142,47 @@ class App extends Component {
             <p>
               When CLOCK goes from off to on,
               it&#39;s output becomes the same as INPUT. It then ignores changes to INPUT until
-              the next time CLOCK goes from off to on. We&#39;ll see how registers are used in bigger circuits next.
+              the next time CLOCK goes from off to on. 
+            </p>
+            <p>
+              This is useful because more complex circuits
+              often have the output of a register connect though some math circuits and then back
+              into the input of the same register. The register ensures an orderly transition from
+              the old value to the new value by updating only when the clock goes from off to on.
+            </p>
+            <p> 
+               We&#39;ll see how registers are used in bigger circuits next.
             </p>
         </div>
         <RegisterContainer />
 
         <div className="body-copy body-copy-container">
-            <h1 className="paragraph-title-copy paragraph-title-spacer">Always adding</h1>
-            <p>
-              Putting registers to work, we can build a circuit that adds a number to itself
-              over and over. The total so far is remembered by a 3-bit register and added
-              to the input each clock cycle.
-            </p>
+          <h1 className="paragraph-title-copy paragraph-title-spacer">Always adding</h1>
+          <p>
+            Putting registers to work, we can build a circuit that adds a number to itself
+            over and over. The total so far is remembered by a 3-bit register and added
+            to the input each clock cycle.
+          </p>
         </div>
-        <CalculatorContainer />     
-    	</div>
+        <CalculatorContainer />
+
+        <div className="body-copy body-copy-container">
+          <h1 className="paragraph-title-copy paragraph-title-spacer">Stay tuned</h1>
+            <p>
+              The adding circuits we&#39;ve explored are the basis for much of 
+              what microprocessors do. They have some inputs from the outside world,
+              do some some math, store the results, do more math on the result, store that result. 
+            </p>
+            <p>
+              Stay tuned for a future post where we explore how to make tiny machines programmable.
+            </p>
+        </div> 
+        <div className="footer">
+          <div className="body-copy-container">
+            Here's some footer text
+          </div>
+        </div>
+      </div>
     )
   }
 }

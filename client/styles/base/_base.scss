@@ -19,6 +19,26 @@ $global-transition-time: 200ms;
   width: 100%;
 }
 
+@mixin font-body {
+  font-family: $font-body;
+  font-size: 20px;
+  line-height: 28px;
+  @media only screen and (max-width: 767px) {
+    font-size: 24px;
+    line-height: 28px;
+  }
+}
+
+@mixin font-title {
+  font-family: $font-paragraph-headline;
+  font-size: 26px;
+  line-height: 30px;
+  @media only screen and (max-width: 767px) {
+    font-size: 32px;
+    line-height: 34px;
+  }
+}
+
 .centered {
   @include centered;
 }
@@ -55,8 +75,7 @@ body {
 }
 
 .body-copy {
-  font-family: $font-body;
-  font-size: 20px;
+  @include font-body;
   text-align: left;
   color: $body-copy-color;
 }
@@ -66,15 +85,13 @@ body {
 }
 
 .banner-subhead-copy {
-  font-family: $font-banner-subtitle;
-  font-size: 26px;
+  @include font-title;
   text-align: left;
   color: $circuit-color-on;
 }
 
 .paragraph-title-copy {
-  font-family: $font-paragraph-headline;
-  font-size: 26px;
+  @include font-title;
   text-align: left;
   color: $circuit-color-on;
 }
@@ -102,8 +119,12 @@ body {
 }
 
 .body-copy-container {
-  width: 700px;
+  max-width: 700px;
   @include centered;
+  @media only screen and (max-width: 767px) {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 }
 
 .footer {

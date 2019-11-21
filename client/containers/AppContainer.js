@@ -20,17 +20,17 @@ class App extends Component {
         <BannerContainer />
         <div className="body-copy body-copy-container">
           <p>
-            Right now you&#39;re staring at pixels powered by a tiny digital machine
-            of astounding complexity. 
-            It sits at the bottom of layers of software and does something special. It creates 
+            Right now you&#39;re staring at a bunch of pixels powered by a tiny digital machine
+            of astounding complexity. Sitting below the layers of software—things like web browsers
+            and operating systems—it does something special. It creates 
             one universe inside of another: a neat, abstracted world of 
-            ones and zeros inside a noisy, analog world of electricity. It's where hardware becomes
+            ones and zeros within a noisy, analog world of electricity. It's where hardware becomes
             software. 
           </p>
 
           <p>
-            Inside a modern microprocessor lives over a billion transistors. Each 
-            transistor does a bit of magic, helping corral electricity into only 
+            Inside this machine, the microprocessor, lives over a billion transistors, each 
+            helping corral electricity into only 
             one of two possible states: zero or one. With a billion transistors
             connected in the right way, we get fantastical machines that power everything
             from watches to washing machines.

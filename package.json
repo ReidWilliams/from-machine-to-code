@@ -40,7 +40,7 @@
     "eslint-loader": "^1.1.0",
     "exports-loader": "0.6.2",
     "express": "^4.13.3",
-    "express-jwt": "3.3.0",
+    "express-jwt": "6.0.0",
     "express-session": "^1.13.0",
     "fetch-mock": "4.0.1",
     "fetch-mock-forwarder": "1.0.0",

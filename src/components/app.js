@@ -1,6 +1,8 @@
 import { LitElement, css, html } from 'lit-element';
 
-class Main extends LitElement {
+import Content from './main/content';
+
+class App extends LitElement {
   static get styles() {
     return css`
       layout {
@@ -18,9 +20,9 @@ class Main extends LitElement {
 
   render() {  
     return html`
-      <h1>I'm rendering inside main</h1>
+      <content-component></content-component>
     `;
   }
 }
 
-customElements.define('main-component', Main);
+customElements.define('app-component', App);

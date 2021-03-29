@@ -1,3 +1,3 @@
 import './index.css';
 
-// import layout from './components/layout';
+import Main from './components/main';

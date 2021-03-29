@@ -1,1 +1,0 @@
-- wires in a bus are spaced 12 pixels apart

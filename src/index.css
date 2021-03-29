@@ -1,0 +1,72 @@
+:root {
+  --white: #ffffff;
+  --gray-98: #f9f9f9;
+  --gray-97: #f7f7f7;
+  --gray-97-translucent: rgba(247, 247, 247, 0.85);
+  --gray-95: #f2f2f2;
+  --gray-90: #e6e6e6;
+  --gray-85: #d9d9d9;
+  --gray-80: #cccccc;
+  --gray-70: #b3b3b3;
+  --gray-60: #999999;
+  --gray-50: #808080;
+  --gray-40: #666666;
+  --gray-30: #4d4d4d;
+  --gray-20: #333333;
+  --gray-15: #262626;
+  --black: #000000;
+  --pool-blue: #00d2ee;
+  --pool-blue-light: #97e2ec;
+  --pool-blue-dark: #005b67;
+  --pool-blue-dusty: #d5f0f3;
+  --pink: #ffa2ad;
+  --red: #ff4158;
+  --soft-red: #EB3248;
+
+  --home-radial-gradient: 
+    linear-gradient(rgba(0,35,57,0.6) 0%, rgba(0,0,0,.08) 40%),
+    radial-gradient(
+    circle at 50% 135%,
+    #EA1C1A 20%,
+    #E6E3D1 45%,
+    #C5DDE1 50%,
+    #003239 95%);
+
+  --text-gradient: linear-gradient(0.15turn, var(--red), #3979c4, var(--pool-blue));
+
+  --page-margin: 16px;
+  --page-grid-columns: var(--page-margin) 1fr var(--page-margin);
+  --page-grid-columns-desktop: minmax(64px, 1fr) minmax(0, 1300px) minmax(64px, 1fr);
+  --topic-page-grid-columns-desktop: 1fr minmax(500px, 700px) 1fr;
+
+  --header-height: 40px;
+  --header-height-desktop: 52px;
+
+  --native-fonts: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu,
+    Cantarell, Pangram, sans-serif;
+
+  --button-height: 36px;
+  --thick-button-height: 40px;
+
+  --contact-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px, rgba(0, 0, 0, 0.1) 0px 0px 2px;
+  --floating-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  /*--floating-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;*/
+  --extruded-shadow: 6px 6px 12px #e6e6e6, -6px -6px 12px #ffffff;
+}
+
+body {
+  background-color: var(--gray-97);
+  color: var(--gray-20);
+  font-family: 'Pangram', sans-serif;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
+/* Class added to body by home component */
+body.home {
+  background: var(--home-radial-gradient);
+}
+
+body.no-scroll {
+  overflow: hidden;
+}

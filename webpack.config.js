@@ -1,99 +1,60 @@
-'use strict'
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
+const webpack = require('webpack');
 
- // System Deps
-var autoprefixer =require('autoprefixer');
-var webpack =require('webpack');
-var path =require('path');
-
-
-// Only export the config to be consumed by webpack
-// It builds an instance of a webpack compiler based on this
-module.exports = {
-  // Entry points into the build process
-  entry: [
-    'webpack/hot/dev-server',
-    'webpack-hot-middleware/client',
-    path.join(__dirname, '/client/index.js')
-  ],
-  
-  // Output build path
-  output: {
-    path: path.join(__dirname, '/dist/'),
-    publicPath: '/dist/',
-    filename: 'bundle.js'
-  },
-
-  // Set up source mapping for debugging
-  devtool: "inline-source-map",
-
-  // Webpack Loaders (transformations)
-  // http://webpack.github.io/docs/using-loaders.html
-  module: {
-    loaders: [
-      // Font files
-      {
-        test: /\.(ttf|eot|woff)(\?.*)?$/,
-        loaders: ['url']
-      },
-      // Clean up SVGs
-      {
-        test: /\.svg(\?.*)?$/,
-        loaders: ['url', 'svgo']
-      },
-      // Stylesheets
-      {
-        test: /\.css$/,
-        loaders: ['style', 'css']
-      },
-      // Compile Sass to CSS
-      {
-        test: /\.scss$/,
-        loaders: ["style", "css", "sass"]
-      },
-      // ES6
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        loaders: ['react-hot', 'babel']
-      },
-      // ESlinter for code sanity
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loaders: ['eslint']
-      },
-      // Markup
-      {
-        test: /\.html$/,
-        loader: 'html'
-      },
-      // Standard JSON
-      {
-        test: /\.json$/,
-        loader: 'json'
-      },
-      // for bootstrap (see https://github.com/theodybrothers/webpack-bootstrap)
-      { 
-        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" 
-      }
-    ]
-  },
-
-  // ESLint specification
-  eslint: {
-    parser: 'babel-eslint'
-  },
-
-  // Handle all vendor prefixes
-  postcss: () => {
-    return [autoprefixer];
-  },
-
-  // http://webpack.github.io/docs/using-plugins.html  
-  plugins: [
-    // https://github.com/glenjamin/webpack-hot-middleware 
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ]
+module.exports = (env) => {
+  console.log(env);
+  mode = env.mode;
+  return {
+    mode,
+    entry: {
+      main: './src/index.js',
+    },
+    devtool: mode == 'development' ? 'cheap-module-eval-source-map' : 'none',
+    devServer: {
+      historyApiFallback: true,
+    },
+    module: {
+      rules: [
+        {
+          test: /\.css$/,
+          use: ['style-loader', 'css-loader'],
+        },
+        {
+          test: /\.(png|svg|jpg|gif)$/,
+          use: ['file-loader'],
+        },
+        {
+          test: /\.woff2$/,
+          use: ['url-loader'],
+        },
+      ],
+    },
+    plugins: [
+      new CleanWebpackPlugin(),
+      new HtmlWebpackPlugin({
+        title: 'Tiny Machines',
+        // favicon: './src/img/favicon.ico',
+        template: 'templates/index.ejs',
+        filename: 'index.html',
+        excludeChunks: ['server'],
+      }),
+      new CopyWebpackPlugin([
+        {
+          context: 'node_modules/@webcomponents/webcomponentsjs',
+          from: '**/*.js',
+          to: 'polyfills/webcomponents',
+        },
+      ]),
+      new ManifestPlugin(),
+    ],
+    output: {
+      filename: 'bundle.js',
+      path: path.resolve(__dirname, 'build'),
+      publicPath: '/',
+    },
+  };
 };

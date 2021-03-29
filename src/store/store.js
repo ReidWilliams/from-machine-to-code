@@ -1,3 +1,6 @@
+import { STORE_EVENT, STORE_STATE_CHANGED } from './constants';
+
+
 // Keeps global state and as it subclasses EventTarget acts as an event
 // bus for services that know how to respond to events
 class Store extends EventTarget {
